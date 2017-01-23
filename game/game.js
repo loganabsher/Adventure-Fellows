@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var questionNum = 0;
   //arrays of diol
-//array of phases/titles
+  //array of phases/titles
   var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
-//array of place images
+  //array of place images
   var staticImageArray = ['../images/cf_building.jpg'];
-//array of questions/events
+  //array of questions/events
   var staticQuestionArray = ['you are on your home directory of the terminal and following along, what do you type in the command line?', 'how do you spend the weekend?'];
-//array of choices for the questions
+  //array of choices for the questions
   var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa' , 'study all weekend', 'go out for dinner and drinks with friends', 'sleep your standard eight hours, run, study']];
-//array of responses to the choices
+  //array of responses to the choices
   var staticResponseArray = [['you deleted all files on your machine, you can no longer continue in the class. (-100, health, -100 grade)', 'you follow along with the class, learing much about how to properly operate your computer.', 'you tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;). (+5 grade, -10 social)', 'you cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture. (-10 grade)'], ['you go to the spa to rejuvenate and relax, sleeping in and lounging all weekend. (+20 health, -10 grade, +10 social)', 'you study very hard all weekend, not getting a chance to relax or see any friends. (+10 grade, - 15 social)', 'you go out drinking all weekend having a terrible hangover, but somehow on Monday your code is finished? (-15 health, +5 grade, +20 social)', 'you get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society. (+5 health, +5 grade, -5 social)']];
 
   renderPage();
@@ -29,8 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderPage(questionNum){
     appendImage(staticImageArray[0]);
     createDialogue(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
-  }
 
+  function phaseImage(image){
+    var pageEl = document.getElementById('place-image');
+    var imageEl = document.createElement('img');
+    imageEl.setAttribute('id', 'background-image');
+    imageEl.setAttribute('src', image);
+    pageEl.appendChild(imageEl);
+  }
+  function removeImage(){
+    var pageEl = document.getElementById('place-image');
+    pageEl.removeChild(imageEl);
+  }
   function renderResponse(id, questionNum) {
     var questionsList = document.getElementById('questions-list');
     questionsList.remove();
@@ -44,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     gameText.appendChild(responsePar);
   }
-
   function appendImage(image){
     var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
