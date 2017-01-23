@@ -11,3 +11,12 @@ characters.forEach(function(character) {
     console.log(character.firstChild.src);
   });
 });
+
+function displayText(){
+  var bodyEl = document.getElementsByTagName('body');
+  var user = JSON.parse(localStorage.getItem(userName));
+  var createHeader = document.createElement('h3');
+  createHeader.textContent = ('Hello, ' + userName + 'please select a character');
+  bodyEl.appendChild(createHeader);
+}
+displayText();
