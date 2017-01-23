@@ -16,5 +16,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var player = new Character('name');
   console.log(player.name);
-
 });
