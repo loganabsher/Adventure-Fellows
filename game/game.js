@@ -1,53 +1,55 @@
 'use strict';
 //arrays of diol
 var phaseArray = ['morning', 'day', 'night'];
-var staticImageArray = ['../images/IMG_0006.jpg'];
+var staticImageArray = ['../images/cf_building.jpg'];
 var staticChoiceArray = [['question one', 'question two', 'question three', 'question four']];
 var staticResponseArray = [['response one', 'response two', 'response three', 'response four']];
 var randomChoiceArray = [];
 var randomResponseArray = [];
 
-function Character(name){
+function Character(name, image){
   this.name = name;
+  this.image = image;
   this.health = 100;
   this.grade = 100;
   this.social = 100;
 }
 var player = new Character('name');
 
-function pageConstructor(){
-  phaseConstructor(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
+function page(){
+  phase(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
 }
 
-function phaseConstructor(staticImage, staticChoice, staticResponse){
+function phase(image, choice, responses){
   // for(var j = 0; j < phaseArray.length; j++){
   //   var titleEl = document.getElementById('head-tag');
   //   var phaseEl = document.createElement('h1');
   //   phaseEl.textContent = phaseArray[j];
   //   titleEl.appendChild(phaseEl);
-  var pageEl = document.getElementById('body-tag');
+  var pageEl = document.getElementById('place-image');
   var imageEl = document.createElement('img');
   imageEl.setAttribute('id', 'background-image');
-  imageEl.setAttribute('src', staticImage);
+  imageEl.setAttribute('src', image);
   pageEl.appendChild(imageEl);
-  var footerEl = document.getElementById('footer-tag');
+  var footerEl = document.getElementById('game-text');
   var listEl = document.createElement('ul');
-  for(var i = 0; i < staticChoice.length; i++){
+  for(var i = 0; i < choice.length; i++){
     var textEl = document.createElement('li');
-    textEl.textContent = staticChoice[i];
+    textEl.textContent = choice[i];
     listEl.appendChild(textEl);
     var userChoice = function(event){
       event.preventDefault();
       event.stopPropagation();
       footerEl.removeChild(listEl);
       var responseEl = document.createElement('p');
-      footerEl.appendChild(staticResponse);
-      console.log(staticResponse);
+      responseEl.textContent = responses;
+      console.log(responses);
+      footerEl.appendChild(responseEl);
     };
     textEl.addEventListener('click', userChoice, false);
   }
   footerEl.appendChild(listEl);
 }
 // }
-pageConstructor();
+page();
 console.log(player.name);

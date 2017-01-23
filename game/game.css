@@ -1,9 +1,24 @@
-#background-image{
-  width: 100%;
+#background-image, #game-text{
+  width: 80%;
   height: 600px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 ul{
   margin-left: 20%;
   margin-right: 20%;
-  font-size: 1.6em;
+  font-size: 2em;
+}
+p{
+  font-size: 2em;
+}
+#game-text{
+  background-color: grey;
+  height: 400px;
+}
+html{
+  background-color: black;
+}
+#user-box{
+  float: right;
 }
