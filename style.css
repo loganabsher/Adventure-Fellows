@@ -3,5 +3,26 @@
 }
 
 img {
-  width: 10%;
+  width: 20%;
+}
+
+p {
+  display: inline;
+  vertical-align: middle;
+}
+
+.bio {
+  border: 5px solid black;
+  width: 80%;
+  float: left;
+  margin: 0px auto;
+}
+
+.thanks {
+  /*display: inline;*/
+  width: 48%;
+}
+
+body {
+  width: 100%;
 }
