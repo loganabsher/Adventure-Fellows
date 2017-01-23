@@ -1,13 +1,19 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function() {
+
+  var questionNum = 0;
   //arrays of diol
-  var phaseArray = ['morning', 'day', 'night'];
+//array of phases/titles
+  var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
+//array of place images
   var staticImageArray = ['../images/cf_building.jpg'];
-  var staticChoiceArray = [['question one', 'question two', 'question three', 'question four']];
-  var staticResponseArray = [['response one', 'response two', 'response three', 'response four']];
-  var randomChoiceArray = [];
-  var randomResponseArray = [];
+//array of questions/events
+  var staticQuestionArray = ['you are on your home directory of the terminal and following along, what do you type in the command line?', 'how do you spend the weekend?'];
+//array of choices for the questions
+  var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa' , 'study all weekend', 'go out for dinner and drinks with friends', 'sleep your standard eight hours, run, study']];
+//array of responses to the choices
+  var staticResponseArray = [['you deleted all files on your machine, you can no longer continue in the class. (-100, health, -100 grade)', 'you follow along with the class, learing much about how to properly operate your computer.', 'you tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;). (+5 grade, -10 social)', 'you cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture. (-10 grade)'], ['you go to the spa to rejuvenate and relax, sleeping in and lounging all weekend. (+20 health, -10 grade, +10 social)', 'you study very hard all weekend, not getting a chance to relax or see any friends. (+10 grade, - 15 social)', 'you go out drinking all weekend having a terrible hangover, but somehow on Monday your code is finished? (-15 health, +5 grade, +20 social)', 'you get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society. (+5 health, +5 grade, -5 social)']];
 
   renderPage();
 
@@ -20,12 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   var player = new Character('name');
 
-  function renderPage(){
+  function renderPage(questionNum){
     appendImage(staticImageArray[0]);
     createDialogue(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
   }
 
-  function renderResponse(id) {
+  function renderResponse(id, questionNum) {
     var questionsList = document.getElementById('questions-list');
     questionsList.remove();
     var gameText = document.getElementById('game-text');
@@ -33,7 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var responseId = parseInt(id);
     console.log(responseId);
-    responsePar.textContent = staticResponseArray[0][id];
+
+    responsePar.textContent = staticResponseArray[questionNum][id];
+
     gameText.appendChild(responsePar);
   }
 
@@ -60,9 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     questionsArray.forEach(function(question) {
       question.addEventListener('click', function() {
-        renderResponse(this.id);
-      })
-    })
+        renderResponse(this.id, questionNum);
+        questionNum++;
+      });
+    });
 
     // var questions = Array.prototype.slice.call(questionsCollection); //turn into array
     // console.log(questionsCollection);
