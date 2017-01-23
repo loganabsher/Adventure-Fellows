@@ -1,6 +1,6 @@
 'use strict';
 //array of phases/titles
-var phaseArray = ['morning', 'day', 'night'];
+var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
 //array of place images
 var staticImageArray = ['../images/cf_building.jpg'];
 //array of questions/events
@@ -15,6 +15,14 @@ var randomQuestionArray = [];
 var randomChoiceArray = [];
 //corresponding responses to the choices
 var randomResponseArray = [];
+//array of boss images
+var bossImageArray = ['../images/cf_building.jpg'];
+//array of boss questions
+var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
+//corresponding choices to questions
+var bossChoiceArray = [['','','',''], ['','','',''], ['','','',''], ['','','','']];
+//corresponding responses to choices
+var bossResponseArray = [['','','',''], ['','','',''], ['','','',''], ['','','','']];
 //collecting local storage from character page
 var local = JASON.parse(localStorage);
 console.log(local);
@@ -28,6 +36,26 @@ function Character(local){
 }
 //creating a new player with the local storage data
 var player = new Character(local);
+function random(max, min){
+  return Math.round(Math.random() * (max - min) + min);
+}
+function bossAdam(image, question, choice, response){
+  interactionImage(bossImageArray);
+}
+function interactionImage(image){
+  var pageEl = document.getElementById('interactive-box');
+  var imageEl = document.createElement('img');
+  imageEl.setAttribute('id', 'interactive-image');
+  imageEl.setAttribute('src', image);
+  pageEl.appendChild(imageEl);
+}
+function playerImage(image){
+  var pageEl = document.getElementById('user-box');
+  var imageEl = document.createElement('img');
+  imageEl.setAttribute('id', 'player-image');
+  imageEl.setAttribute('src', image);
+  pageEl.appendChild(imageEl);
+}
 //short introduction/base page layout
 function intro(image){
   phaseImage(image);
@@ -35,6 +63,7 @@ function intro(image){
 }
 function page(){
   phase(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
+  bossAdam();
 }
 function phaseImage(image){
   var pageEl = document.getElementById('place-image');
