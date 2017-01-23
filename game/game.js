@@ -26,9 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   var player = new Character('name');
 
-  function renderPage(questionNum){
+  function renderPage(questionNum) {
     appendImage(staticImageArray[0]);
     createDialogue(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
+  }
 
   function phaseImage(image){
     var pageEl = document.getElementById('place-image');
