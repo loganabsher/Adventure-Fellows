@@ -3,60 +3,54 @@
   background-color: #3a3a3a;
   color: white;
 }
-
-#allie-ave{
-  width: 10%;
-  vertical-align: middle;
-  position: relative;
-}
-
 #header {
   background-color: #3a3a3a;
   height: 4em;
   text-align: center;
 }
-
 a {
   color: white;
   font-size: 40px;
   padding: 1em;
   margin: 0px auto;
 }
-
 .footer {
   font-size: 26px;
   text-align: center;
   margin-top: 35px;
 }
-
 .traits {
   border: 2px solid #868686;
-  font-size: 25px;
+  display: inline-block;
 }
-
-.traits p {
-  text-align: center;
-  display: inline;
-  padding-left: 150px;
-  clear: both;
+p{
+  font-size: 2em;
+  margin-left: 10%;
 }
-
 h1 {
     font-size: 75px;
     text-align: center;
     margin: 0px;
 }
-
-h2 {
-  font-size: 50px;
-  /*text-align: center;*/
-  margin: 30px;
-}
-
 h3 {
   font-size: 50px;
   /*text-align: center;*/
   margin: 10px;
 }
-
 /*pair programmed with Teddy*/
+.avatar{
+  height: 100%;
+  width: 20%;
+  border: solid black 5px;
+  border-radius: 80%;
+  margin: 0px;
+  float: left;
+}
+div{
+  width: 100%;
+}
+.text{
+  float: left;
+  width: 60%;
+}
+/*logan aditions*/
