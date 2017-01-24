@@ -17,14 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var randomChoiceArray = [];
   //corresponding responses to the choices
   var randomResponseArray = [];
-  //array of boss images
-  var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg','../images/happierAdam.jpg'];
-  //array of boss questions
-  var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
-  //corresponding choices to questions
-  var bossChoiceArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
-  //corresponding responses to choices
-  var bossResponseArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
   //collecting local storage from character page
   // var local = JASN.parse(localStorage);
   // console.log(local);
@@ -44,18 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // var player = new Character(local);
   function random(max, min){
     return Math.round(Math.random() * (max - min) + min);
-  }
-  function bossAdam(image, question, choice, response){
-    interactionImage(bossImageArray);
-    var count = 0;
-    do{
-      for(var i = 0; i < bossQuestionArray.length; i++){
-        var random = random(bossQuestionArray.length, 0);
-        console.log(random);
-        appendImage(bossQuestionArray[random]);
-        count++;
-      }
-    }while(player.grade < 90 && count < 4);
   }
   function interactionImage(image){
     var pageEl = document.getElementById('interactive-box');
