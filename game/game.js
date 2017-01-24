@@ -122,8 +122,9 @@ document.addEventListener('DOMContentLoaded', function () {
     response.remove();
   }
 
-  function renderTransition() {
-    
+  function renderTransition() {           //reveals a hidden link to transition to week2   
+    var hiddenLink = document.getElementById('link-to-week2');
+    hiddenLink.removeAttribute('class', 'hidden');
   }
 
 });

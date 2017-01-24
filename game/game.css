@@ -46,3 +46,7 @@ a {
   height: 4em;
   text-align: center;
 }
+
+.hidden {
+  display: none;
+}
