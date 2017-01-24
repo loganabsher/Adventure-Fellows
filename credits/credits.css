@@ -1,0 +1,83 @@
+* {
+    background-color: #3a3a3a;
+    color: white;
+    font-family: 'VT323', monospace;
+}
+
+.bio {
+  padding-top: 40px;
+  width: 80%;
+  margin: 2px auto;
+  font-size: 26px;
+  text-align: center;
+}
+
+/*.thanks {
+  /*display: inline;*/
+  /*width: 48%;
+}*/
+
+.thanks p {
+  font-size: 26px;
+  margin-top: 70px;
+  text-align: center;
+}
+
+.rachel, .rozi {
+  float: left;
+  width: 200px;
+  height: auto;
+  border-radius: 100%;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.tracey, .jp {
+  float: right;
+  width: 200px;
+  height: auto;
+  border-radius: 100%;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.footer {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 200px;
+  display: block;
+}
+
+#header {
+  background-color: #3a3a3a;
+  height: 4em;
+  text-align: center;
+}
+
+a {
+  color: white;
+  font-size: 40px;
+  padding: 1em;
+  margin: 0px auto;
+}
+
+.bio img {
+  width: 200px;
+  height: auto;
+  border-radius: 100%;
+  margin: 0px auto;
+  display: block;
+}
+
+/*.aboutUs {
+  width: 45%;
+  font-size: 30px;
+  display: inline;
+}*/
+
+/*marquee {
+  behavior: scroll;
+  direction: up;
+}*/
+
+/*pair programmed with Teddy*/

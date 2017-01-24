@@ -1,11 +1,62 @@
-#background-image{
+#background-image, #game-text{
   width: 80%;
-  height: 60%;
+  height: 600px;
   margin-left: 10%;
   margin-right: 10%;
 }
 ul{
   margin-left: 20%;
   margin-right: 20%;
-  font-size: 1.6em;
+  font-size: 2em;
 }
+p{
+  font-size: 2em;
+}
+#game-text{
+  background-color: grey;
+  height: 400px;
+}
+html{
+  background-color: black;
+}
+#user-box{
+  float: right;
+}
+
+* {
+    background-color: #3a3a3a;
+    color: white;
+}
+
+a {
+  color: white;
+  font-size: 40px;
+  padding: 1em;
+  margin: 0px auto;
+}
+
+.footer {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 35px;
+}
+
+#header {
+  background-color: #3a3a3a;
+  height: 4em;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+#player-image{
+  width: 20%;
+  height: 20%;
+  float: left;
+  border: black 2px bold;
+}
+#interactive-image{
+  width: 20%;
+  height: 20%;
+  float: right;
+  border: black 2px bold;

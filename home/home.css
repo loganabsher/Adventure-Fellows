@@ -1,0 +1,61 @@
+* {
+    background-color: #3a3a3a;
+    font-family: 'VT323', monospace;
+    color: white;
+}
+
+img {
+  width: 20%;
+  margin: 0px auto;
+  display: block;
+  margin-bottom: 50px;
+}
+
+p {
+  display: inline;
+  vertical-align: middle;
+}
+
+body {
+  width: 100%;
+}
+
+#header {
+  background-color: #3a3a3a;
+  height: 4em;
+  text-align: center;
+}
+
+a {
+  color: white;
+  font-size: 40px;
+  padding: 1em;
+  margin: 0px auto;
+}
+
+h1 {
+  font-size: 80px;
+  display: block;
+  text-align: center;
+}
+
+.footer {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 35px;
+}
+
+#userNameInput {
+  font-size: 55px;
+  text-align: center;
+}
+
+#userNameSubmit {
+  font-size: 35px;
+  background-color: #cc3524;
+}
+
+#userName {
+  font-size: 35px;
+  background-color: #868686;
+}

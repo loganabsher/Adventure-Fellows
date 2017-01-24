@@ -38,6 +38,8 @@
 *Your table isn’t rendering correctly, what did you forget to do?  
   *You set up an infinite loop (really decrease grade)  
   *Forgot to append table (grade increases)  
+  *Forgot to save before opening in browser (grade doesn't change)
+  *Nothing, my code is perfect and it's the code's fault (grade goes down, social goes down)
 
 
 ##Week 2, Friday
@@ -65,6 +67,12 @@
 
 ##Week 3, Friday
 *morale boost before boss battle  
+  *You survived three weeks of Code Fellows 201! You are amazing! You are almost finished with this course! You can do anything! You are awesome! Your friends are awesome! Your life is awesome!  
+  *But wait, there is one more week to go...  
+  *Can you survive?  
+  *Can you defeat...  
+  *THE BOSS???  
+  *Use the skills you gained these past three weeks to defeat the BOSS!
 
 
 
@@ -76,46 +84,62 @@ Separate function to fight Adam
 
 Randomized tasks: chocolate pizza, busmall, salmon cookies, test-based functions, about me
 
-Static responses: table, click event, css, write functions, alerts and arrays
+Static responses: make a table, click event, css, write functions, alerts and arrays
+
+*Adam attacks with: Chocolate Pizza! How do you respond?  (Write some CSS)
+*Adam attacks with: BusMall! How do you respond?  (Set up a click event)
+*Adam attacks with: Salmon Cookies! How do you respond?  (Make a table, append a child)
+*Adam attacks with: Test-based Functions! How do you respond?  (Write some killer functions)
+*Adam attacks with: About Me! How do you respond?  (Set up some alerts and use arrays)
 
 
 
 Option to run away → you can’t run away from your problems!
 
-
+Towards the end of the game, prompt user to click a certain key over and over to defeat the Boss to build suspense before blowing up Boss and loading credits (hitting the key doesn't do anything, just builds suspense)
 
 
 
 ##Random Questions (stretch goal)
 
 Increase health  
-*Get a flu shot  
-*Get a good night’s sleep  
-*Take a break  
-*Finish your project, leave early  
-*Go to the gym  
+*You go to the pharmacy and get a flu shot! Health increases  
+*You get a good night’s sleep! Health increases  
+*You decide to take a break! Health increases  
+*You finish your project and leave early! Health increases  
+*You have time to go to the gym! Health increases  
 
 Decrease health  
-*Get a sinus infection  
-*Eat fast food  
+*You don't wash your hands and end up with the flu! Health decreases  
+*Who has time to cook? Eat fast food instead! Health decreases  
+*Stressed? Here's a case of insomnia! Health decreases
+*Work nonstop for 8 hours, who needs sleep anyway!? Health decreases  
+*Walking home from school, pull a muscle! Health decreases  
 
 Increase grade  
-*Ace your project  
-*Your functions work on the first try  
-*Your table renders properly  
+*Whoa! You aced your project! Grade increases  
+*Your functions work on the first try! Grade increases  
+*Your table renders properly on the first try! Grade increases  
+*Chart.js renders a perfect chart. Look at those bars! Grade increases  
+*Caffeination is perfect all day! Grade increases  
 
 Decrease grade  
-*Forget to ACP  
-*Oversleep  
-*Forget to appendChild  
-*Break your code and can’t figure out how to fix it  
+*You forget to ACP and lose all your code! Grade decreases  
+*Oh no! You oversleep and miss code review and lecture! Grade decreases  
+*Whoops! You forget to appendChild and your table looks like garbage! Grade decreases  
+*You just broke your code and can’t figure out how to fix it! Grade decreases  
+*Console.log returns NaN! What!? Grade decreases  
 
 Increase social  
-*Sit with classmates at lunch  
-*Help a classmate who is stuck  
+*You sit with your classmates at lunch, make a new friend! Social increases  
+*You help a classmate who is stuck, you're so nice! Social increases  
+*A classmate is new to Seattle, you refer them to a great restaurant! Social increases  
+*Go grab coffee with a classmate! Social increases  
+*Share a snack with a classmate who is hangry, what a good friend! Social increases  
 
 Decrease social  
-*Sit alone at lunch  
-*A classmates asks for help, you say no  
-*Too tired to shower, develop B.O.  
-*Laugh when a classmate’s code doesn’t work  
+*You sit alone at lunch, man that sucks! Social decreases  
+*A classmates asks for help, you say no. What a jerk! Social decreases  
+*You're too tired to shower, develop B.O., no one wants to sit near you! Social decreases  
+*You laugh when a classmate’s code doesn’t work. You're a terrible person! Social decreases  
+*A classmate is new to Seattle, refer them to a bad restaurant. That's so mean! Social decreases   
