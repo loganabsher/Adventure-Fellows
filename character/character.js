@@ -15,9 +15,9 @@
 // });
 function displayText() {
   var bodyEl = document.getElementById('body');
-  var user = localStorage.userName; //don't JSON.parse because it will create ""name"" with too many quotation marks
+  var user = localStorage.userName;
   var createHeader = document.createElement('h3');
-  createHeader.textContent = ('Hello, ' + user + ' please select a character');
+  createHeader.textContent = ('Hello ' + JSON.parse(user) + ', please choose a character:');
   bodyEl.appendChild(createHeader);
 }
 displayText();
