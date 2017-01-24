@@ -3,9 +3,11 @@
   background-color: #3a3a3a;
   color: white;
 }
+
 #allie-ave{
   width: 10%;
   vertical-align: middle;
+  position: relative;
 }
 
 #header {
@@ -34,10 +36,9 @@ a {
 
 .traits p {
   text-align: center;
-  /*color: red;*/
   display: inline;
-  /*border: 2px solid white;*/
   padding-left: 150px;
+  clear: both;
 }
 
 h1 {
