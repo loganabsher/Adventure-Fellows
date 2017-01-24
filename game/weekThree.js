@@ -76,6 +76,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
+  function updateStats(responseIndex) {
+    var responseIndex = parseInt(responseIndex);
+    var character = JSON.parse(localStorage.character);
+    console.log(character);
+    for (var i = 0; i < affectScore.length; i++) {
+      character.health = character.health + affectScore[responseIndex][i][0];
+      console.log('this.health ' + character.health);
+      character.grade = character.grade + affectScore[responseIndex][i][1];
+      console.log('this.grade ' + character.grade);
+      character.social = character.social + affectScore[responseIndex][i][2];
+      console.log('this.social ' + character.social);
+    }
+  }
+  //pair programmed with EVERYONE
+
   function handleChoiceClick() {    //renders the response
     var choicesCollection = document.getElementById('choices-list').children;
     var choicesArray = Array.prototype.slice.call(choicesCollection);
@@ -83,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
+        updateStats(this.id);
       });
     });
 
