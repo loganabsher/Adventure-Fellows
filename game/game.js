@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of phases/titles
-  var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
+  var phaseArray = ['Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12', 'Day 13', 'Day 14', 'Day 15'];
   //array of place images
   var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
   //array of questions/events
@@ -17,14 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var randomChoiceArray = [];
   //corresponding responses to the choices
   var randomResponseArray = [];
-  //array of boss images
-  var bossImageArray = ['../images/cf_building.jpg'];
-  //array of boss questions
-  var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
-  //corresponding choices to questions
-  var bossChoiceArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
-  //corresponding responses to choices
-  var bossResponseArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
   //collecting local storage from character page
   // var local = JASN.parse(localStorage);
   // console.log(local);
@@ -38,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   renderPage();
-
+  
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);

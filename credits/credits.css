@@ -5,23 +5,47 @@
 }
 
 .bio {
-  border: 5px solid black;
-  width: 48%;
-  float: left;
-  margin: 0px auto;
+  padding-top: 40px;
+  width: 80%;
+  margin: 2px auto;
   font-size: 26px;
-  display: inline;
+  text-align: center;
 }
 
-.thanks {
+/*.thanks {
   /*display: inline;*/
-  width: 48%;
+  /*width: 48%;
+}*/
+
+.thanks p {
+  font-size: 26px;
+  margin-top: 70px;
+  text-align: center;
+}
+
+.rachel, .rozi {
+  float: left;
+  width: 200px;
+  height: auto;
+  border-radius: 100%;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.tracey, .jp {
+  float: right;
+  width: 200px;
+  height: auto;
+  border-radius: 100%;
+  padding-left: 75px;
+  padding-right: 75px;
 }
 
 .footer {
   font-size: 26px;
   text-align: center;
-  margin-top: 35px;
+  margin-top: 200px;
+  display: block;
 }
 
 #header {
@@ -37,8 +61,12 @@ a {
   margin: 0px auto;
 }
 
-img {
-  width: 10%;
+.bio img {
+  width: 200px;
+  height: auto;
+  border-radius: 100%;
+  margin: 0px auto;
+  display: block;
 }
 
 /*.aboutUs {
@@ -46,3 +74,10 @@ img {
   font-size: 30px;
   display: inline;
 }*/
+
+/*marquee {
+  behavior: scroll;
+  direction: up;
+}*/
+
+/*pair programmed with Teddy*/
