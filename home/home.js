@@ -2,7 +2,7 @@
 
 var userNameEl = document.getElementById('userNameInput');
 
-userNameEl.addEventListener('submit', function() {
+userNameEl.addEventListener('submit', function(event) {
   event.stopPropagation();
   event.preventDefault();
 
