@@ -5,11 +5,15 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of place images
   var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
   //array of questions/events
-  var staticQuestionArray = ['you get stuck when creating your salmon cookies form, what do you do?', 'Your table isn’t rendering correctly, what did you forget to do?', 'how do you spend your weekend?'];
+  var staticQuestionArray = ['Yay! You survived the first week of Code Fellows 201!', 'You get stuck when creating your salmon cookies form, what do you do?', 'Your table isn’t rendering correctly, what did you forget to do?', 'How do you spend your weekend?'];
   //array of choices for the questions
-  var staticChoiceArray = [['Keep working', 'Ask a TA ', 'As a classmate', 'Give up and go home'], ['You set up an infinite loop', 'Forgot to append table', 'table choice placeholder #1', 'table choice placeholder #2'], ['Crying', 'Questioning your life choices', 'Considering dropping out', 'Applying for jobs as a barista']];
+  var staticChoiceArray = [['Let\'s Keep Going!'],['Keep working', 'Ask a TA ', 'As a classmate', 'Give up and go home'], ['You set up an infinite loop', 'Forgot to append table', 'Forgot to save before opening in browser', 'Nothing, my code is perfect and it\'s the code\'s fault'], ['Crying', 'Questioning your life choices', 'Considering dropping out', 'Applying for a job at 7-Eleven']];
   //array of responses to the choices
-  var staticResponseArray = [['(keep working response placeholder)', 'Ask a TA response placeholder', 'Ask A Classmate Response placeholder (+5 grade, -10 social)', 'give up response placeholder'],['infinite loop reponse placeholder', 'forgot to append table placeholder', 'table placeholder 1', 'table placeholder 2'] ,  ['spend weekend crying response placeholder (+20 health, -10 grade, +10 social)', 'questioning life placeholder', 'drop out placeholder', 'barista placeholder']];
+  var staticResponseArray = [['Click here to proceed'],['You should really start asking for some help', 'The TA helps you tweak your code and it\'s working, but not how you wanted it to work', 'The classmate helps you get un-stuck! They are also stuck, and you help them figure out what the problem was. You high five each other and finish your assignments while eating popcorn on the sofa (+5 grade, -10 social)', 'You\'re never gonna make it through this course if you give up that easily!'],['Oh man, that sucks! You should really keep better track of your < and > operators in your for loops!', 'Easy fix, just go ahead and append that child', 'Easy fix, go back to Atom, save, and try again', 'If your code is so perfect, what are you doing here? And hey, help your classmates once in a while!'] , ['Sorry to break it to you, it\'s not going to get any better on Monday (+20 health, -10 grade, +10 social)', 'What are you doing with your life, anyway?', 'It\'s not the worst idea...', 'It might be a little better, right?']];
+
+  var uniqueClassPerResponse = [['proceed', 'proceed', 'proceed', 'proceed'], ['keepWorking', 'askTA', 'askClassmate', 'giveUp'], ['infinite', 'append', 'save', 'perfect'], ['cry', 'questioning', 'dropOut', 'sevenEleven']];
+  // increments score
+  var affectScore = [[[0, -25, 0], [0, +25, 0], [0, +25, +25], [-25, -25, -25]], [[0, -25, 0], [0, +25, 0], [0, 0, 0], [0, -25, -25]], [[-25, 0, -25], [-25, 0, -25], [-25, 0, -25], [-25, 0, -25]]];
   //array of randomly chosen questions
   var randomQuestionArray = [];
   //corresponding choices to the questions
@@ -40,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
+    displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
 
@@ -52,11 +57,19 @@ document.addEventListener('DOMContentLoaded', function () {
     pageEl.appendChild(imageEl);
   }
 
+  function displayQuestionPrompt(questionNum) {
+    var questionContainer = document.getElementById('prompt');
+    var displayQuestionEl = document.createElement('p');
+    displayQuestionEl.setAttribute('id', 'questionNum');
+    displayQuestionEl.textContent = staticQuestionArray[questionNum];
+    questionContainer.appendChild(displayQuestionEl);
+  }
+
   function createDialogue(image, choices, responses) {
     var gameText = document.getElementById('game-text');
     for (var i = 0; i < choices.length; i++) {
       var choiceEl = document.createElement('li');
-      choiceEl.setAttribute('class', 'question');
+      choiceEl.setAttribute('class', 'question ' + uniqueClassPerResponse[questionNum][i]);
       choiceEl.setAttribute('id', i);
       choiceEl.textContent = choices[i];
       var choicesList = document.getElementById('choices-list');
@@ -75,7 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
         renderResponse(this.id, questionNum);
       });
     });
+  }
 
+  function removePrompt() {
+    var promptParent = document.getElementById('prompt');
+    var promptChild = document.getElementById('questionNum');
+    promptParent.removeChild(promptChild);
   }
 
   function removeChoiceElements() {
@@ -88,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderResponse(id, questionNum) {
     removeChoiceElements();
+    removePrompt();
 
     var gameText = document.getElementById('game-text');  //append response to textContent div
     var responsePar = document.createElement('p');
@@ -123,8 +142,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {
-    var hiddenButton = document.getElementById('link-to-week3');
-    hiddenButton.removeAttribute('class', 'hidden');
+    location.href = '../game/dayThree.html';
+    // var hiddenButton = document.getElementById('link-to-week3');
+    // hiddenButton.removeAttribute('class', 'hidden');
   }
 
 });
