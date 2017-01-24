@@ -4,11 +4,15 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of place images
   var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
   //array of questions/events
-  var staticQuestionArray = ['you are on your home directory of the terminal and following along, what do you type in the command line?', 'how do you spend the weekend?'];
+  var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line?', 'How do you spend the weekend?'];
   //array of choices for the questions
   var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa', 'study all weekend', 'go out for dinner and drinks with friends', 'sleep your standard eight hours, run, study']];
   //array of responses to the choices
-  var staticResponseArray = [['you deleted all files on your machine, you can no longer continue in the class. (-100, health, -100 grade)', 'you follow along with the class, learing much about how to properly operate your computer.', 'you tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;). (+5 grade, -10 social)', 'you cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture. (-10 grade)'], ['you go to the spa to rejuvenate and relax, sleeping in and lounging all weekend. (+20 health, -10 grade, +10 social)', 'you study very hard all weekend, not getting a chance to relax or see any friends. (+10 grade, - 15 social)', 'you go out drinking all weekend having a terrible hangover, but somehow on Monday your code is finished? (-15 health, +5 grade, +20 social)', 'you get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society. (+5 health, +5 grade, -5 social)']];
+  var staticResponseArray = [['You deleted all files on your machine, you can no longer continue in the class. (-100, health, -100 grade)', 'You follow along with the class, learing much about how to properly operate your computer.', 'You tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;). (+5 grade, -10 social)', 'You cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture. (-10 grade)'], ['You go to the spa to rejuvenate and relax, sleeping in and lounging all weekend. (+20 health, -10 grade, +10 social)', 'You study very hard all weekend, not getting a chance to relax or see any friends. (+10 grade, - 15 social)', 'You go out drinking all weekend having a terrible hangover, but somehow on Monday your code is finished? (-15 health, +5 grade, +20 social)', 'You get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society. (+5 health, +5 grade, -5 social)']];
+
+  var uniqueClassPerResponse = [['rm-rf', 'cdCorrectly', 'tree', 'cmatrix'], ['spa', 'studyWeekend', 'dinner', 'sleepEight']];
+  // increments score
+  var affectScore = [[[-100, -100, -100], [0, 0, +25], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
   //array of randomly chosen questions
   var randomQuestionArray = [];
   //corresponding choices to the questions
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     for (var i = 0; i < choices.length; i++) {
       var choiceEl = document.createElement('li');
-      choiceEl.setAttribute('class', 'question');
+      choiceEl.setAttribute('class', 'question ' + uniqueClassPerResponse[questionNum][i]);
       choiceEl.setAttribute('id', i);
       choiceEl.textContent = choices[i];
       var choicesList = document.getElementById('choices-list');
@@ -69,6 +73,21 @@ document.addEventListener('DOMContentLoaded', function () {
     handleChoiceClick();      //
   }
 
+  function updateStats(responseIndex) {
+    var responseIndex = parseInt(responseIndex);
+    var character = JSON.parse(localStorage.character);
+    console.log(character);
+    for (var i = 0; i < affectScore.length; i++) {
+      character.health = character.health + affectScore[responseIndex][i][0];
+      console.log('this.health ' + character.health);
+      character.grade = character.grade + affectScore[responseIndex][i][1];
+      console.log('this.grade ' + character.grade);
+      character.social = character.social + affectScore[responseIndex][i][2];
+      console.log('this.social ' + character.social);
+    }
+  }
+  //pair programmed with EVERYONE
+
   function handleChoiceClick() {    //renders the response
     var choicesCollection = document.getElementById('choices-list').children;
     var choicesArray = Array.prototype.slice.call(choicesCollection);
@@ -76,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
+        updateStats(this.id);
       });
     });
   }
@@ -97,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderResponse(id, questionNum) {
     removeChoiceElements();
     removePrompt();
+
     var gameText = document.getElementById('game-text');  //append response to textContent div
     var responsePar = document.createElement('p');
     responsePar.setAttribute('id', 'response-paragraph');
@@ -133,8 +154,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
     console.log(jCharacter);
-    var hiddenLink = document.getElementById('link-to-week2');
-    hiddenLink.removeAttribute('class', 'hidden');
+    location.href = '../game/dayTwo.html';
+    // var hiddenLink = document.getElementById('link-to-week2');
+    // hiddenLink.removeAttribute('class', 'hidden');
   }
 
 });
