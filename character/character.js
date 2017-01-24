@@ -32,9 +32,9 @@ var allie = function(event){
     localStorage.setItem('maxHealth', '../images/IMG_0009.jpg');
     localStorage.setItem('mediumHealth', '../images/IMG_0010.jpg');
     localStorage.setItem('lowHealth', '../images/IMG_0011');
-    localStorage.setItem('health', 90);
-    localStorage.setItem('grade', 100);
-    localStorage.setItem('social', 120);
+    localStorage.setItem('health', 100);
+    localStorage.setItem('grade', 110);
+    localStorage.setItem('social', 90);
     location.href = '../game/dayOne.html';
   }
 };

@@ -24,9 +24,8 @@ a {
   display: inline-block;
 }
 p{
-  font-size: 25px;
-  text-align: center;
-  width: 40%;
+  font-size: 2em;
+  margin-left: 10%;
 }
 h1 {
     font-size: 75px;
@@ -45,12 +44,18 @@ h3 {
 }
 /*pair programmed with Teddy*/
 .avatar{
-  height: 150px;
+  height: 100%;
+  width: 20%;
   border: solid black 5px;
   border-radius: 80%;
   margin: 0px;
+  float: left;
 }
 div{
   width: 100%;
+}
+.text{
+  float: left;
+  width: 60%;
 }
 /*logan aditions*/
