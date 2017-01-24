@@ -3,13 +3,25 @@ document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of phases/titles
   //array of place images
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
+  var staticImageArray = [
+    '../images/cf_building.jpg',
+    '../images/cf_building.jpg',
+    '../images/cf_building.jpg'
+  ];
   //array of questions/events
-  var staticQuestionArray = ['you get stuck when creating your salmon cookies form, what do you do?', 'Your table isn’t rendering correctly, what did you forget to do?', 'how do you spend your weekend?'];
+  var staticQuestionArray = [
+    'starting a project, how do you get it started?',
+    'Your friends are concerned because they haven’t seen you for a while, what do you do?',
+    'morale boost before boss battle'
+  ];
   //array of choices for the questions
-  var staticChoiceArray = [['Stare at a blank screen until you give up (grade decreases) ', 'Start writing some code and hope that Shaia LeBouf’s magic comes along (grade increases)  ', 'Go to MDN and figure it out for yourself (grade increases a lot, social decreases)', 'Talk to the TAs and your classmates for inspiration (social increases, health and grade decrease)'], ['Leave campus early and meet them for dinner (social increases, grade decreases)  ', 'Finish your work and silence your phone (social decreases, grade increases)', 'Tell them you’re still alive and make plans for the weekend (social increases slightly, grade increases) ', 'Convince them to pick up carry-out and bring it to you (social decreases, grade increases)'], ['morale boost 1 choice', 'morale boost 2 choice', 'morale boost 3 choice', 'morale boost 4 choice']];
+  var staticChoiceArray = [
+    ['Stare at a blank screen until you give up (grade decreases) ', 'Start writing some code and hope that Shaia LeBouf’s magic comes along (grade increases)  ', 'Go to MDN and figure it out for yourself (grade increases a lot, social decreases)', 'Talk to the TAs and your classmates for inspiration (social increases, health and grade decrease)'],
+    ['Leave campus early and meet them for dinner (social increases, grade decreases)  ', 'Finish your work and silence your phone (social decreases, grade increases)', 'Tell them you’re still alive and make plans for the weekend (social increases slightly, grade increases) ', 'Convince them to pick up carry-out and bring it to you (social decreases, grade increases)'],
+    ['You survived three weeks of Code Fellows 201! You are amazing! You are almost finished with this course! You can do anything! You are awesome! Your friends are awesome! Your life is awesome!', 'But wait, there is one more week to go...', 'Can you survive...THE BOSS???', 'Use the skills you gained these past three weeks to defeat the BOSS!']
+  ];
   //array of responses to the choices
-  var staticResponseArray = [['stare at screen response placeholder', 'shia lebouff response placeholder', 'mdn solve placeholder', 'talk for inspiration response placeholder'],['leave campus early response placeholder', 'silence phone response placeholder', 'plans for weekend placeholder', 'friends bring carryout placeholder'] ,  ['morale boost 1 response', 'morale boost 2 response', 'morale boost 3 reaponse', 'morale boost 4 response']];
+  var staticResponseArray = [['Did you really think that would work?', 'Hey, you never know what Shia\'s capable of!', 'MDN is a great resource, after all.', 'Talking to TAs and classmates might help...or you might get distracted by GIFs and memes.'], ['leave campus early response placeholder', 'silence phone response placeholder', 'plans for weekend placeholder', 'friends bring carryout placeholder'], ['morale boost 1 response', 'morale boost 2 response', 'morale boost 3 reaponse', 'morale boost 4 response']];
   //array of randomly chosen questions
   var randomQuestionArray = [];
   //corresponding choices to the questions
