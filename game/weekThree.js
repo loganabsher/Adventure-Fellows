@@ -3,7 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of phases/titles
   //array of place images
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
+  var staticImageArray = [
+    '../images/cf_building.jpg',
+    '../images/cf_building.jpg',
+    '../images/cf_building.jpg'
+  ];
   //array of questions/events
   var staticQuestionArray = ['Yay! You survived the second week of Code Fellows 201! You\'re on a roll!', 'Time to start your week 3 project! How do you get started?', 'Your friends are concerned because they haven’t seen you for a while. They invite you out to dinner, but you can\'t figure out how to get your three images to display on the Busmall project. What do you do?', 'You survived three weeks of Code Fellows 201!'];
   //array of choices for the questions
