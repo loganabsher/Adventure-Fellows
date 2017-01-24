@@ -8,7 +8,8 @@ userNameEl.addEventListener('submit', function(event) {
 
   document.getElementById('userName').value;
 
-  var userName = document.getElementById('userName').value;
+  var userName = [];
+  userName.push(document.getElementById('userName').value);
   localStorage.userName = JSON.stringify(userName);
 
   location.href = './character/character.html';
