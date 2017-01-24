@@ -46,7 +46,17 @@ a {
   height: 4em;
   text-align: center;
 }
-
 .hidden {
   display: none;
 }
+#player-image{
+  width: 20%;
+  height: 20%;
+  float: left;
+  border: black 2px bold;
+}
+#interactive-image{
+  width: 20%;
+  height: 20%;
+  float: right;
+  border: black 2px bold;
