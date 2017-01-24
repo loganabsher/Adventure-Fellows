@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   var questionNum = 0;
   //array of phases/titles
-  var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
+  var phaseArray = ['Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12', 'Day 13', 'Day 14', 'Day 15'];
   //array of place images
   var staticImageArray = ['../images/cf_building.jpg'];
   //array of questions/events
@@ -43,6 +43,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   function bossAdam(image, question, choice, response){
     interactionImage(bossImageArray);
+    var count = 0;
+    do{
+      for(var i = 0; i < bossQuestionArray.length; i++){
+        var random = random();
+        console.log(random);
+        appendImage(bossQuestionArray[random]);
+        count++;
+      }
+    }while(player.grade < 90 && count < 4);
   }
   function interactionImage(image){
     var pageEl = document.getElementById('interactive-box');
@@ -62,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function intro(image){
     phaseImage(image);
   }
+
   renderPage();
 
   function renderPage(questionNum) {
