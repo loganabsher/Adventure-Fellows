@@ -1,14 +1,14 @@
 'use strict';
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of phases/titles
   var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
   //array of place images
-  var staticImageArray = ['../images/cf_building.jpg'];
+  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg'];
   //array of questions/events
   var staticQuestionArray = ['you are on your home directory of the terminal and following along, what do you type in the command line?', 'how do you spend the weekend?'];
   //array of choices for the questions
-  var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa' , 'study all weekend', 'go out for dinner and drinks with friends', 'sleep your standard eight hours, run, study']];
+  var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa', 'study all weekend', 'go out for dinner and drinks with friends', 'sleep your standard eight hours, run, study']];
   //array of responses to the choices
   var staticResponseArray = [['you deleted all files on your machine, you can no longer continue in the class. (-100, health, -100 grade)', 'you follow along with the class, learing much about how to properly operate your computer.', 'you tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;). (+5 grade, -10 social)', 'you cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture. (-10 grade)'], ['you go to the spa to rejuvenate and relax, sleeping in and lounging all weekend. (+20 health, -10 grade, +10 social)', 'you study very hard all weekend, not getting a chance to relax or see any friends. (+10 grade, - 15 social)', 'you go out drinking all weekend having a terrible hangover, but somehow on Monday your code is finished? (-15 health, +5 grade, +20 social)', 'you get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society. (+5 health, +5 grade, -5 social)']];
   //array of randomly chosen questions
@@ -22,87 +22,100 @@ document.addEventListener('DOMContentLoaded', function() {
   //array of boss questions
   var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
   //corresponding choices to questions
-  var bossChoiceArray = [['','','',''], ['','','',''], ['','','',''], ['','','','']];
+  var bossChoiceArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
   //corresponding responses to choices
-  var bossResponseArray = [['','','',''], ['','','',''], ['','','',''], ['','','','']];
+  var bossResponseArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
   //collecting local storage from character page
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  function Character(local){
+  function Character(local) {
     this.name = local[0];
     this.image = local[1];
     this.health = 100;
     this.grade = 100;
     this.social = 100;
   }
+
+  renderPage();
+
+
   //creating a new player with the local storage data
   // var player = new Character(local);
-  function random(max, min){
-    return Math.round(Math.random() * (max - min) + min);
-  }
-  function bossAdam(image, question, choice, response){
-    interactionImage(bossImageArray);
-  }
-  function interactionImage(image){
-    var pageEl = document.getElementById('interactive-box');
-    var imageEl = document.createElement('img');
-    imageEl.setAttribute('id', 'interactive-image');
-    imageEl.setAttribute('src', image);
-    pageEl.appendChild(imageEl);
-  }
-  function playerImage(image){
-    var pageEl = document.getElementById('user-box');
-    var imageEl = document.createElement('img');
-    imageEl.setAttribute('id', 'player-image');
-    imageEl.setAttribute('src', image);
-    pageEl.appendChild(imageEl);
-  }
+  // function random(max, min) {
+  //   return Math.round(Math.random() * (max - min) + min);
+  // }
+  // function bossAdam(image, question, choice, response) {
+  //   interactionImage(bossImageArray);
+  // }
+  // function interactionImage(image) {
+  //   var pageEl = document.getElementById('interactive-box');
+  //   var imageEl = document.createElement('img');
+  //   imageEl.setAttribute('id', 'interactive-image');
+  //   imageEl.setAttribute('src', image);
+  //   pageEl.appendChild(imageEl);
+  // }
+  // function playerImage(image) {
+  //   var pageEl = document.getElementById('user-box');
+  //   var imageEl = document.createElement('img');
+  //   imageEl.setAttribute('id', 'player-image');
+  //   imageEl.setAttribute('src', image);
+  //   pageEl.appendChild(imageEl);
+  // }
   //short introduction/base page layout
-  function intro(image){
-    phaseImage(image);
-  }
-  renderPage();
+
+
+  // function intro(image) {
+  //   renderPhaseImage(image);
+  // }
+
 
   function renderPage(questionNum) {
     appendImage(staticImageArray[0]);
+
+    // renderResponse(, questionNum);
     createDialogue(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
   }
-
-  function phaseImage(image){
+  function renderPhaseImage(image) {
     var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
     pageEl.appendChild(imageEl);
   }
-  function removeImage(){
-    var pageEl = document.getElementById('place-image');
-    pageEl.removeChild(imageEl);
-  }
+
   function renderResponse(id, questionNum) {
     var questionsList = document.getElementById('questions-list');
     questionsList.remove();
     var gameText = document.getElementById('game-text');
     var responsePar = document.createElement('p');
+    responsePar.setAttribute('id', 'response-paragraph');
 
     var responseId = parseInt(id);
-    console.log(responseId);
+    // console.log(responseId);
 
     responsePar.textContent = staticResponseArray[questionNum][id];
-
+    questionNum++;
     gameText.appendChild(responsePar);
+
+    responsePar.addEventListener('click', function () {
+      console.log('clearing');
+      console.log(questionNum);
+      clearElements();
+      createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
+    });
   }
-  function appendImage(image){
+  function appendImage(image) {
     var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
     pageEl.appendChild(imageEl);
   }
-  function createDialogue(image, choices, responses){
+
+  function createDialogue(image, choices, responses) {
     var gameText = document.getElementById('game-text');
-    for(var i = 0; i < choices.length; i++){
+    for (var i = 0; i < choices.length; i++) {
       var questionEl = document.createElement('li');
       questionEl.setAttribute('class', 'question');
       questionEl.setAttribute('id', i);
@@ -114,15 +127,27 @@ document.addEventListener('DOMContentLoaded', function() {
     var questionsCollection = document.getElementById('questions-list').children;
     var questionsArray = Array.prototype.slice.call(questionsCollection);
 
-    questionsArray.forEach(function(question) {
-      question.addEventListener('click', function() {
+    questionsArray.forEach(function (question) {
+      question.addEventListener('click', function () {
+        console.log('click');
         renderResponse(this.id, questionNum);
-        questionNum++;
+        console.log('incrementing');
       });
     });
 
     // var questions = Array.prototype.slice.call(questionsCollection); //turn into array
     // console.log(questionsCollection);
+  }
+
+  function clearElements() {
+
+    var response = document.getElementById('response-paragraph');
+    console.log(response);
+    var image = document.getElementById('background-image');
+    console.log('removing image');
+    image.remove();
+    response.remove();
 
   }
+
 });
