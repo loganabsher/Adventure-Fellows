@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of phases/titles
   var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
   //array of place images
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg'];
+  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
   //array of questions/events
   var staticQuestionArray = ['you are on your home directory of the terminal and following along, what do you type in the command line?', 'how do you spend the weekend?'];
   //array of choices for the questions
@@ -69,24 +69,29 @@ document.addEventListener('DOMContentLoaded', function () {
   //   renderPhaseImage(image);
   // }
 
+  // function renderPhaseImage(image) {
+  //   var pageEl = document.getElementById('place-image');
+  //   var imageEl = document.createElement('img');
+  //   imageEl.setAttribute('id', 'background-image');
+  //   imageEl.setAttribute('src', image);
+  //   pageEl.appendChild(imageEl);
+  // }
 
-  function renderPage(questionNum) {
-    appendImage(staticImageArray[0]);
+
+  function renderPage() {
+    console.log(questionNum)
+    renderImage(staticImageArray[questionNum]);
 
     // renderResponse(, questionNum);
-    createDialogue(staticImageArray[0], staticChoiceArray[0], staticResponseArray[0]);
-  }
-  function renderPhaseImage(image) {
-    var pageEl = document.getElementById('place-image');
-    var imageEl = document.createElement('img');
-    imageEl.setAttribute('id', 'background-image');
-    imageEl.setAttribute('src', image);
-    pageEl.appendChild(imageEl);
+    createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
 
   function renderResponse(id, questionNum) {
-    var questionsList = document.getElementById('questions-list');
-    questionsList.remove();
+    var questionsList = document.getElementById('questions-list').children;
+    var questionsArray = Array.prototype.slice.call(questionsList);
+    questionsArray.forEach(function (question) {
+      question.remove();
+    })
     var gameText = document.getElementById('game-text');
     var responsePar = document.createElement('p');
     responsePar.setAttribute('id', 'response-paragraph');
@@ -95,17 +100,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // console.log(responseId);
 
     responsePar.textContent = staticResponseArray[questionNum][id];
-    questionNum++;
     gameText.appendChild(responsePar);
 
     responsePar.addEventListener('click', function () {
+
+
       console.log('clearing');
-      console.log(questionNum);
       clearElements();
-      createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
+      renderPage();
     });
   }
-  function appendImage(image) {
+  function renderImage(image) {
     var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
@@ -138,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // var questions = Array.prototype.slice.call(questionsCollection); //turn into array
     // console.log(questionsCollection);
   }
-
   function clearElements() {
 
     var response = document.getElementById('response-paragraph');
@@ -147,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('removing image');
     image.remove();
     response.remove();
+    questionNum++;
 
   }
 
