@@ -1,5 +1,6 @@
 * {
     background-color: #3a3a3a;
+    font-family: 'VT323', monospace;
     color: white;
 }
 
@@ -51,7 +52,7 @@ h1 {
 
 #userNameSubmit {
   font-size: 35px;
-  background-color: #ff3333;
+  background-color: #cc3524;
 }
 
 #userName {

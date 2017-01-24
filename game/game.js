@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of phases/titles
-  var phaseArray = ['Day 2', 'Day 3', 'Day 4'];
+  var phaseArray = ['Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12', 'Day 13', 'Day 14', 'Day 15'];
   //array of place images
   var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
   //array of questions/events
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //corresponding responses to the choices
   var randomResponseArray = [];
   //array of boss images
-  var bossImageArray = ['../images/cf_building.jpg'];
+  var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg','../images/happierAdam.jpg'];
   //array of boss questions
   var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
   //corresponding choices to questions
@@ -42,27 +42,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //creating a new player with the local storage data
   // var player = new Character(local);
-  // function random(max, min) {
-  //   return Math.round(Math.random() * (max - min) + min);
-  // }
-  // function bossAdam(image, question, choice, response) {
-  //   interactionImage(bossImageArray);
-  // }
-  // function interactionImage(image) {
-  //   var pageEl = document.getElementById('interactive-box');
-  //   var imageEl = document.createElement('img');
-  //   imageEl.setAttribute('id', 'interactive-image');
-  //   imageEl.setAttribute('src', image);
-  //   pageEl.appendChild(imageEl);
-  // }
-  // function playerImage(image) {
-  //   var pageEl = document.getElementById('user-box');
-  //   var imageEl = document.createElement('img');
-  //   imageEl.setAttribute('id', 'player-image');
-  //   imageEl.setAttribute('src', image);
-  //   pageEl.appendChild(imageEl);
-  // }
+  function random(max, min){
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  function bossAdam(image, question, choice, response){
+    interactionImage(bossImageArray);
+    var count = 0;
+    do{
+      for(var i = 0; i < bossQuestionArray.length; i++){
+        var random = random(bossQuestionArray.length, 0);
+        console.log(random);
+        appendImage(bossQuestionArray[random]);
+        count++;
+      }
+    }while(player.grade < 90 && count < 4);
+  }
+  function interactionImage(image){
+    var pageEl = document.getElementById('interactive-box');
+    var imageEl = document.createElement('img');
+    imageEl.setAttribute('id', 'interactive-image');
+    imageEl.setAttribute('src', image);
+    pageEl.appendChild(imageEl);
+  }
+  function playerImage(image){
+    var pageEl = document.getElementById('user-box');
+    var imageEl = document.createElement('img');
+    imageEl.setAttribute('id', 'player-image');
+    imageEl.setAttribute('src', image);
+    pageEl.appendChild(imageEl);
+  }
   //short introduction/base page layout
+  function intro(image){
+    phaseImage(image);
+  }
+
+  renderPage();
 
 
   // function intro(image) {
