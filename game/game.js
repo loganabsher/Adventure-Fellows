@@ -1,8 +1,6 @@
 'use strict';
 document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
-  //array of phases/titles
-  var phaseArray = ['Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12', 'Day 13', 'Day 14', 'Day 15'];
   //array of place images
   var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
   //array of questions/events
@@ -21,13 +19,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  function Character(local) {
-    this.name = local[0];
-    this.image = local[1];
+  function Character(name, image) {
+    this.name = name;
+    this.image = image;
     this.health = 100;
     this.grade = 100;
     this.social = 100;
   }
+
+  var character = new Character(localStorage.userName, localStorage.imgUrl);
+  console.log(character);
 
   renderPage();
   
@@ -115,6 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {           //reveals a hidden link to transition to week2   
+    var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
+    localStorage.character = jCharacter;
+    console.log(jCharacter);              
     var hiddenLink = document.getElementById('link-to-week2');
     hiddenLink.removeAttribute('class', 'hidden');
   }
