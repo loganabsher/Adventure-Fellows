@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of choices for the questions
   var staticChoiceArray = [['Keep working', 'Ask a TA ', 'As a classmate', 'Give up and go home'], ['You set up an infinite loop', 'Forgot to append table', 'table choice placeholder #1', 'table choice placeholder #2'], ['Crying', 'Questioning your life choices', 'Considering dropping out', 'Applying for jobs as a barista']];
   //array of responses to the choices
-  var staticResponseArray = [['(keep working response placeholder)', 'Ask a TA response placeholder', 'Ask A Classmate Response placeholder (+5 grade, -10 social)', 'give up response placeholder'],['infinite loop reponse placeholder', 'forgot to append table placeholder', 'table placeholder 1', 'table placeholder 2'] ,  ['spend weekend crying response placeholder (+20 health, -10 grade, +10 social)', 'questioning life placeholder', 'drop out placeholder', 'barista placeholder']];
-  //array of randomly chosen questions
+  var staticResponseArray = [['(keep working response placeholder)', 'Ask a TA response placeholder', 'Ask A Classmate Response placeholder (+5 grade, -10 social)', 'give up response placeholder'],['infinite loop reponse placeholder', 'forgot to append table placeholder', 'table placeholder 1', 'table placeholder 2'] , ['spend weekend crying response placeholder (+20 health, -10 grade, +10 social)', 'questioning life placeholder', 'drop out placeholder', 'barista placeholder']];  //array of randomly chosen questions
   var randomQuestionArray = [];
   //corresponding choices to the questions
   var randomChoiceArray = [];
@@ -41,6 +40,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
+    renderAvitarWithStats();
+  }
+  function renderAvitarWithStats(){
+    var divEl = getElementById('avitar-stats');
   }
 
   //RENDERING PAGE
