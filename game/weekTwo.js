@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (questionNum < staticQuestionArray.length - 1) {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
+        console.log('click');
         clearElements();
         renderPage();
       });
@@ -122,7 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {
-    
+    var hiddenButton = document.getElementById('link-to-week3');
+    hiddenButton.removeAttribute('class', 'hidden');
   }
 
 });
