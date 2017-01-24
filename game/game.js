@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
   //short introduction/base page layout
   function intro(image){
     phaseImage(image);
-
   }
   renderPage();
 

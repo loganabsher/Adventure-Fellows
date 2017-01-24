@@ -13,10 +13,11 @@ characters.forEach(function(character) {
 });
 
 function displayText(){
-  var bodyEl = document.getElementsByTagName('body');
-  var user = JSON.parse(localStorage.getItem(userName));
+  var bodyEl = document.getElementById('body');
+  var user = JSON.parse(localStorage.userName);
   var createHeader = document.createElement('h3');
-  createHeader.textContent = ('Hello, ' + userName + 'please select a character');
+  createHeader.textContent = ('Hello, ' + user + ' please select a character');
   bodyEl.appendChild(createHeader);
 }
 displayText();
+//All group participated in this character.js
