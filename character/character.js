@@ -6,9 +6,11 @@ console.log(characters);
 characters.forEach(function(character) {
   character.addEventListener('click', function(){
     var charName = character.id;
-    var imgUrl;
+    var imgUrl = character.firstChild.src;
     console.log(charName);
     console.log(character.firstChild.src);
+
+    localStorage.character = imgUrl;
   });
 });
 
