@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //corresponding responses to the choices
   var randomResponseArray = [];
   //array of boss images
-  var bossImageArray = ['../images/cf_building.jpg'];
+  var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg','../images/happierAdam.jpg'];
   //array of boss questions
   var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
   //corresponding choices to questions
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var count = 0;
     do{
       for(var i = 0; i < bossQuestionArray.length; i++){
-        var random = random();
+        var random = random(bossQuestionArray.length, 0);
         console.log(random);
         appendImage(bossQuestionArray[random]);
         count++;
