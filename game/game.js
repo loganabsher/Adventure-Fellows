@@ -31,9 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log(character);
 
   renderPage();
-  
+
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
+    displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
 
@@ -46,8 +47,17 @@ document.addEventListener('DOMContentLoaded', function () {
     pageEl.appendChild(imageEl);
   }
 
+  function displayQuestionPrompt(questionNum) {
+    var questionContainer = document.getElementById('prompt');
+    var displayQuestionEl = document.createElement('p');
+    displayQuestionEl.setAttribute('id', 'questionNum');
+    displayQuestionEl.textContent = staticQuestionArray[questionNum];
+    questionContainer.appendChild(displayQuestionEl);
+  }
+
   function createDialogue(image, choices, responses) {
     var gameText = document.getElementById('game-text');
+
     for (var i = 0; i < choices.length; i++) {
       var choiceEl = document.createElement('li');
       choiceEl.setAttribute('class', 'question');
@@ -57,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
       choicesList.appendChild(choiceEl);
     }
     handleChoiceClick();      //
-
   }
 
   function handleChoiceClick() {    //renders the response
@@ -69,7 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
         renderResponse(this.id, questionNum);
       });
     });
+  }
 
+  function removePrompt() {
+    var promptParent = document.getElementById('prompt');
+    var promptChild = document.getElementById('questionNum');
+    promptParent.removeChild(promptChild);
   }
 
   function removeChoiceElements() {
@@ -82,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderResponse(id, questionNum) {
     removeChoiceElements();
-
+    removePrompt();
     var gameText = document.getElementById('game-text');  //append response to textContent div
     var responsePar = document.createElement('p');
     responsePar.setAttribute('id', 'response-paragraph');
@@ -115,10 +129,10 @@ document.addEventListener('DOMContentLoaded', function () {
     response.remove();
   }
 
-  function renderTransition() {           //reveals a hidden link to transition to week2   
+  function renderTransition() {           //reveals a hidden link to transition to week2
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
-    console.log(jCharacter);              
+    console.log(jCharacter);
     var hiddenLink = document.getElementById('link-to-week2');
     hiddenLink.removeAttribute('class', 'hidden');
   }
