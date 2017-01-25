@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of place images
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
+  var staticImageArray = ['../images/cartoon_console_question.jpeg', '../images/cartoon_space_needle.jpeg', '../images/cartoon_space_needle.jpeg'];
   //array of questions/events
   var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line?', 'How do you spend the weekend?'];
   //array of choices for the questions
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
       character.social = character.social + affectScore[questionNum][responseIndex][2];
       console.log('this.social ' + character.social);
     }
-    updateWithRandom(responseIndex);
+    // updateWithRandom(responseIndex);
   }
   //pair programmed with EVERYONE
 
@@ -168,7 +168,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
     console.log(jCharacter);
-    location.href = '../game/dayTwo.html';
+    setTimeout(function () {
+      location.href = '../game/dayTwo.html';
+    }, 5000);
     // var hiddenLink = document.getElementById('link-to-week2');
     // hiddenLink.removeAttribute('class', 'hidden');
   }
@@ -190,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateWithRandom(responseIndex) {
-
     console.log('we made it!');
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);

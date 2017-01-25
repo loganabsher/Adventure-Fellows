@@ -29,7 +29,9 @@ var allie = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
+
     localStorage.setItem('image', '../images/allieAvatar.png');
+
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 90);
@@ -44,6 +46,7 @@ var logan = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
+
     localStorage.setItem('image', '../images/logan_avatar.png');
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);

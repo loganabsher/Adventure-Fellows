@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
     image.remove();
     response.remove();
   }
-
+//adding change
   function renderTransition() {           //reveals a hidden link to transition to week2
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
