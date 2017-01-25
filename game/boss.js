@@ -2,27 +2,17 @@
 'use strict';
 document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
-  //array of place images
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
-  //array of questions/events
-  var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line?', 'How do you spend the weekend?'];
-  //array of choices for the questions
-  var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa', 'study all weekend', 'go out for dinner and drinks with friends', 'sleep your standard eight hours, run, study']];
-  //array of responses to the choices
-  var staticResponseArray = [['You deleted all files on your machine, you can no longer continue in the class. (-100, health, -100 grade)', 'You follow along with the class, learing much about how to properly operate your computer.', 'You tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;). (+5 grade, -10 social)', 'You cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture. (-10 grade)'], ['You go to the spa to rejuvenate and relax, sleeping in and lounging all weekend. (+20 health, -10 grade, +10 social)', 'You study very hard all weekend, not getting a chance to relax or see any friends. (+10 grade, - 15 social)', 'You go out drinking all weekend having a terrible hangover, but somehow on Monday your code is finished? (-15 health, +5 grade, +20 social)', 'You get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society. (+5 health, +5 grade, -5 social)']];
-
-  var uniqueClassPerResponse = [['rm-rf', 'cdCorrectly', 'tree', 'cmatrix'], ['spa', 'studyWeekend', 'dinner', 'sleepEight']];
-  // increments score
-  var affectScore = [[[-100, -100, -100], [0, 0, +25], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
-  //array of randomly chosen questions
-  var randomQuestionArray = [];
-  //corresponding choices to the questions
-  var randomChoiceArray = [];
-  //corresponding responses to the choices
-  var randomResponseArray = [];
-  //collecting local storage from character page
-  // var local = JASN.parse(localStorage);
-  // console.log(local);
+  //array of boss images
+  var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg','../images/happierAdam.jpg'];
+  //array of boss questions
+  var bossQuestionArray = ['Adam uses busmall, what is your response?', 'Adam uses salmon cookies, what is your response?', 'Adam uses chocolate pizza, what is your response?', 'Adam uses about me, what is your response?', 'Adam uses disapointment, what is your response?'];
+  //corresponding choices to questions
+  var bossChoiceArray = [['cry and try to get them to raise your grade by taking pitty on you.', 'try you absolute best to finish the project.', 'cheat off the smart people in the class.', 'give up and go home.'], ['stay up all night perfecting your project.', 'wonder why anyone would want to eat salmon cookies.', 'don\'t do the project and relax instead.', 'check the internet for the answers you need.'], ['spend ten hours trying to make the CSS work right.', 'make it "good enough."', 'think about food.', 'contemplate life.'], ['make it funny.', 'make it serious.', 'make it weird.', 'make it right.'], ['try to apeal to his empathy.', 'tell your mom on him.', 'threaten him.', 'bribe him.']];
+  //corresponding responses to choices
+  var bossResponseArray = [['Adam takes no pitty. (-10 health, -5 grade, -20 social)', 'failure is inevitable. (-10 health, -5 grade, +5 social)', 'everyone in class now dispises you for taking the easy way out. (+10 health, +10 grade, -50 social)', 'you don\'t turn in the project and relax instead. (+20 health, -15 grade, +20 social)'], ['you are very tired but things work out for you. (-10 health, +10 grade, -10 social)', 'that is a very good question but your project is still lacking. (+10 health, -15 grade, +15 social)', 'you have plenty of time to see friends and recover from the onslaught, but your grade begins to suffer. (+20 health, -10 grade, +25 social)', 'the internet has all the answers, but not always the right ones, you are docked for not following directions. (+5 health, -5 grade)'], ['you spend all your time finiking with the CSS, your soul is fading from your body. (-20 health, +5 grade)', 'you do your best but you can\'t seem to get everything to stay the way you want it. (-5 grade)', 'you spwnd your time thinking about what makes you happy, it is very theraputic. (+15 health, -10 grade)', 'you contemplate the fine detailes of your existence. (-10 health, -10 grade, -10 social)'], ['you try your best to make your page as funny as can be to make a good impression on the class, but your TA\'s are not ammused. (-10 grade, +20 social)', 'you make your pages serious so you are sure other people understand you are not to be messed with. (+5 grade, -10 social)', 'you try to let out your inner weirdness to the class, some people actually relate. (+10 social)', 'you just make sure to have all the requirements for the project and nothing else. (+5 grade, -5 social)'], ['no effect. (-10 grade, -10 social)', 'your mom comes to class and has a word with this "Mr. Adam" she\'s heard so much about, you don\'t know what she said but it seems to have worked. (+10 grade, -50 social)', 'you threaten Adam to raise your grade, not the smartest idea, you were thrown out of class. (-100 grade, -100 social)', 'you attempt to bribe him, everyone now knows your evil ways. (-10 grade, -40 social)']];
+  //corresponding effects per response
+  var affectScore = [[[-10, -5, +5], [-10, -5, +5], [+10, +10, -50], [+20, -15, +20]], [[-10, +10, -10], [+10, -15, +15], [+20, -10, +25], [+5, -5, +0]], [[-20, +5, +0], [+0, -5, +0], [+15, -10, +0], [-10, -10, -10]], [[+0, -10, +20], [+0, +5, -10], [+0, +0, +10], [+0, +5, -5]], [[+0, -10, -10], [+0, +10, -50], [+0, -100, -100], [+0, -10, -40]]];
+  var uniqueClassPerResponse = [['bussmall', 'bussmall', 'bussmall', 'bussmall'], ['salmon cookies', 'salmon cookies', 'salmon cookies', 'salmon cookies'], ['chocolate pizza', 'chocolate pizza', 'chocolate pizza', 'chocolate pizza'], ['about me', 'about me', 'about me', 'about me'], ['disapointment', 'disapointment', 'disapointment', 'disapointment']];
   //character constructor
   function Character(name, image) {
     this.name = name;
@@ -31,16 +21,45 @@ document.addEventListener('DOMContentLoaded', function () {
     this.grade = 100;
     this.social = 100;
   }
-
-  var character = new Character(localStorage.userName, localStorage.imgUrl);
+//creaing new character from local storage/replacing default values
+  var character = new Character(localStorage.userName, localStorage.image);
   console.log(character);
-
+//checking to see if stats fall below 0
+  function failureChecker(character){
+    if(character.health <= 0){
+      localStorage.setItem('failure', health);
+      location.href = '../credits/credits.html';
+    }
+    if(character.grade <= 0){
+      localStorage.setItem('failure', grade);
+      location.href = '../credits/credits.html';
+    }
+    if(character.social <= 0){
+      localStorage.setItem('failure', social);
+      location.href = '../credits/credits.html';
+    }
+  }
+//making sure stats don't go over the max ammount
+  function maxStatChecker(character){
+    if(character.health >= 120){
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if(character.grade >= 120){
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if(character.social >= 120){
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
   renderPage();
 
   function renderPage() {
-    renderImage(staticImageArray[questionNum]);
+    renderImage(bossImageArray[questionNum]);
     displayQuestionPrompt(questionNum);
-    createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
+    createDialogue(bossImageArray[questionNum], bossChoiceArray[questionNum], bossResponseArray[questionNum]);
   }
 
   //RENDERING PAGE
@@ -56,13 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var questionContainer = document.getElementById('prompt');
     var displayQuestionEl = document.createElement('p');
     displayQuestionEl.setAttribute('id', 'questionNum');
-    displayQuestionEl.textContent = staticQuestionArray[questionNum];
+    displayQuestionEl.textContent = bossQuestionArray[questionNum];
     questionContainer.appendChild(displayQuestionEl);
   }
 
   function createDialogue(image, choices, responses) {
     var gameText = document.getElementById('game-text');
-
     for (var i = 0; i < choices.length; i++) {
       var choiceEl = document.createElement('li');
       choiceEl.setAttribute('class', 'question ' + uniqueClassPerResponse[questionNum][i]);
@@ -71,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var choicesList = document.getElementById('choices-list');
       choicesList.appendChild(choiceEl);
     }
-    handleChoiceClick();      //
+    handleChoiceClick();
   }
 
   function updateStats(responseIndex) {
@@ -85,6 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('this.grade ' + character.grade);
       character.social = character.social + affectScore[responseIndex][i][2];
       console.log('this.social ' + character.social);
+      failureChecker(character);
+      maxStatChecker(character);
     }
   }
   //pair programmed with EVERYONE
@@ -125,10 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var responseId = parseInt(id);
     // console.log(responseId);
-    responsePar.textContent = staticResponseArray[questionNum][id];
+    responsePar.textContent = bossResponseArray[questionNum][id];
     gameText.appendChild(responsePar);
 
-    if (questionNum < staticQuestionArray.length - 1) {
+    if (questionNum < bossQuestionArray.length - 1) {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
         clearElements();
         renderPage();
@@ -155,19 +175,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
     console.log(jCharacter);
-    location.href = '../game/dayTwo.html';
+    location.href = '../credits/credits.html';
     // var hiddenLink = document.getElementById('link-to-week2');
     // hiddenLink.removeAttribute('class', 'hidden');
   }
 
 });
-// //array of boss images
-// var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg','../images/happierAdam.jpg'];
-// //array of boss questions
-// var bossQuestionArray = ['Adam uses busmall, what is your response?', 'Adam uses salmon cookies, what is your response?', 'Adam uses chocolate pizza, what is your response?', 'Adam uses about me, what is your response?'];
-// //corresponding choices to questions
-// var bossChoiceArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
-// //corresponding responses to choices
-// var bossResponseArray = [['hello', 'hello', 'hello', 'hello'], ['hello', 'hello', 'hello', 'hello'], ['hello', 'hello', 'hello', 'hello'], ['hello', 'hello', 'hello', 'hello']];
-// //corresponding effects per response
-// var bossEffectArray = [];
