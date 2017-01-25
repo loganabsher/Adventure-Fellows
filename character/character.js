@@ -17,23 +17,30 @@ function displayText() {
   var bodyEl = document.getElementById('body');
   var user = localStorage.userName;
   var createHeader = document.createElement('h3');
-  createHeader.textContent = ('Hello ' + JSON.parse(user) + ', please choose a character:');
+  createHeader.textContent = ('Hello ' + user + ', please choose a character:'); //please do NOT call JSON.parse on user
   bodyEl.appendChild(createHeader);
+}
+
+var images = {
+  allie: '../images/allieAvatar.png',
+  luis: '../images/avatar_luis.png',
+  david: '../images/avatar_david.png',
+  logan: '../images/logan_avatar.png'
 }
 displayText();
 //Logan contribution
 //Allie's Data
 var allieEl = document.getElementById('choice-one');
 var allie = function(event){
-  event.stopPropagation();
-  event.preventDefault();
+  console.log('click');
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('image', '../images/allieAvatar.png');
+
+    localStorage.setItem('imgUrl', images.allie);
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 90);
-    location.href = '../game/dayOne.html';
+    location.href = '../game/intro.html';
   }
 };
 allieEl.addEventListener('click', allie, false);
@@ -44,11 +51,12 @@ var logan = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('image', '../images/logan_avatar.png');
+
+    localStorage.setItem('imgUrl', images.logan);
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 80);
-    location.href = '../game/dayOne.html';
+    location.href = '../game/intro.html';
   }
 };
 loganEl.addEventListener('click', logan, false);
@@ -59,11 +67,11 @@ var luis = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('image', '../images/avatar_luis.png');
+    localStorage.setItem('imgUrl', images.luis);
     localStorage.setItem('health', 110);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 80);
-    location.href = '../game/dayOne.html';
+    location.href = '../game/intro.html';
   }
 };
 luisEl.addEventListener('click', luis, false);
@@ -74,11 +82,11 @@ var david = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('image', '../images/avatar_david.png');
+    localStorage.setItem('imgUrl', images.david);
     localStorage.setItem('health', 80);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 120);
-    location.href = '../game/dayOne.html';
+    location.href = '../game/intro.html';
   }
 };
 davidEl.addEventListener('click', david, false);
