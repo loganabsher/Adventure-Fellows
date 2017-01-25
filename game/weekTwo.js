@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var character = JSON.parse(localStorage.character);
   console.log(character);
 
-  
+
   renderPage();
 
   function renderPage() {
