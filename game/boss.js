@@ -179,5 +179,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // var hiddenLink = document.getElementById('link-to-week2');
     // hiddenLink.removeAttribute('class', 'hidden');
   }
-
 });
