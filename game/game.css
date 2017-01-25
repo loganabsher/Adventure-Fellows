@@ -30,7 +30,9 @@ a {
   color: white;
   font-size: 40px;
   padding: 1em;
+  padding-top: 1%;
   margin: 0px auto;
+  margin-top: 1em;
 }
 
 .footer {
@@ -69,4 +71,11 @@ a {
   height: 20%;
   float: right;
   border: black 2px bold;
-
+}
+#brook{
+  width: auto;
+  height: auto;
+  margin-left: 28%;
+  margin-right: 10%;
+  box-shadow: 1px 0 100px white;
+}
