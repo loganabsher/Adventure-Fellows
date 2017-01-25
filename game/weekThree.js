@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of phases/titles
   //array of place images
   var staticImageArray = [
-    '../images/cf_building.jpg',
+    '../images/cartoon_cf_building.jpg',
     '../images/cf_building.jpg',
     '../images/cf_building.jpg'
   ];
   //array of questions/events
   var staticQuestionArray = ['Yay! You survived the second week of Code Fellows 201! You\'re on a roll!', 'Time to start your week 3 project! How do you get started?', 'Your friends are concerned because they haven’t seen you for a while. They invite you out to dinner, but you can\'t figure out how to get your three images to display on the Busmall project. What do you do?', 'You survived three weeks of Code Fellows 201!'];
   //array of choices for the questions
-  var staticChoiceArray = [['Let\'s Keep Going!'],['Stare at a blank screen until you give up', 'Start writing some code and hope that Shia LaBeouf’s magic comes along', 'Go to MDN and figure it out for yourself ', 'Talk to the TAs and your classmates for inspiration '], ['Leave campus early and meet them for dinner', 'Finish your work and silence your phone', 'Tell them you’re still alive and make plans for the weekend', 'Convince them to pick up carry-out and bring it to you '], ['You are amazing!', 'You are almost finished with this course!', 'You can do anything!', 'You are awesome!']];
+  var staticChoiceArray = [['Let\'s Keep Going!'], ['Stare at a blank screen until you give up', 'Start writing some code and hope that Shia LaBeouf’s magic comes along', 'Go to MDN and figure it out for yourself ', 'Talk to the TAs and your classmates for inspiration '], ['Leave campus early and meet them for dinner', 'Finish your work and silence your phone', 'Tell them you’re still alive and make plans for the weekend', 'Convince them to pick up carry-out and bring it to you '], ['You are amazing!', 'You are almost finished with this course!', 'You can do anything!', 'You are awesome!']];
   //array of responses to the choices
-  var staticResponseArray = [['Click here to proceed'],['Did you really think that would work? (grade decreases)', 'Hey, you never know what he\'s capable of! (grade increases)', 'It\'s a great resource, after all (grade increases a lot, social decreases)', 'It might help...or you might get distracted by GIFs and memes (social increases, health and grade decrease)'],['Your brain needed a break anyway (social increases, grade decreases)', 'Who needs friends anyway? (social decreases, grade increases)', 'Well, at least they won\'t file a missing person report. Yet. (social increases slightly, grade increases)', 'They might not appreciate it, but at least they\'ll get to see your face for a few seconds (social decreases, grade increases)'] , ['Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...']];
+  var staticResponseArray = [['Click here to proceed'], ['Did you really think that would work? (grade decreases)', 'Hey, you never know what he\'s capable of! (grade increases)', 'It\'s a great resource, after all (grade increases a lot, social decreases)', 'It might help...or you might get distracted by GIFs and memes (social increases, health and grade decrease)'], ['Your brain needed a break anyway (social increases, grade decreases)', 'Who needs friends anyway? (social decreases, grade increases)', 'Well, at least they won\'t file a missing person report. Yet. (social increases slightly, grade increases)', 'They might not appreciate it, but at least they\'ll get to see your face for a few seconds (social decreases, grade increases)'], ['Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...']];
 
   var uniqueClassPerResponse = [['proceed', 'proceed', 'proceed', 'proceed'], ['blank', 'magic', 'mdn', 'inspiration'], ['leaveEarly', 'silence', 'alive', 'carryOut'], ['amazing', 'finish', 'anything', 'awesome']];
   // increments score  pairpgrammed with Teddy
@@ -37,13 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  function Character(local) {
-    this.name = local[0];
-    this.image = local[1];
-    this.health = 100;
-    this.grade = 100;
-    this.social = 100;
-  }
+  var character = JSON.parse(localStorage.character);
+
   function failureChecker(character){
     if(character.health <= 0){
       localStorage.setItem('failure', health);
@@ -115,15 +110,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
-    console.log(character);
-    for (var i = 0; i < affectScore.length; i++) {
-      character.health = character.health + affectScore[questionNum][responseIndex][0];
-      console.log('this.health ' + character.health);
-      character.grade = character.grade + affectScore[questionNum][responseIndex][0];
-      console.log('this.grade ' + character.grade);
-      character.social = character.social + affectScore[questionNum][responseIndex][0];
-      console.log('this.social ' + character.social);
-    }
+    console.log(responseIndex);
+    character.health = character.health + affectScore[questionNum][responseIndex][0];
+    console.log('this.health ' + character.health);
+    character.grade = character.grade + affectScore[questionNum][responseIndex][1];
+    console.log('this.grade ' + character.grade);
+    character.social = character.social + affectScore[questionNum][responseIndex][2];
+    console.log('this.social ' + character.social);
   }
   //pair programmed with EVERYONE
 
@@ -134,8 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
-        updateStats(this.id);
-        updateWithRandom(this.id);
       });
     });
 
@@ -173,6 +164,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('click');
         clearElements();
         renderPage();
+        updateStats(id);
+        updateWithRandom(id);
       });
     } else {
       renderTransition();
@@ -201,10 +194,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var randomNumberPrompt = Math.floor(Math.random() * 5);
 
   function displayRandomEvent() {
-    alert (randomArrays[randomNumberArray][randomNumberPrompt]);
+    alert(randomArrays[randomNumberArray][randomNumberPrompt]);
     console.log(randomArrays[randomNumberArray][randomNumberPrompt]);
   }
-//pairprogrammed with Teddy
+  //pairprogrammed with Teddy
   var generateRandom = Math.random();
 
   function trulyRandom() {
@@ -214,27 +207,21 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateWithRandom(responseIndex) {
-
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
-    if (increaseHealth.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.health = character.health + 10;
-      console.log(character.health);
-    } else if (decreaseHealth.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (decreaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.health = character.health - 10;
-      console.log(character.health);
-    } else if (increaseGrade.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (increaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.grade = character.grade + 10;
-      console.log(character.grade);
-    } else if (decreaseGrade.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (decreaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.grade = character.grade - 10;
-      console.log(character.grade);
-    } else if (increaseSocial.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (increaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social + 10;
-      console.log(character.social);
-    } else if (decreaseSocial.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (decreaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social - 10;
-      console.log(character.social);
     }
+    console.log(character)
   }
 });

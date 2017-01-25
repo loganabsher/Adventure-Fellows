@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var uniqueClassPerResponse = [['rm-rf', 'cdCorrectly', 'tree', 'cmatrix'], ['spa', 'studyWeekend', 'dinner', 'sleepEight']];
   // increments score  pairpgrammed with Teddy
-  var affectScore = [[[-100, -100, -100], [0, 0, +25], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
+  var affectScore = [[0,0,0], [[-100, -100, -100], [0, +25, 0], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
 
   var increaseHealth = ['You go to the pharmacy and get a flu shot! Health increases', 'You get a good night’s sleep! Health increases', 'You decide to take a break! Health increases', 'You finish your project and leave early! Health increases', 'You have time to go to the gym! Health increases'];
 
@@ -31,13 +31,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  function Character(name, image) {
-    this.name = name;
-    this.image = image;
-    this.health = 100;
-    this.grade = 100;
-    this.social = 100;
+  function Character() {            //please ask before changing this constructor
+    this.name = localStorage.userName;
+    this.image = localStorage.imgUrl;
+    this.health = parseInt(localStorage.health);
+    this.grade = parseInt(localStorage.grade);
+    this.social = parseInt(localStorage.social);
+    this.character = JSON.stringify(this);  
   }
+
+  var character = new Character();
   //checking to see if stats fall below 0
   function failureChecker(character){
     if(character.health <= 0){
@@ -68,8 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('exceeding max social, social reset to: ' + character.social);
     }
   }
-  var character = new Character(localStorage.userName, localStorage.imgUrl);
-  console.log(character);
 
   renderPage();
 
@@ -112,20 +113,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
-    console.log('character ' + character);
-    for (var i = 0; i < affectScore.length; i++) {
-      console.log('affectScore: ' + affectScore);
-      console.log('affectScore[responseIndex] = ' + affectScore[questionNum][responseIndex][0]);
-      console.log(responseIndex);
-      character.health = character.health + affectScore[questionNum][responseIndex][0];
-      console.log('this.health ' + character.health);
-      character.grade = character.grade + affectScore[questionNum][responseIndex][1];
-      console.log('this.grade ' + character.grade);
-      character.social = character.social + affectScore[questionNum][responseIndex][2];
-      console.log('this.social ' + character.social);
-    }
-    updateWithRandom(responseIndex);
+    // var character = JSON.parse(localStorage.character);
+    // console.log(responseIndex);
+    character.health = character.health + parseInt(affectScore[questionNum][responseIndex][0]);
+    // console.log('this.health ' + character.health);
+    character.grade = character.grade + affectScore[questionNum][responseIndex][1];
+    // console.log('this.grade ' + character.grade);
+    character.social = character.social + affectScore[questionNum][responseIndex][2];
+    // console.log('this.social ' + character.social);
   }
   //pair programmed with EVERYONE
 
@@ -136,12 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
-        updateStats(this.id);
-        updateWithRandom(this.id);
       });
     });
   }
-
   function removePrompt() {
     var promptParent = document.getElementById('prompt');
     var promptChild = document.getElementById('questionNum');
@@ -171,8 +163,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (questionNum < staticQuestionArray.length - 1) {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
+        console.log('updatingStats');
         clearElements();
         renderPage();
+        updateStats(id);
+        console.log(character);
+        updateWithRandom(id);
       });
     } else {
       renderTransition();
@@ -182,26 +178,25 @@ document.addEventListener('DOMContentLoaded', function () {
   function clearElements() {
     questionNum++;              //after rendering response, move to next question
 
-    console.log('incrementing...now on question at index: ', questionNum);
+    // console.log('incrementing...now on question at index: ', questionNum);
 
     var response = document.getElementById('response-paragraph');
     console.log(response);
     var image = document.getElementById('background-image');
-    console.log('removing image');
+    // console.log('removing image');
     image.remove();
     response.remove();
     trulyRandom();
   }
 
   function renderTransition() {           //reveals a hidden link to transition to week2
-    var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
+    var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through  
     localStorage.character = jCharacter;
-    console.log(jCharacter);
     setTimeout(function () {
       location.href = '../game/weekTwo.html';
-    }, 5000);
-    // var hiddenLink = document.getElementById('link-to-week2');
-    // hiddenLink.removeAttribute('class', 'hidden');
+    }, 3000);
+    var hiddenLink = document.getElementById('link-to-week2');
+    hiddenLink.removeAttribute('class', 'hidden');
   }
 
   var randomNumberArray = Math.floor(Math.random() * 6);
@@ -221,28 +216,21 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateWithRandom(responseIndex) {
-
     console.log('we made it!');
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
+    // var character = JSON.parse(localStorage.character);
     if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.health = character.health + 10;
-      console.log(character.health);
+      character.health = parseInt(character.health) + 10;
     } else if (decreaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.health = character.health - 10;
-      console.log(character.health);
+      character.health = parseInt(character.health) - 10;
     } else if (increaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.grade = character.grade + 10;
-      console.log(character.grade);
+      character.grade = parseInt(character.grade) + 10;
     } else if (decreaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.grade = character.grade - 10;
-      console.log(character.grade);
+      character.grade = parseInt(character.grade) - 10;
     } else if (increaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.social = character.social + 10;
-      console.log(character.social);
+      character.social = parseInt(character.social) + 10;
     } else if (decreaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.social = character.social - 10;
-      console.log(character.social);
+      character.social = parseInt(character.social) - 10;
     } else {
       console.log('oops!');
     }

@@ -37,7 +37,7 @@ var allie = function(event){
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 90);
-    location.href = '../game/weekOne.html';
+    location.href = '../game/intro.html';
   }
 };
 allieEl.addEventListener('click', allie, false);
@@ -50,7 +50,7 @@ var logan = function(event){
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 80);
-    location.href = '../game/weekOne.html';
+    location.href = '../game/intro.html';
   }
 };
 loganEl.addEventListener('click', logan, false);
@@ -63,7 +63,7 @@ var luis = function(event){
     localStorage.setItem('health', 110);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 80);
-    location.href = '../game/weekOne.html';
+    location.href = '../game/intro.html';
   }
 };
 luisEl.addEventListener('click', luis, false);
@@ -76,7 +76,7 @@ var david = function(event){
     localStorage.setItem('health', 80);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 120);
-    location.href = '../game/weekOne.html';
+    location.href = '../game/intro.html';
   }
 };
 davidEl.addEventListener('click', david, false);
