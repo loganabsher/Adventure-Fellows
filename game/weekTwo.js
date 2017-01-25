@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of phases/titles
   //array of place images
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
+  var staticImageArray = ['../images/cartoon_cf_building.jpg', '../images/cartoon_lab_area.jpeg', '../images/cartoon_table_question.jpeg'];
   //array of questions/events
   var staticQuestionArray = ['Yay! You survived the first week of Code Fellows 201!', 'You get stuck when creating your salmon cookies form, what do you do?', 'Your table isn’t rendering correctly, what did you forget to do?', 'How do you spend your weekend?'];
   //array of choices for the questions
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //corresponding responses to the choices
   var randomResponseArray = [];
   //array of boss images
-  var bossImageArray = ['../images/cf_building.jpg'];
+  var bossImageArray = ['../images/cartoon_table_question.jpg'];
   //array of boss questions
   var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
   //corresponding choices to questions
