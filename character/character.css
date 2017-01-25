@@ -51,19 +51,39 @@ div{
 }
 .text{
   float: left;
+  margin-left: 70px;
   width: 60%;
 }
 #allie-character{
   background-color: lightgreen;
 }
+
+#allie-character:hover {
+  box-shadow: 1px 0 100px white;
+}
+
 #logan-character{
   background-color: cyan;
 }
+
+#logan-character:hover {
+  box-shadow: 1px 0 100px white;
+}
+
 #luis-character{
   background-color: crimson;
 }
+
+#luis-character:hover {
+  box-shadow: 1px 0 100px white;
+}
+
 #david-character{
   background-color: lightcoral;
+}
+
+#david-character:hover {
+  box-shadow: 1px 0 100px white;
 }
 /*logan aditions*/
 

@@ -1,3 +1,9 @@
+* {
+  background-color: #3a3a3a;
+  color: white;
+  font-family: 'VT323', monospace;
+}
+
 #background-image, #game-text{
   width: 80%;
   height: 600px;
@@ -20,10 +26,9 @@ p{
   float: right;
 }
 
-* {
-  background-color: #3a3a3a;
-  color: white;
-  font-family: 'VT323', monospace;
+.linkToOne {
+  margin: 0px auto;
+  padding-left: 360px;
 }
 
 a {
@@ -57,9 +62,7 @@ a {
   text-shadow: 1px 0 6px goldenrod;
 }
 /*pair programmed with Luis*/
-.hidden {
-  display: none;
-}
+
 #player-image{
   width: 20%;
   height: 20%;
@@ -78,4 +81,39 @@ a {
   margin-left: 28%;
   margin-right: 10%;
   box-shadow: 1px 0 100px white;
+}
+
+.welcome {
+  width: 75%;
+  margin: 0px auto;
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+.whichWeek {
+  font-size: 60px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.bossPage {
+  color: #ff0101;
+  font-size: 150px;
+  margin-bottom: 30px;
+}
+
+#background-image {
+  border-radius: 10px;
+  height: 500px;
+  width: auto;
+  margin: 0 25%;
+  box-shadow: 1px 0 150px red;
+}
+
+#response-paragraph {
+  text-align: center;
+  padding-top: 70px;
+  font-size: 50px;
+  width: 60%;
+  margin: 0px auto;
 }
