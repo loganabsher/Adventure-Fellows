@@ -44,7 +44,7 @@ var logan = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('image', '../images/IMG_0006.jpg');
+    localStorage.setItem('image', '../images/logan_avatar.png');
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 80);
@@ -74,7 +74,7 @@ var david = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('image', '../images/IMG_0012.jpg');
+    localStorage.setItem('image', '../images/avatar_david.png');
     localStorage.setItem('health', 80);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 120);
