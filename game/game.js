@@ -2,11 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of place images
-<<<<<<< HEAD
   var staticImageArray = ['../images/cartoon_cf_building.jpg', '../images/cartoon_console_question.jpg', '../images/cartoon_space_needle.jpg'];
-=======
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
->>>>>>> 6f3ca4c85ba7f7d28f404a40ce845dfaad33807b
   //array of questions/events
   var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line?', 'How do you spend the weekend?'];
   //array of choices for the questions
