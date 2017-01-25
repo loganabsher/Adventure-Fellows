@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function Character(name, image) {
     this.name = name;
     this.image = image;
-    this.health = 100;
-    this.grade = 100;
-    this.social = 100;
+    // this.health = 100;
+    // this.grade = 100;
+    // this.social = 100;
   }
 
   var character = new Character(localStorage.userName, localStorage.imgUrl);
