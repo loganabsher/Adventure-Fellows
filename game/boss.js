@@ -28,6 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var character = new Character(localStorage.userName, localStorage.imgUrl);
   console.log(character);
 
+  function failureChecker(character){
+    if(character.health <= 0 || character.grade <= 0 || character.social <= 0){
+      location.href = '../credits/credits.html';
+    }
+  }
+
   renderPage();
 
   function renderPage() {
@@ -78,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('this.grade ' + character.grade);
       character.social = character.social + affectScore[responseIndex][i][2];
       console.log('this.social ' + character.social);
+      failureChecker(character);
     }
   }
   //pair programmed with EVERYONE
