@@ -45,16 +45,43 @@ document.addEventListener('DOMContentLoaded', function () {
     this.grade = 100;
     this.social = 100;
   }
-
+  function failureChecker(character){
+    if(character.health <= 0){
+      localStorage.setItem('failure', health);
+      location.href = './outcome.html';
+    }
+    if(character.grade <= 0){
+      localStorage.setItem('failure', grade);
+      location.href = './outcome.html';
+    }
+    if(character.social <= 0){
+      localStorage.setItem('failure', social);
+      location.href = './outcome.html';
+    }
+  }
+  //making sure stats don't go over the max ammount
+  function maxStatChecker(character){
+    if(character.health >= 120){
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if(character.grade >= 120){
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if(character.social >= 120){
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
   renderPage();
 
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
+    renderAvitarWithStats();
   }
-
-
   //RENDERING PAGE
   function renderImage(image) {
     var pageEl = document.getElementById('place-image');
@@ -167,10 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {
-    setTimeout(function () {
-      location.href = '../game/dayThree.html';
-    }, 3000);
-
+    location.href = '../game/weekThree.html';
     // var hiddenButton = document.getElementById('link-to-week3');
     // hiddenButton.removeAttribute('class', 'hidden');
   }
@@ -178,10 +202,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var randomNumberPrompt = Math.floor(Math.random() * 5);
 
   function displayRandomEvent() {
-    alert(randomArrays[randomNumberArray][randomNumberPrompt]);
+    alert (randomArrays[randomNumberArray][randomNumberPrompt]);
     console.log(randomArrays[randomNumberArray][randomNumberPrompt]);
   }
-  //pairprogrammed with Teddy
+//pairprogrammed with Teddy
   var generateRandom = Math.random();
 
   function trulyRandom() {

@@ -26,7 +26,7 @@ var images = {
   luis: '../images/avatar_luis.png',
   david: '../images/avatar_david.png',
   logan: '../images/logan_avatar.png'
-}
+};
 displayText();
 //Logan contribution
 //Allie's Data
@@ -35,8 +35,7 @@ var allie = function(event){
   console.log('click');
   var check = confirm('do you wish to continue');
   if(check === true){
-
-    localStorage.setItem('imgUrl', images.allie); 
+    localStorage.setItem('imgUrl', images.allie);
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 90);
