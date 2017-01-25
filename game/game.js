@@ -84,19 +84,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
-    console.log('character ' + character);
-    for (var i = 0; i < affectScore.length; i++) {
-      console.log('affectScore: ' + affectScore);
-      console.log('affectScore[responseIndex] = ' + affectScore[questionNum][responseIndex][0]);
-      console.log(responseIndex);
-      character.health = character.health + affectScore[questionNum][responseIndex][0];
-      console.log('this.health ' + character.health);
-      character.grade = character.grade + affectScore[questionNum][responseIndex][1];
-      console.log('this.grade ' + character.grade);
-      character.social = character.social + affectScore[questionNum][responseIndex][2];
-      console.log('this.social ' + character.social);
-    }
-    // updateWithRandom(responseIndex);
+    console.log(responseIndex);
+    character.health = character.health + affectScore[questionNum][responseIndex][0];
+    console.log('this.health ' + character.health);
+    character.grade = character.grade + affectScore[questionNum][responseIndex][1];
+    console.log('this.grade ' + character.grade);
+    character.social = character.social + affectScore[questionNum][responseIndex][2];
+    console.log('this.social ' + character.social);
   }
   //pair programmed with EVERYONE
 
@@ -107,8 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
-        updateStats(this.id);
-        updateWithRandom(this.id);
       });
     });
   }
@@ -142,8 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (questionNum < staticQuestionArray.length - 1) {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
+        console.log('updatingStats');
         clearElements();
         renderPage();
+        updateStats(id);
+        updateWithRandom(id);
       });
     } else {
       renderTransition();
@@ -197,22 +192,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var character = JSON.parse(localStorage.character);
     if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.health = character.health + 10;
-      console.log(character.health);
     } else if (decreaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.health = character.health - 10;
-      console.log(character.health);
     } else if (increaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.grade = character.grade + 10;
-      console.log(character.grade);
     } else if (decreaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.grade = character.grade - 10;
-      console.log(character.grade);
     } else if (increaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social + 10;
-      console.log(character.social);
     } else if (decreaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social - 10;
-      console.log(character.social);
     } else {
       console.log('oops!');
     }
