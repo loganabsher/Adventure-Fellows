@@ -26,14 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var decreaseSocial = ['You sit alone at lunch, man that sucks! Social decreases', 'A classmates asks for help, you say no. What a jerk! Social decreases', 'You\'re too tired to shower, develop B.O., no one wants to sit near you! Social decreases', 'You laugh when a classmate’s code doesn’t work. You\'re a terrible person! Social decreases', 'A classmate is new to Seattle, refer them to a bad restaurant. That\'s so mean! Social decreases'];
 
   var randomArrays = [increaseHealth, decreaseHealth, increaseGrade, decreaseGrade, increaseSocial, decreaseSocial];
-  //array of boss images
-  var bossImageArray = ['../images/cartoon_table_question.jpg'];
-  //array of boss questions
-  var bossQuestionArray = ['Adam uses busmall', 'Adam uses salmon cookies', 'Adam uses chocolate pizza', 'Adam uses about me'];
-  //corresponding choices to questions
-  var bossChoiceArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
-  //corresponding responses to choices
-  var bossResponseArray = [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']];
   //collecting local storage from character page
   // var local = JASN.parse(localStorage);
   // console.log(local);
@@ -57,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // function renderAvitarWithStats(){
   //   var divEl = getElementById('avitar-stats');
   // }
-
 
   //RENDERING PAGE
   function renderImage(image) {
