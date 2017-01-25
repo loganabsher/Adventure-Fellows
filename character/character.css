@@ -53,6 +53,19 @@ div{
   float: left;
   width: 60%;
 }
+
+#allie-character{
+  background-color: lightgreen;
+}
+#logan-character{
+  background-color: cyan;
+}
+#luis-character{
+  background-color: crimson;
+}
+#david-character{
+  background-color: lightcoral;
+}
 /*logan aditions*/
 
 /*img:hover {

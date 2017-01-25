@@ -29,9 +29,7 @@ var allie = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('maxHealth', '../images/IMG_0009.jpg');
-    localStorage.setItem('mediumHealth', '../images/IMG_0010.jpg');
-    localStorage.setItem('lowHealth', '../images/IMG_0011');
+    localStorage.setItem('image', '../images/allieAvatar.png');
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 90);
@@ -46,9 +44,7 @@ var logan = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('maxHealth', '../images/IMG_0006.jpg');
-    localStorage.setItem('mediumHealth', '../images/IMG_0007.jpg');
-    localStorage.setItem('lowHealth', '../images/IMG_0008');
+    localStorage.setItem('image', '../images/logan_avatar.png');
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 80);
@@ -63,9 +59,7 @@ var luis = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('maxHealth', '../images/IMG_0015.jpg');
-    localStorage.setItem('mediumHealth', '../images/IMG_0016.jpg');
-    localStorage.setItem('lowHealth', '../images/IMG_0017');
+    localStorage.setItem('image', '../images/avatar_luis.png');
     localStorage.setItem('health', 110);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 80);
@@ -80,9 +74,7 @@ var david = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('maxHealth', '../images/IMG_0012.jpg');
-    localStorage.setItem('mediumHealth', '../images/IMG_0013.jpg');
-    localStorage.setItem('lowHealth', '../images/IMG_0014');
+    localStorage.setItem('image', '../images/avatar_david.png');
     localStorage.setItem('health', 80);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 120);
