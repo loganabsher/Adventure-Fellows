@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderTransition() {           //reveals a hidden link to transition to week2
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
-    localStorage.setItem('failure', null);
+    localStorage.setItem('failure', 'win');
     console.log(jCharacter);
     location.href = './outcome.html';
     // var hiddenLink = document.getElementById('link-to-week2');

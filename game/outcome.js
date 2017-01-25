@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var failure = localStorage.failure;
   console.log(failure);
-  if(failure === null){
+  if(failure == 'win'){
     var clickEl = document.getElementById('text-holder');
     pass();
     var clickEvent = function(event){
@@ -29,9 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     else if(outcome == 'social'){
       write('your lack of care for those close to you and your ability to anger those in your class have led to you being a social outcast, without help from those important people you fail you course.');
-    }
-    else{
-
     }
   }
   function pass(){
