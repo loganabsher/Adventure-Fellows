@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
       character.social = character.social + affectScore[questionNum][responseIndex][2];
       console.log('this.social ' + character.social);
     }
-    updateWithRandom(responseIndex);
+    // updateWithRandom(responseIndex);
   }
   //pair programmed with EVERYONE
 
@@ -192,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateWithRandom(responseIndex) {
-
     console.log('we made it!');
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
