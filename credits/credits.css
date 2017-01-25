@@ -17,9 +17,10 @@
   /*width: 48%;
 }*/
 
-.thanks p {
-  font-size: 26px;
+.thanks p, .adamParagraph {
+  font-size: 35px;
   margin-top: 70px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -28,8 +29,7 @@
   width: 200px;
   height: auto;
   border-radius: 100%;
-  padding-left: 75px;
-  padding-right: 75px;
+  padding: 60px 75px;
 }
 
 .tracey, .jp {
@@ -37,8 +37,7 @@
   width: 200px;
   height: auto;
   border-radius: 100%;
-  padding-left: 75px;
-  padding-right: 75px;
+  padding: 60px 75px;
 }
 
 .footer {
@@ -67,6 +66,14 @@ a {
   border-radius: 100%;
   margin: 0px auto;
   display: block;
+}
+
+#adam {
+  margin: 0px auto;
+  display: block;
+  border-radius: 100%;
+  width: 500px;
+  height: auto;
 }
 
 /*.aboutUs {
