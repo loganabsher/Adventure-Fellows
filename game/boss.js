@@ -26,20 +26,32 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log(character);
 //checking to see if stats fall below 0
   function failureChecker(character){
-    if(character.health <= 0 || character.grade <= 0 || character.social <= 0){
+    if(character.health <= 0){
+      localStorage.setItem('failure', health);
+      location.href = '../credits/credits.html';
+    }
+    if(character.grade <= 0){
+      localStorage.setItem('failure', grade);
+      location.href = '../credits/credits.html';
+    }
+    if(character.social <= 0){
+      localStorage.setItem('failure', social);
       location.href = '../credits/credits.html';
     }
   }
-
+//making sure stats don't go over the max ammount
   function maxStatChecker(character){
     if(character.health >= 120){
       character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
     }
     if(character.grade >= 120){
       character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
     }
     if(character.social >= 120){
       character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
     }
   }
   renderPage();
@@ -69,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function createDialogue(image, choices, responses) {
     var gameText = document.getElementById('game-text');
-
     for (var i = 0; i < choices.length; i++) {
       var choiceEl = document.createElement('li');
       choiceEl.setAttribute('class', 'question ' + uniqueClassPerResponse[questionNum][i]);
@@ -78,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var choicesList = document.getElementById('choices-list');
       choicesList.appendChild(choiceEl);
     }
-    handleChoiceClick();      //
+    handleChoiceClick();
   }
 
   function updateStats(responseIndex) {
