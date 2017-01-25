@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
   //corresponding effects per response
   var affectScore = [[[-10, -5, +5], [-10, -5, +5], [+10, +10, -50], [+20, -15, +20]], [[-10, +10, -10], [+10, -15, +15], [+20, -10, +25], [+5, -5, +0]], [[-20, +5, +0], [+0, -5, +0], [+15, -10, +0], [-10, -10, -10]], [[+0, -10, +20], [+0, +5, -10], [+0, +0, +10], [+0, +5, -5]], [[+0, -10, -10], [+0, +10, -50], [+0, -100, -100], [+0, -10, -40]]];
   var uniqueClassPerResponse = [['bussmall', 'bussmall', 'bussmall', 'bussmall'], ['salmon cookies', 'salmon cookies', 'salmon cookies', 'salmon cookies'], ['chocolate pizza', 'chocolate pizza', 'chocolate pizza', 'chocolate pizza'], ['about me', 'about me', 'about me', 'about me'], ['disapointment', 'disapointment', 'disapointment', 'disapointment']];
-  //collecting local storage from character page
-  // var local = JASN.parse(localStorage);
-  // console.log(local);
   //character constructor
   function Character(name, image) {
     this.name = name;
@@ -24,16 +21,27 @@ document.addEventListener('DOMContentLoaded', function () {
     this.grade = 100;
     this.social = 100;
   }
-
+//creaing new character from local storage/replacing default values
   var character = new Character(localStorage.userName, localStorage.imgUrl);
   console.log(character);
-
+//checking to see if stats fall below 0
   function failureChecker(character){
     if(character.health <= 0 || character.grade <= 0 || character.social <= 0){
       location.href = '../credits/credits.html';
     }
   }
 
+  function maxStatChecker(character){
+    if(character.health >= 120){
+      character.health = 120;
+    }
+    if(character.grade >= 120){
+      character.grade = 120;
+    }
+    if(character.social >= 120){
+      character.social = 120;
+    }
+  }
   renderPage();
 
   function renderPage() {
@@ -85,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
       character.social = character.social + affectScore[responseIndex][i][2];
       console.log('this.social ' + character.social);
       failureChecker(character);
+      maxStatChecker(character);
     }
   }
   //pair programmed with EVERYONE
