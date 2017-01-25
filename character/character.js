@@ -33,7 +33,7 @@ displayText();
 var allieEl = document.getElementById('choice-one');
 var allie = function(event){
   console.log('click');
-  var check = confirm('do you wish to continue');
+  var check = confirm('Are you sure?');
   if(check === true){
 
     localStorage.setItem('imgUrl', images.allie);
@@ -49,7 +49,7 @@ var loganEl = document.getElementById('choice-two');
 var logan = function(event){
   event.stopPropagation();
   event.preventDefault();
-  var check = confirm('do you wish to continue');
+  var check = confirm('Are you sure?');
   if(check === true){
 
     localStorage.setItem('imgUrl', images.logan);
@@ -65,7 +65,7 @@ var luisEl = document.getElementById('choice-three');
 var luis = function(event){
   event.stopPropagation();
   event.preventDefault();
-  var check = confirm('do you wish to continue');
+  var check = confirm('Are you sure?');
   if(check === true){
     localStorage.setItem('imgUrl', images.luis);
     localStorage.setItem('health', 110);
@@ -80,7 +80,7 @@ var davidEl = document.getElementById('choice-four');
 var david = function(event){
   event.stopPropagation();
   event.preventDefault();
-  var check = confirm('do you wish to continue');
+  var check = confirm('Are you sure?');
   if(check === true){
     localStorage.setItem('imgUrl', images.david);
     localStorage.setItem('health', 80);
