@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of choices for the questions
   var staticChoiceArray = [['Let\'s Keep Going!'],['Stare at a blank screen until you give up', 'Start writing some code and hope that Shia LaBeouf’s magic comes along', 'Go to MDN and figure it out for yourself ', 'Talk to the TAs and your classmates for inspiration '], ['Leave campus early and meet them for dinner', 'Finish your work and silence your phone', 'Tell them you’re still alive and make plans for the weekend', 'Convince them to pick up carry-out and bring it to you '], ['You are amazing!', 'You are almost finished with this course!', 'You can do anything!', 'You are awesome!']];
   //array of responses to the choices
-  var staticResponseArray = [['Click here to proceed'],['Did you really think that would work? (grade decreases)', 'Hey, you never know what he\'s capable of! (grade increases)', 'It\'s a great resource, after all (grade increases a lot, social decreases)', 'It might help...or you might get distracted by GIFs and memes (social increases, health and grade decrease)'],['Your brain needed a break anyway (social increases, grade decreases)', 'Who needs friends anyway? (social decreases, grade increases)', 'Well, at least they won\'t file a missing person report. Yet. (social increases slightly, grade increases)', 'They might not appreciate it, but at least they\'ll get to see your face for a few seconds (social decreases, grade increases)'] , ['Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...']];
+  var staticResponseArray = [['Click here to proceed'],['Did you really think that would work?', 'Hey, you never know what he\'s capable of!', 'It\'s a great resource, after all', 'It might help...or you might get distracted by GIFs and memes'],['Your brain needed a break anyway', 'Who needs friends anyway?', 'Well, at least they won\'t file a missing person report. Yet.', 'They might not appreciate it, but at least they\'ll get to see your face for a few seconds'] , ['Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...', 'Take a deep breath and relax... You\'re almost finished...']];
 
   var uniqueClassPerResponse = [['proceed', 'proceed', 'proceed', 'proceed'], ['blank', 'magic', 'mdn', 'inspiration'], ['leaveEarly', 'silence', 'alive', 'carryOut'], ['amazing', 'finish', 'anything', 'awesome']];
   // increments score  pairpgrammed with Teddy
@@ -44,7 +44,36 @@ document.addEventListener('DOMContentLoaded', function () {
     this.grade = 100;
     this.social = 100;
   }
-
+  //checking to see if stats fall below 0
+  function failureChecker(character){
+    if(character.health <= 0){
+      localStorage.setItem('failure', 'health');
+      location.href = './outcome.html';
+    }
+    if(character.grade <= 0){
+      localStorage.setItem('failure', 'grade');
+      location.href = './outcome.html';
+    }
+    if(character.social <= 0){
+      localStorage.setItem('failure', 'social');
+      location.href = './outcome.html';
+    }
+  }
+//making sure stats don't go over the max ammount
+  function maxStatChecker(character){
+    if(character.health >= 120){
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if(character.grade >= 120){
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if(character.social >= 120){
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
   renderPage();
 
   function renderPage() {
@@ -80,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var choicesList = document.getElementById('choices-list');
       choicesList.appendChild(choiceEl);
     }
-    handleChoiceClick();      //
+    handleChoiceClick();
 
   }
 
@@ -94,6 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('this.grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
     console.log('this.social ' + character.social);
+    failureChecker(character);
+    maxStatChecker(character);
   }
   //pair programmed with EVERYONE
 
