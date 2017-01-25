@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderTransition() {
     setTimeout(function () {
-      location.href = '../game/dayThree.html';
+      location.href = '../game/weekThree.html';
     }, 3000);
 
     // var hiddenButton = document.getElementById('link-to-week3');
