@@ -44,15 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
 //checking to see if stats fall below 0
   function failureChecker(character){
     if(character.health <= 0){
-      localStorage.setItem('failure', health);
+      localStorage.setItem('failure', 'health');
       location.href = './outcome.html';
     }
     if(character.grade <= 0){
-      localStorage.setItem('failure', grade);
+      localStorage.setItem('failure', 'grade');
       location.href = './outcome.html';
     }
     if(character.social <= 0){
-      localStorage.setItem('failure', social);
+      localStorage.setItem('failure', 'social');
       location.href = './outcome.html';
     }
   }
