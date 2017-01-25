@@ -29,7 +29,9 @@ var allie = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('');
+
+    localStorage.setItem('image', '../images/allieAvatar.png');
+
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 90);
@@ -44,7 +46,8 @@ var logan = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('');
+
+    localStorage.setItem('image', '../images/logan_avatar.png');
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 80);
@@ -59,7 +62,7 @@ var luis = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('');
+    localStorage.setItem('image', '../images/avatar_luis.png');
     localStorage.setItem('health', 110);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 80);
@@ -74,7 +77,7 @@ var david = function(event){
   event.preventDefault();
   var check = confirm('do you wish to continue');
   if(check === true){
-    localStorage.setItem('');
+    localStorage.setItem('image', '../images/avatar_david.png');
     localStorage.setItem('health', 80);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 120);
