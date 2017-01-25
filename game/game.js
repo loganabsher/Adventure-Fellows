@@ -87,13 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('character ' + character);
     for (var i = 0; i < affectScore.length; i++) {
       console.log('affectScore: ' + affectScore);
-      console.log('affectScore[responseIndex]' + affectScore[i][responseIndex]);
+      console.log('affectScore[responseIndex] = ' + affectScore[questionNum][responseIndex][0]);
       console.log(responseIndex);
-      character.health = character.health + affectScore[responseIndex][i][0];
+      character.health = character.health + affectScore[questionNum][responseIndex][0];
       console.log('this.health ' + character.health);
-      character.grade = character.grade + affectScore[responseIndex][i][1];
+      character.grade = character.grade + affectScore[questionNum][responseIndex][1];
       console.log('this.grade ' + character.grade);
-      character.social = character.social + affectScore[responseIndex][i][2];
+      character.social = character.social + affectScore[questionNum][responseIndex][2];
       console.log('this.social ' + character.social);
     }
     updateWithRandom(responseIndex);
@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
         updateStats(this.id);
+        updateWithRandom(this.id);
       });
     });
   }
