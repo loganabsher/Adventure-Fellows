@@ -5,8 +5,6 @@
 *Middle of weekly project  
 *End of weekly project   
 
-
-
 ##Week 1, Monday
 *background, dialog  
 *no choices  
@@ -43,9 +41,9 @@
   *You set up an infinite loop (really decrease grade)  
     Response: Oh man, that sucks! You should really keep better track of your < and > operators in your for loops!
   *Forgot to append table (grade increases)  
-    Response: Easy fix, just go ahead and append that child
+    Response: Easy fix, just go ahead and append that child.
   *Forgot to save before opening in browser (grade doesn't change)
-    Response: Easy fix, go back to Atom, save, and try again
+    Response: Easy fix, go back to Atom, save, and try again.
   *Nothing, my code is perfect and it's the code's fault (grade goes down, social goes down)
     Response: If your code is so perfect, what are you doing here? And hey, help your classmates once in a while!
 
@@ -53,7 +51,7 @@
 ##Week 2, Friday
 *how do you spend your weekend? (all decrease health and social)  
   *Crying  
-    Response: Sorry to break it to you, it's not going to get any better on Monday
+    Response: Sorry to break it to you, it's not going to get any better on Monday.
   *Questioning your life choices  
     Response: What are you doing with your life, anyway?
   *Considering dropping out  
@@ -81,7 +79,7 @@
   *Finish your work and silence your phone (social decreases, grade increases) 
     Response: Who needs friends anyway?
   *Tell them you’re still alive and make plans for the weekend (social increases slightly, grade increases)  
-    Response: Well, at least they won't file a missing person report. Yet.
+    Response: Well, at least they won't file a missing person report just yet.
   *Convince them to pick up carry-out and bring it to you (social decreases, grade increases)  
     Response: They might not appreciate it, but at least they'll get to see your face for a few seconds.
 
