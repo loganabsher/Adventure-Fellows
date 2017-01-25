@@ -73,6 +73,7 @@ var luis = function(event){
     location.href = '../game/dayOne.html';
   }
 };
+
 luisEl.addEventListener('click', luis, false);
 //david's data
 var davidEl = document.getElementById('choice-four');
