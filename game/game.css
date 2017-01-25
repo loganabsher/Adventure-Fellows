@@ -13,20 +13,17 @@ p{
   font-size: 2em;
 }
 #game-text{
-  /*background-color: grey;*/
   height: 400px;
 }
-/*html{
-  background-color: black;
-}*/
+
 #user-box{
   float: right;
 }
 
 * {
-    background-color: #3a3a3a;
-    color: white;
-    font-family: 'VT323', monospace;
+  background-color: #3a3a3a;
+  color: white;
+  font-family: 'VT323', monospace;
 }
 
 a {
@@ -53,6 +50,11 @@ a {
   height: 4em;
   text-align: center;
 }
+
+.question:hover {
+  text-shadow: 1px 0 6px goldenrod;
+}
+/*pair programmed with Luis*/
 .hidden {
   display: none;
 }
@@ -67,3 +69,4 @@ a {
   height: 20%;
   float: right;
   border: black 2px bold;
+
