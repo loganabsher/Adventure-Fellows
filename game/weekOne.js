@@ -45,15 +45,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function failureChecker(character){
     if(character.health <= 0){
       localStorage.setItem('failure', health);
-      location.href = '../credits/credits.html';
+      location.href = './outcome.html';
     }
     if(character.grade <= 0){
       localStorage.setItem('failure', grade);
-      location.href = '../credits/credits.html';
+      location.href = './outcome.html';
     }
     if(character.social <= 0){
       localStorage.setItem('failure', social);
-      location.href = '../credits/credits.html';
+      location.href = './outcome.html';
     }
   }
 //making sure stats don't go over the max ammount

@@ -1,7 +1,7 @@
 //this is Logan's monstrosity
 'use strict';
 document.addEventListener('DOMContentLoaded', function () {
-  var questionNum = 0;
+  var count = 0;
   //array of boss images
   var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg','../images/happierAdam.jpg'];
   //array of boss questions
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var affectScore = [[[-10, -5, +5], [-10, -5, +5], [+10, +10, -50], [+20, -15, +20]], [[-10, +10, -10], [+10, -15, +15], [+20, -10, +25], [+5, -5, +0]], [[-20, +5, +0], [+0, -5, +0], [+15, -10, +0], [-10, -10, -10]], [[+0, -10, +20], [+0, +5, -10], [+0, +0, +10], [+0, +5, -5]], [[+0, -10, -10], [+0, +10, -50], [+0, -100, -100], [+0, -10, -40]]];
   var uniqueClassPerResponse = [['bussmall', 'bussmall', 'bussmall', 'bussmall'], ['salmon cookies', 'salmon cookies', 'salmon cookies', 'salmon cookies'], ['chocolate pizza', 'chocolate pizza', 'chocolate pizza', 'chocolate pizza'], ['about me', 'about me', 'about me', 'about me'], ['disapointment', 'disapointment', 'disapointment', 'disapointment']];
   //character constructor
+  var questionNum = randomNum(bossQuestionArray.length, 0);
   function Character(name, image) {
     this.name = name;
     this.image = image;
@@ -27,16 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
 //checking to see if stats fall below 0
   function failureChecker(character){
     if(character.health <= 0){
-      localStorage.setItem('failure', health);
-      location.href = '../credits/credits.html';
+      localStorage.setItem('failure', 'health');
+      location.href = './outcome.html';
     }
     if(character.grade <= 0){
-      localStorage.setItem('failure', grade);
-      location.href = '../credits/credits.html';
+      localStorage.setItem('failure', 'grade');
+      location.href = './outcome.html';
     }
     if(character.social <= 0){
-      localStorage.setItem('failure', social);
-      location.href = '../credits/credits.html';
+      localStorage.setItem('failure', 'social');
+      location.href = './outcome.html';
     }
   }
 //making sure stats don't go over the max ammount
@@ -55,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
   renderPage();
-
+  function randomNum(max, min){
+    return Math.round(Math.random() * (max - min) + min);
+  }
   function renderPage() {
     renderImage(bossImageArray[questionNum]);
     displayQuestionPrompt(questionNum);
@@ -95,17 +98,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
-    console.log(character);
-    for (var i = 0; i < affectScore.length; i++) {
-      character.health = character.health + affectScore[responseIndex][i][0];
-      console.log('this.health ' + character.health);
-      character.grade = character.grade + affectScore[responseIndex][i][1];
-      console.log('this.grade ' + character.grade);
-      character.social = character.social + affectScore[responseIndex][i][2];
-      console.log('this.social ' + character.social);
-      failureChecker(character);
-      maxStatChecker(character);
-    }
+    console.log(responseIndex);
+    character.health = character.health + affectScore[questionNum][responseIndex][0];
+    console.log('this.health ' + character.health);
+    character.grade = character.grade + affectScore[questionNum][responseIndex][1];
+    console.log('this.grade ' + character.grade);
+    character.social = character.social + affectScore[questionNum][responseIndex][2];
+    console.log('this.social ' + character.social);
+    failureChecker(character);
+    maxStatChecker(character);
   }
   //pair programmed with EVERYONE
 
@@ -152,8 +153,11 @@ document.addEventListener('DOMContentLoaded', function () {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
         clearElements();
         renderPage();
+        count++;
       });
-    } else {
+    }
+    else if(character.grade > 90 && count > 5){
+      console.log('win');
       renderTransition();
     }
   }
@@ -174,8 +178,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderTransition() {           //reveals a hidden link to transition to week2
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
+    localStorage.setItem('failure', null);
     console.log(jCharacter);
-    location.href = '../credits/credits.html';
+    location.href = './outcome.html';
     // var hiddenLink = document.getElementById('link-to-week2');
     // hiddenLink.removeAttribute('class', 'hidden');
   }

@@ -4,10 +4,20 @@ document.addEventListener('DOMContentLoaded', function () {
   var failure = localStorage.failure;
   console.log(failure);
   if(failure === null){
+    var clickEl = document.getElementById('text-holder');
     pass();
+    var clickEvent = function(event){
+      location.href = '../credits/credits.html';
+    };
+    clickEl.addEventListener('click', clickEvent, false);
   }
   else{
+    var clickEl = document.getElementById('text-holder');
     fail(failure);
+    var clickEvent = function(event){
+      location.href = '../credits/credits.html';
+    };
+    clickEl.addEventListener('click', clickEvent, false);
   }
   function fail(outcome){
     setTitle('you failed');
@@ -18,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
       write('your grade has fallen to the point where there is no point in even trying anymore, you decide to just drop out.');
     }
     else if(outcome == 'social'){
-      write('your lack of care for those close to you and your ability to anger those in your class have led you to be a social outcast, without help from those important people you fail you course.');
+      write('your lack of care for those close to you and your ability to anger those in your class have led to you being a social outcast, without help from those important people you fail you course.');
     }
   }
   function pass(){
