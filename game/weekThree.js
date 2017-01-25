@@ -87,15 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
-    console.log(character);
-    for (var i = 0; i < affectScore.length; i++) {
-      character.health = character.health + affectScore[questionNum][responseIndex][0];
-      console.log('this.health ' + character.health);
-      character.grade = character.grade + affectScore[questionNum][responseIndex][0];
-      console.log('this.grade ' + character.grade);
-      character.social = character.social + affectScore[questionNum][responseIndex][0];
-      console.log('this.social ' + character.social);
-    }
+    console.log(responseIndex);
+    character.health = character.health + affectScore[questionNum][responseIndex][0];
+    console.log('this.health ' + character.health);
+    character.grade = character.grade + affectScore[questionNum][responseIndex][1];
+    console.log('this.grade ' + character.grade);
+    character.social = character.social + affectScore[questionNum][responseIndex][2];
+    console.log('this.social ' + character.social);
   }
   //pair programmed with EVERYONE
 
@@ -106,8 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
-        updateStats(this.id);
-        updateWithRandom(this.id);
       });
     });
 
@@ -145,6 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('click');
         clearElements();
         renderPage();
+        updateStats(id);
+        updateWithRandom(id);
       });
     } else {
       renderTransition();
@@ -186,27 +184,21 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateWithRandom(responseIndex) {
-
+    console.log('we made it!');
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
-    if (increaseHealth.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.health = character.health + 10;
-      console.log(character.health);
-    } else if (decreaseHealth.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (decreaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.health = character.health - 10;
-      console.log(character.health);
-    } else if (increaseGrade.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (increaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.grade = character.grade + 10;
-      console.log(character.grade);
-    } else if (decreaseGrade.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (decreaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.grade = character.grade - 10;
-      console.log(character.grade);
-    } else if (increaseSocial.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (increaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social + 10;
-      console.log(character.social);
-    } else if (decreaseSocial.contains(randomArrays[randomNumberArray][randomNumberPrompt])) {
+    } else if (decreaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social - 10;
-      console.log(character.social);
     }
   }
 });
