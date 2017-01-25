@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
     else if(outcome == 'social'){
       write('your lack of care for those close to you and your ability to anger those in your class have led to you being a social outcast, without help from those important people you fail you course.');
     }
+    else{
+
+    }
   }
   function pass(){
     setTitle('you passed');
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var textEl = document.createElement('title');
     var bodyEl = document.getElementById('text-holder');
     var titleEl = document.createElement('h1');
-    bodyEl.textContent = text;
+    titleEl.textContent = text;
     textEl.textContent = text;
     bodyEl.appendChild(titleEl);
     headEl.appendChild(textEl);
@@ -49,6 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var bodyEl = document.getElementById('text-holder');
     var textEl = document.createElement('p');
     textEl.textContent = text;
-    headEl.appendChild(textEl);
+    bodyEl.appendChild(textEl);
   }
 });
