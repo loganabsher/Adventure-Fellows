@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {
-    location.href = '../game/dayThree.html';
+    location.href = '../game/weekThree.html';
     // var hiddenButton = document.getElementById('link-to-week3');
     // hiddenButton.removeAttribute('class', 'hidden');
   }

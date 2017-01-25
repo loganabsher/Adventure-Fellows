@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
     console.log(jCharacter);
-    location.href = '../credits/credits.html';
+    location.href = './outcome.html';
     // var hiddenLink = document.getElementById('link-to-week2');
     // hiddenLink.removeAttribute('class', 'hidden');
   }

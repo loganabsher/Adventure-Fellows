@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.character = jCharacter;
     console.log(jCharacter);
     setTimeout(function () {
-      location.href = '../game/dayTwo.html';
+      location.href = '../game/weekTwo.html';
     }, 5000);
     // var hiddenLink = document.getElementById('link-to-week2');
     // hiddenLink.removeAttribute('class', 'hidden');
