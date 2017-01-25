@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of questions/events
   var staticQuestionArray = ['Yay! You survived the first week of Code Fellows 201!', 'You get stuck when creating your salmon cookies form, what do you do?', 'Your table isn’t rendering correctly, what did you forget to do?', 'How do you spend your weekend?'];
   //array of choices for the questions
-  var staticChoiceArray = [['Let\'s Keep Going!'],['Keep working', 'Ask a TA ', 'As a classmate', 'Give up and go home'], ['You set up an infinite loop', 'Forgot to append table', 'Forgot to save before opening in browser', 'Nothing, my code is perfect and it\'s the code\'s fault'], ['Crying', 'Questioning your life choices', 'Considering dropping out', 'Applying for a job at 7-Eleven']];
+  var staticChoiceArray = [['Let\'s Keep Going!'], ['Keep working', 'Ask a TA ', 'As a classmate', 'Give up and go home'], ['You set up an infinite loop', 'Forgot to append table', 'Forgot to save before opening in browser', 'Nothing, my code is perfect and it\'s the code\'s fault'], ['Crying', 'Questioning your life choices', 'Considering dropping out', 'Applying for a job at 7-Eleven']];
   //array of responses to the choices
-  var staticResponseArray = [['Click here to proceed'],['You should really start asking for some help', 'The TA helps you tweak your code and it\'s working, but not how you wanted it to work', 'The classmate helps you get un-stuck! They are also stuck, and you help them figure out what the problem was. You high five each other and finish your assignments while eating popcorn on the sofa (+5 grade, -10 social)', 'You\'re never gonna make it through this course if you give up that easily!'],['Oh man, that sucks! You should really keep better track of your < and > operators in your for loops!', 'Easy fix, just go ahead and append that child', 'Easy fix, go back to Atom, save, and try again', 'If your code is so perfect, what are you doing here? And hey, help your classmates once in a while!'] , ['Sorry to break it to you, it\'s not going to get any better on Monday (+20 health, -10 grade, +10 social)', 'What are you doing with your life, anyway?', 'It\'s not the worst idea...', 'It might be a little better, right?']];
+  var staticResponseArray = [['Click here to proceed'], ['You should really start asking for some help', 'The TA helps you tweak your code and it\'s working, but not how you wanted it to work', 'The classmate helps you get un-stuck! They are also stuck, and you help them figure out what the problem was. You high five each other and finish your assignments while eating popcorn on the sofa (+5 grade, -10 social)', 'You\'re never gonna make it through this course if you give up that easily!'], ['Oh man, that sucks! You should really keep better track of your < and > operators in your for loops!', 'Easy fix, just go ahead and append that child', 'Easy fix, go back to Atom, save, and try again', 'If your code is so perfect, what are you doing here? And hey, help your classmates once in a while!'], ['Sorry to break it to you, it\'s not going to get any better on Monday (+20 health, -10 grade, +10 social)', 'What are you doing with your life, anyway?', 'It\'s not the worst idea...', 'It might be a little better, right?']];
   var uniqueClassPerResponse = [['proceed', 'proceed', 'proceed', 'proceed'], ['keepWorking', 'askTA', 'askClassmate', 'giveUp'], ['infinite', 'append', 'save', 'perfect'], ['cry', 'questioning', 'dropOut', 'sevenEleven']];
   // increments score  pairpgrammed with Teddy
   var affectScore = [[[0, -25, 0], [0, +25, 0], [0, +25, +25], [-25, -25, -25]], [[0, -25, 0], [0, +25, 0], [0, 0, 0], [0, -25, -25]], [[-25, 0, -25], [-25, 0, -25], [-25, 0, -25], [-25, 0, -25]]];
@@ -52,11 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
     renderImage(staticImageArray[questionNum]);
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
-    renderAvitarWithStats();
   }
-  function renderAvitarWithStats(){
-    var divEl = getElementById('avitar-stats');
-  }
+
 
   //RENDERING PAGE
   function renderImage(image) {
@@ -170,7 +167,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {
-    location.href = '../game/dayThree.html';
+    setTimeout(function () {
+      location.href = '../game/dayThree.html';
+    }, 3000);
+
     // var hiddenButton = document.getElementById('link-to-week3');
     // hiddenButton.removeAttribute('class', 'hidden');
   }
@@ -178,10 +178,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var randomNumberPrompt = Math.floor(Math.random() * 5);
 
   function displayRandomEvent() {
-    alert (randomArrays[randomNumberArray][randomNumberPrompt]);
+    alert(randomArrays[randomNumberArray][randomNumberPrompt]);
     console.log(randomArrays[randomNumberArray][randomNumberPrompt]);
   }
-//pairprogrammed with Teddy
+  //pairprogrammed with Teddy
   var generateRandom = Math.random();
 
   function trulyRandom() {

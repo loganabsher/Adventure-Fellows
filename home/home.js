@@ -7,7 +7,7 @@ userNameEl.addEventListener('submit', function(event) {
   event.preventDefault();
   document.getElementById('userName').value;
   var userName = document.getElementById('userName').value;
-  localStorage.userName = JSON.stringify(userName);
+  localStorage.userName = userName;
 
   location.href = './character/character.html';
 });
