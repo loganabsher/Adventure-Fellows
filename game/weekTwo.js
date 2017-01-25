@@ -38,25 +38,19 @@ document.addEventListener('DOMContentLoaded', function () {
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  function Character(local) {
-    this.name = local[0];
-    this.image = local[1];
-    this.health = 100;
-    this.grade = 100;
-    this.social = 100;
-  }
+  
+  var character = JSON.parse(localStorage.character);
+  console.log(character);
 
+  
   renderPage();
 
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
-    //renderAvitarWithStats();
   }
-  // function renderAvitarWithStats(){
-  //   var divEl = getElementById('avitar-stats');
-  // }
+
 
 
   //RENDERING PAGE
@@ -92,14 +86,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
-    console.log(responseIndex);
+    // console.log(responseIndex);
     character.health = character.health + affectScore[questionNum][responseIndex][0];
-    console.log('this.health ' + character.health);
+    // console.log('this.health ' + character.health);
     character.grade = character.grade + affectScore[questionNum][responseIndex][1];
-    console.log('this.grade ' + character.grade);
+    // console.log('this.grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
-    console.log('this.social ' + character.social);
+    // console.log('this.social ' + character.social);
   }
   //pair programmed with EVERYONE
 
@@ -162,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var response = document.getElementById('response-paragraph');
     console.log(response);
     var image = document.getElementById('background-image');
-    console.log('removing image');
     image.remove();
     response.remove();
     trulyRandom();
@@ -193,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateWithRandom(responseIndex) {
-    console.log('we made it!');
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
     if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
@@ -209,5 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (decreaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social - 10;
     }
+    console.log('random happened');
+    console.log(character);
   }
 });
