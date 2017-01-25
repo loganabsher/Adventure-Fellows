@@ -141,6 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+  function renderAvatarAndStats() {
+    console.log(Storage.img);
+  }
 
   function removePrompt() {
     var promptParent = document.getElementById('prompt');
