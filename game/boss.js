@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     this.social = 100;
   }
 //creaing new character from local storage/replacing default values
-  var character = new Character(localStorage.userName, localStorage.imgUrl);
+  var character = new Character(localStorage.userName, localStorage.image);
   console.log(character);
 //checking to see if stats fall below 0
   function failureChecker(character){
