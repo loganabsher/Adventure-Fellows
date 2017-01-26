@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var character = new Character();
   //checking to see if stats fall below 0, if so it links to outcome with a failure tag in local storage
   function failureChecker() {
-    if(character.health <= 0) {
+    if (character.health <= 0) {
       localStorage.setItem('failure', 'health');
       location.href = './outcome.html';
     }
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
   //creates an image in the middle of the screen
-  function renderImage(image) {
+  function renderImage(image){
     var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
     pageEl.appendChild(imageEl);
   }
   //sets image and background-color from localStorage
-  function renderAvatarAndStats() {
+  function renderAvatarAndStats(){
     var avatarImage = document.getElementById('avatar-image');
     avatarImage.style['background-color'] = localStorage['background-color'];
     avatarImage.src = localStorage.imgUrl;
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     statsGrade.textContent = character.social;
   }
   //chooses a question from the question array using questionNum
-  function displayQuestionPrompt(questionNum) {
+  function displayQuestionPrompt(questionNum){
     var questionContainer = document.getElementById('prompt');
     var displayQuestionEl = document.createElement('p');
     displayQuestionEl.setAttribute('id', 'questionNum');
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     questionContainer.appendChild(displayQuestionEl);
   }
   //pulls an array of four options from questionNum index
-  function createDialogue(image, choices, responses) {
+  function createDialogue(image, choices, responses){
     var gameText = document.getElementById('game-text');
     for (var i = 0; i < choices.length; i++) {
       var choiceEl = document.createElement('li');
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     handleChoiceClick();
   }
   //gets stats and finds affects from affectScore array, applies affects to stats
-  function updateStats(responseIndex) {
+  function updateStats(responseIndex){
     var responseIndex = parseInt(responseIndex);
     character.health = character.health + parseInt(affectScore[questionNum][responseIndex][0]);
     console.log('this.health ' + character.health);
@@ -139,13 +139,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   //removes child from diolgue box
-  function removePrompt() {
+  function removePrompt(){
     var promptParent = document.getElementById('prompt');
     var promptChild = document.getElementById('questionNum');
     promptParent.removeChild(promptChild);
   }
   //removes the choice elements
-  function removeChoiceElements() {
+  function removeChoiceElements(){
     var choicesList = document.getElementById('choices-list').children;
     var choicesArray = Array.prototype.slice.call(choicesList);
     choicesArray.forEach(function (choice) {
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   //acesses the response based on the user's choice and removes old elements
-  function renderResponse(id, questionNum) {
+  function renderResponse(id, questionNum){
     removeChoiceElements();
     removePrompt();
     var gameText = document.getElementById('game-text');  //append response to textContent div
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
   //clears response and incraments questionNum
-  function clearElements() {
+  function clearElements(){
     questionNum++;
     var response = document.getElementById('response-paragraph');
     var image = document.getElementById('background-image');
