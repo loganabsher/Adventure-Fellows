@@ -116,8 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-
-
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     renderAvatarAndStats();
@@ -300,3 +298,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+function PlaySound(mySound) {
+  var thissound = document.getElementById(mySound);
+  thissound.play();
+}
+function StopSound(mySound) {
+  var thissound = document.getElementById(mySound);
+  thissound.pause();
+  thissound.currentTime = 0;
+}

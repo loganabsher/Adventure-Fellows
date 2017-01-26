@@ -21,7 +21,6 @@ avatars.forEach(function (avatar) {
 });
 console.log(colors);
 
-
 var images = {
   allie: '../images/allieAvatar.png',
   luis: '../images/avatar_luis.png',
@@ -40,7 +39,7 @@ var allie = function (event) {
   var check = confirm('Are you sure?');
   if(check === true){
     localStorage.setItem('imgUrl', images.allie);
-    localStorage.setItem('background-color', colors["allie-character"])
+    localStorage.setItem('background-color', colors['allie-character']);
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 90);
@@ -56,7 +55,7 @@ var logan = function(event){
   var check = confirm('Are you sure?');
   if(check === true){
     localStorage.setItem('imgUrl', images.logan);
-    localStorage.setItem('background-color', colors["logan-character"])
+    localStorage.setItem('background-color', colors['logan-character']);
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 80);
@@ -70,7 +69,7 @@ var luis = function(event){
   var check = confirm('Are you sure?');
   if (check === true) {
     localStorage.setItem('imgUrl', images.luis);
-    localStorage.setItem('background-color', colors["luis-character"])
+    localStorage.setItem('background-color', colors['luis-character']);
 
     localStorage.setItem('health', 110);
     localStorage.setItem('grade', 110);
@@ -85,7 +84,7 @@ var david = function(event){
   var check = confirm('Are you sure?');
   if (check === true) {
     localStorage.setItem('imgUrl', images.david);
-    localStorage.setItem('background-color', colors["david-character"])
+    localStorage.setItem('background-color', colors['david-character']);
 
     localStorage.setItem('health', 80);
     localStorage.setItem('grade', 100);
@@ -103,6 +102,6 @@ function handleCharacterHover() {
       characterHoverSound.play();
       characterHoverSound.currentTime = 0;
 
-    })
-  })
+    });
+  });
 }
