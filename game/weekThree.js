@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var uniqueClassPerResponse = [['proceed', 'proceed', 'proceed', 'proceed'], ['blank', 'magic', 'mdn', 'inspiration'], ['leaveEarly', 'silence', 'alive', 'carryOut'], ['amazing', 'finish', 'anything', 'awesome']];
   // increments score  pairpgrammed with Teddy
-  var affectScore = [[[0, -25, 0], [0, +25, 0], [0, +25, -25], [-25, -25, +25]], [[0, -25, +25], [0, +25, -25], [0, +25, +25], [0, +25, -25]], [[+50, +50, +50], [+50, +50, +50], [+50, +50, +50], [+50, +50, +50]]];
+  var affectScore = [[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]], [[0, -25, 0], [0, +25, 0], [0, +25, -25], [-25, -25, +25]], [[0, -25, +25], [0, +25, -25], [0, +25, +25], [0, +25, -25]], [[+50, +50, +50], [+50, +50, +50], [+50, +50, +50], [+50, +50, +50]]];
 
   var increaseHealth = ['You go to the pharmacy and get a flu shot! Health increases', 'You get a good night’s sleep! Health increases', 'You decide to take a break! Health increases', 'You finish your project and leave early! Health increases', 'You have time to go to the gym! Health increases'];
 
@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
     var character = JSON.parse(localStorage.character);
-    console.log(responseIndex);
+    // console.log(responseIndex);
     character.health = character.health + affectScore[questionNum][responseIndex][0];
-    console.log('this.health ' + character.health);
+    // console.log('this.health ' + character.health);
     character.grade = character.grade + affectScore[questionNum][responseIndex][1];
-    console.log('this.grade ' + character.grade);
+    // console.log('this.grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
-    console.log('this.social ' + character.social);
+    // console.log('this.social ' + character.social);
   }
   //pair programmed with EVERYONE
 
@@ -132,11 +132,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (questionNum < staticQuestionArray.length - 1) {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
-        console.log('click');
         clearElements();
         renderPage();
+        console.log('on question number#' + questionNum + 'updating stats...')
         updateStats(id);
         updateWithRandom(id);
+        console.log(character);
       });
     } else {
       renderTransition();
@@ -149,9 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('incrementing...now on question at index: ', questionNum);
 
     var response = document.getElementById('response-paragraph');
-    console.log(response);
+    // console.log(response);
     var image = document.getElementById('background-image');
-    console.log('removing image');
+    // console.log('removing image');
     image.remove();
     response.remove();
     trulyRandom();
@@ -166,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function displayRandomEvent() {
     alert(randomArrays[randomNumberArray][randomNumberPrompt]);
-    console.log(randomArrays[randomNumberArray][randomNumberPrompt]);
+    // console.log(randomArrays[randomNumberArray][randomNumberPrompt]);
   }
   //pairprogrammed with Teddy
   var generateRandom = Math.random();
@@ -179,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateWithRandom(responseIndex) {
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
+    console.log(character);
     if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.health = character.health + 10;
     } else if (decreaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
@@ -193,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (decreaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
       character.social = character.social - 10;
     }
-    console.log(character)
+    console.log('update happened?');
+    console.log(character);
   }
 });
