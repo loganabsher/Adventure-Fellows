@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var uniqueClassPerResponse = [['rm-rf', 'cdCorrectly', 'tree', 'cmatrix'], ['spa', 'studyWeekend', 'dinner', 'sleepEight']];
   // increments score  pairpgrammed with Teddy
-  var affectScore = [[0,0,0], [[-100, -100, -100], [0, +25, 0], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
+  var affectScore = [[0, 0, 0], [[0, -120, 0], [0, +25, 0], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
 
   var increaseHealth = ['You go to the pharmacy and get a flu shot! Health increases', 'You get a good night’s sleep! Health increases', 'You decide to take a break! Health increases', 'You finish your project and leave early! Health increases', 'You have time to go to the gym! Health increases'];
 
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var character = new Character();
   console.log(character);
 //checking to see if stats fall below 0
-  function failureChecker(character){
+  function failureChecker(){
     if(character.health <= 0){
       localStorage.setItem('failure', 'health');
       location.href = './outcome.html';
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 //making sure stats don't go over the max ammount
-  function maxStatChecker(character){
+  function maxStatChecker(){
     if(character.health >= 120){
       character.health = 120;
       console.log('exceeding max health, health reset to: ' + character.health);
