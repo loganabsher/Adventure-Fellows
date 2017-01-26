@@ -2,17 +2,17 @@
 document.addEventListener('DOMContentLoaded', function () {
   var questionNum = 0;
   //array of place images
-  var staticImageArray = ['../images/cf_building.jpg', '../images/cf_building.jpg', '../images/cf_building.jpg'];
+  var staticImageArray = ['../images/cartoon_console_question.jpeg', '../images/cartoon_space_needle.jpeg', '../images/cartoon_space_needle.jpeg'];
   //array of questions/events
-  var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line?', 'How do you spend the weekend?'];
+  var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line to access the class directory?', 'How do you spend the weekend?'];
   //array of choices for the questions
-  var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa', 'study all weekend', 'go out for dinner and drinks with friends', 'sleep your standard eight hours, run, study']];
+  var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa', 'Study all weekend', 'Go out for dinner and drinks with friends', 'Sleep your standard eight hours, run, and study']];
   //array of responses to the choices
-  var staticResponseArray = [['You deleted all files on your machine, you can no longer continue in the class. (-100, health, -100 grade)', 'You follow along with the class, learing much about how to properly operate your computer.', 'You tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;). (+5 grade, -10 social)', 'You cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture. (-10 grade)'], ['You go to the spa to rejuvenate and relax, sleeping in and lounging all weekend. (+20 health, -10 grade, +10 social)', 'You study very hard all weekend, not getting a chance to relax or see any friends. (+10 grade, - 15 social)', 'You go out drinking all weekend having a terrible hangover, but somehow on Monday your code is finished? (-15 health, +5 grade, +20 social)', 'You get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society. (+5 health, +5 grade, -5 social)']];
+  var staticResponseArray = [['You deleted all files on your machine, you can no longer continue in the class.', 'You follow along with the class, learing about how to properly operate your computer.', 'You tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;)', 'You cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture.'], ['You go to the spa to rejuvenate and relax, sleeping in and lounging all weekend.', 'You study very hard all weekend, not getting a chance to relax or see any friends.', 'You go out drinking all weekend and have a terrible hangover, but somehow on Monday your code is finished?', 'You get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society.']];
 
   var uniqueClassPerResponse = [['rm-rf', 'cdCorrectly', 'tree', 'cmatrix'], ['spa', 'studyWeekend', 'dinner', 'sleepEight']];
   // increments score  pairpgrammed with Teddy
-  var affectScore = [[[-100, -100, -100], [0, 0, +25], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
+  var affectScore = [[0, 0, 0], [[0, -120, 0], [0, +25, 0], [0, 0, 0], [0, -25, 0]], [[+25, -25, 0], [-25, +25, -25], [-25, -25, +25], [+10, +10, +10]]];
 
   var increaseHealth = ['You go to the pharmacy and get a flu shot! Health increases', 'You get a good night’s sleep! Health increases', 'You decide to take a break! Health increases', 'You finish your project and leave early! Health increases', 'You have time to go to the gym! Health increases'];
 
@@ -31,32 +31,81 @@ document.addEventListener('DOMContentLoaded', function () {
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  function Character(name, image) {
-    this.name = name;
-    this.image = image;
-    this.health = 100;
-    this.grade = 100;
-    this.social = 100;
+  function Character() {            //please ask before changing this constructor
+    console.log('constructing character');
+    this.name = localStorage.userName;
+    this.image = localStorage.imgUrl;
+    this.health = parseInt(localStorage.health);
+    this.grade = parseInt(localStorage.grade);
+    this.social = parseInt(localStorage.social);
+    this.character = JSON.stringify(this);
   }
 
-  var character = new Character(localStorage.userName, localStorage.imgUrl);
-  console.log(character);
-
+  var character = new Character();
   renderPage();
+
+  //checking to see if stats fall below 0
+  function failureChecker() {
+    if(character.health <= 0) {
+      localStorage.setItem('failure', 'health');
+      location.href = './outcome.html';
+    }
+    if (character.grade <= 0) {
+      localStorage.setItem('failure', 'grade');
+      location.href = './outcome.html';
+    }
+    if (character.social <= 0) {
+      localStorage.setItem('failure', 'social');
+      location.href = './outcome.html';
+    }
+  }
+//making sure stats don't go over the max ammount
+  function maxStatChecker(){
+    if(character.health >= 120){
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if (character.grade >= 120) {
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if (character.social >= 120) {
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
+
+
 
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
+    renderAvatarAndStats();
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
 
-  //RENDERING PAGE
+  //RENDERING PAGE SECTION
   function renderImage(image) {
     var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
     pageEl.appendChild(imageEl);
+  }
+
+  function renderAvatarAndStats() {
+    //sets image and background-color from localStorage
+    var avatarImage = document.getElementById('avatar-image');
+    avatarImage.style['background-color'] = localStorage['background-color'];
+    avatarImage.src = localStorage.imgUrl;
+
+    //stats
+    var statsGrade = document.getElementById('stats-health');
+    statsGrade.textContent = character.health;
+    var statsGrade = document.getElementById('stats-grade');
+    statsGrade.textContent = character.grade;
+    var statsGrade = document.getElementById('stats-social');
+    statsGrade.textContent = character.social;
   }
 
   function displayQuestionPrompt(questionNum) {
@@ -81,22 +130,20 @@ document.addEventListener('DOMContentLoaded', function () {
     handleChoiceClick();      //
   }
 
+  //USER INPUT SECTION
+
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
-    console.log('character ' + character);
-    for (var i = 0; i < affectScore.length; i++) {
-      console.log('affectScore: ' + affectScore);
-      console.log('affectScore[responseIndex] = ' + affectScore[questionNum][responseIndex][0]);
-      console.log(responseIndex);
-      character.health = character.health + affectScore[questionNum][responseIndex][0];
-      console.log('this.health ' + character.health);
-      character.grade = character.grade + affectScore[questionNum][responseIndex][1];
-      console.log('this.grade ' + character.grade);
-      character.social = character.social + affectScore[questionNum][responseIndex][2];
-      console.log('this.social ' + character.social);
-    }
-    updateWithRandom(responseIndex);
+    // var character = JSON.parse(localStorage.character);
+    // console.log(responseIndex);
+    character.health = character.health + parseInt(affectScore[questionNum][responseIndex][0]);
+    console.log('this.health ' + character.health);
+    character.grade = character.grade + affectScore[questionNum][responseIndex][1];
+    console.log('this.grade ' + character.grade);
+    character.social = character.social + affectScore[questionNum][responseIndex][2];
+    console.log('this.social ' + character.social);
+    failureChecker();
+    maxStatChecker();
   }
   //pair programmed with EVERYONE
 
@@ -106,9 +153,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
+        renderAvatarAndStats();
         renderResponse(this.id, questionNum);
-        updateStats(this.id);
-        updateWithRandom(this.id);
       });
     });
   }
@@ -142,8 +188,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (questionNum < staticQuestionArray.length - 1) {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
+        console.log('updatingStats');
         clearElements();
         renderPage();
+        updateStats(id);
+        console.log(character);
+        updateWithRandom(id);
       });
     } else {
       renderTransition();
@@ -153,12 +203,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function clearElements() {
     questionNum++;              //after rendering response, move to next question
 
-    console.log('incrementing...now on question at index: ', questionNum);
+    // console.log('incrementing...now on question at index: ', questionNum);
 
     var response = document.getElementById('response-paragraph');
     console.log(response);
     var image = document.getElementById('background-image');
-    console.log('removing image');
+    // console.log('removing image');
     image.remove();
     response.remove();
     trulyRandom();
@@ -167,20 +217,19 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderTransition() {           //reveals a hidden link to transition to week2
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
-    console.log(jCharacter);
-    location.href = '../game/dayTwo.html';
-    // var hiddenLink = document.getElementById('link-to-week2');
-    // hiddenLink.removeAttribute('class', 'hidden');
+    setTimeout(function () {
+      location.href = '../game/weekTwo.html';
+    }, 3000);
   }
 
   var randomNumberArray = Math.floor(Math.random() * 6);
   var randomNumberPrompt = Math.floor(Math.random() * 5);
 
   function displayRandomEvent() {
-    alert (randomArrays[randomNumberArray][randomNumberPrompt]);
+    alert(randomArrays[randomNumberArray][randomNumberPrompt]);
     console.log(randomArrays[randomNumberArray][randomNumberPrompt]);
   }
-//pairprogrammed with Teddy
+  //pairprogrammed with Teddy
   var generateRandom = Math.random();
 
   function trulyRandom() {
@@ -190,28 +239,21 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateWithRandom(responseIndex) {
-
     console.log('we made it!');
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
+    // var character = JSON.parse(localStorage.character);
     if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.health = character.health + 10;
-      console.log(character.health);
+      character.health = parseInt(character.health) + 10;
     } else if (decreaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.health = character.health - 10;
-      console.log(character.health);
+      character.health = parseInt(character.health) - 10;
     } else if (increaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.grade = character.grade + 10;
-      console.log(character.grade);
+      character.grade = parseInt(character.grade) + 10;
     } else if (decreaseGrade.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.grade = character.grade - 10;
-      console.log(character.grade);
+      character.grade = parseInt(character.grade) - 10;
     } else if (increaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.social = character.social + 10;
-      console.log(character.social);
+      character.social = parseInt(character.social) + 10;
     } else if (decreaseSocial.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
-      character.social = character.social - 10;
-      console.log(character.social);
+      character.social = parseInt(character.social) - 10;
     } else {
       console.log('oops!');
     }

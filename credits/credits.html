@@ -6,32 +6,25 @@
     <link rel="stylesheet" type="text/css" href="credits.css" />
     <title>Welcome to Adventure Fellows!</title>
   </head>
-  <body>
-    <marquee behavior="scroll" direction="up" style="height:700px;">
+  <body class="redirect" onclick="redirect()">
+    <marquee class="redirect" behavior="scroll" direction="up" style="height:700px;" scrollamount="4">
     <audio src="../sounds/Ludovico Einaudi_12_Nuvole bianche.mp3" type="audio/mp3" autoplay></audio>
-    <div>
-      <header id="header">
-        <a href="../index.html">Home</a>
-        <a href="../character/character.html">Characters</a>
-        <a href="credits.html">Credits</a>
-      </header>
-    </div>
     <div class="aboutUs">
       <div class="allie bio">
-        <img src="../images/IMG_0009.jpg" alt="allie smiling">
-        <p>Allie is originally from Cleveland, Ohio. By default, she is a Browns fan, which is a tough life to lead but she does it with passion. She started learning the basics of coding while working for a wedding website called Joy and that sparked her interest in computer programming and led her to Code Fellows! Since moving to Seattle, she has spent a lot of time hiking and snowboarding. She is always on the hunt for the perfect sushi, perfect pizza, and perfect chocolate chip cookie. One of her favorite Seattle activities is walking around Pike Place Market while eating mini maple bacon donuts from Daily Dozen.</p>
+        <img class="redirect" src="../images/IMG_0009.jpg" alt="allie smiling">
+        <p class="redirect">Allie is originally from Cleveland, Ohio. By default, she is a Browns fan, which is a tough life to lead but she does it with passion. She started learning the basics of coding while working for a wedding website called Joy and that sparked her interest in computer programming and led her to Code Fellows! Since moving to Seattle, she has spent a lot of time hiking and snowboarding. She is always on the hunt for the perfect sushi, perfect pizza, and perfect chocolate chip cookie. One of her favorite Seattle activities is walking around Pike Place Market while eating mini maple bacon donuts from Daily Dozen.</p>
       </div>
       <div class="logan bio">
-        <img src="../images/IMG_0006.jpg" alt="logan smiling">
-        <p>The things I really enjoy in life are cats videos, cats, video games, swimming, cooking, and spending time with my friends and girlfriend. I started coding about a year ago using java in my CSC 142 and 143 classes, I decided I really liked coding, but I wasn’t really sure where to go from there because college is really expensive and I felt I was learning a lot of useless information. I went into my brother’s workplace and met a few of his coworkers, who were Code Fellows alumni, I talked with them and they highly recommended this bootcamp.</p>
+        <img class="redirect" src="../images/IMG_0006.jpg" alt="logan smiling">
+        <p class="redirect">The things I really enjoy in life are cats videos, cats, video games, swimming, cooking, and spending time with my friends and girlfriend. I started coding about a year ago using java in my CSC 142 and 143 classes, I decided I really liked coding, but I wasn’t really sure where to go from there because college is really expensive and I felt I was learning a lot of useless information. I went into my brother’s workplace and met a few of his coworkers, who are Code Fellows alumni. I talked with them and they highly recommended this bootcamp.</p>
       </div>
       <div class="luis bio">
-        <img src="../images/IMG_0015.jpg" alt="luis smiling">
-        <p></p>
+        <img class="redirect" src="../images/IMG_0015.jpg" alt="luis smiling">
+        <p class="redirect">Luis is a man of few words.</p>
       </div>
       <div class="teddy bio">
-        <img src="../images/IMG_0012.jpg" alt="teddy smiling">
-        <p>The reason I started looking into coding is I knew I wanted to to upgrade my life and do something I really enjoyed. I knew that I was not doing well as a mechanic and I hated always being disgusting and going home after work bruised and battered. I was told by my fiance's dad about Code Fellows and I am so glad and excited to be able to do this. I am a passionate reader with no care which type as long as it keeps my attention. Enjoys playing a well thought out video game and loves to read and watch videos that coincided with said video game. While in the military I was enjoying the life of adventure but was cut short by Crohn’s Disease and was medically retired. I miss the camaraderie and brotherhood that came along with the military and heard that it was the same in the coding world. </p>
+        <img class="redirect" src="../images/IMG_0012.jpg" alt="teddy smiling">
+        <p class="redirect">The reason I started looking into coding is I knew I wanted to to upgrade my life and do something I really enjoyed. I knew that I was not doing well as a mechanic and I hated always being disgusting and going home after work bruised and battered. I was told by my fiance's dad about Code Fellows and I am so glad and excited to be able to do this. I am a passionate reader with no care which type as long as it keeps my attention. I enjoy playing a well thought out video game and love to read and watch videos that coincide with said video game. While in the military I was enjoying the life of adventure but was cut short by Crohn’s Disease and was medically retired. I miss the camaraderie and brotherhood that came along with the military and heard that it was the same in the coding world. </p>
       </div>
     </div>
     <div class="thanks">
@@ -42,13 +35,27 @@
       <img class="rozi" src="../images/IMG_0025.jpg" alt="rozi smiling">
       <img class="jp" src="../images/IMG_0027.jpg" alt="jp smiling">
     </div>
+    <div class="redirect">
+      <p class="redirect" id="adamParagraph">Thank you to Adam for filling our brains with more information than we can handle. Sorry we were forced to defeat you as the Boss, we had to do it to move on to 301. Sorry not sorry.</p>
+      <img class="redirect" id="adam" src="../images/happierAdam.jpg" alt="happier Adam">
+    </div>
+    <div class="adamParagraph">
+      <p>Sources/things we stole:</p>
+      <p>Web pages:</p>
+      <p>http://www167.lunapic.com/</p>
+      <p>https://thepiratebay.org/</p>
+      <p>http://www.avatarsinpixels.com/</p>
+      <p>Music:</p>
+      <p>credits song: Ludovico Einaudi-Nouvelle Blanche</p>
+    </div>
     <div>
       <p class="adamParagraph">Thank you to Adam for filling our brains with more information than we can handle. Sorry we were forced to defeat you as the Boss, we had to do it to move on to 301. Sorry not sorry.</p>
       <img id="adam" src="../images/happierAdam.jpg" alt="happier Adam">
     </div>
     <div class="footer">
-      <p>@copywrite Adventure Fellows 2017</p>
+      <p>@ Adventure Fellows 2017</p>
     </div>
     </marquee>
+    <script src="credits.js"></script>
   </body>
 </html>
