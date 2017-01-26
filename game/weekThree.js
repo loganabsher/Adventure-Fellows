@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var character = JSON.parse(localStorage.character);
     // console.log(responseIndex);
     character.health = character.health + affectScore[questionNum][responseIndex][0];
-    // console.log('this.health ' + character.health);
+    console.log('this.health ' + character.health);
     character.grade = character.grade + affectScore[questionNum][responseIndex][1];
-    // console.log('this.grade ' + character.grade);
+    console.log('this.grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
-    // console.log('this.social ' + character.social);
+    console.log('this.social ' + character.social);
     failureChecker();
     maxStatChecker();
   }

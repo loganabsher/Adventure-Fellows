@@ -84,11 +84,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var responseIndex = parseInt(responseIndex);
     // console.log(responseIndex);
     character.health = character.health + affectScore[questionNum][responseIndex][0];
-    // console.log('character health ' + character.health);
+    console.log('character health ' + character.health);
     character.grade = character.grade + affectScore[questionNum][responseIndex][1];
-    // console.log('character grade ' + character.grade);
+    console.log('character grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
-    // console.log('character social ' + character.social);
+    console.log('character social ' + character.social);
     failureChecker();
     maxStatChecker();
   }

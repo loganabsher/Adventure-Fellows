@@ -17,7 +17,7 @@
   /*width: 48%;
 }*/
 
-.thanks p, .adamParagraph {
+.thanks p {
   font-size: 35px;
   margin-top: 70px;
   margin-bottom: 30px;
@@ -38,13 +38,6 @@
   height: auto;
   border-radius: 100%;
   padding: 60px 75px;
-}
-
-.footer {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 200px;
-  display: block;
 }
 
 #header {
@@ -76,6 +69,24 @@ a {
   height: auto;
 }
 
+.whichWeek {
+  font-size: 60px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#adamParagraph {
+  font-size: 37px;
+  text-align: center;
+  margin: 0px auto;
+}
+
+.footer {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 200px;
+  margin: 0px auto;
+}
 /*.aboutUs {
   width: 45%;
   font-size: 30px;
