@@ -15,18 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var uniqueClassPerResponse = [['busmall', 'busmall', 'busmall', 'busmall'], ['salmon cookies', 'salmon cookies', 'salmon cookies', 'salmon cookies'], ['chocolate pizza', 'chocolate pizza', 'chocolate pizza', 'chocolate pizza'], ['about me', 'about me', 'about me', 'about me'], ['disapointment', 'disapointment', 'disapointment', 'disapointment']];
   //character constructor
   var questionNum = randomNum(bossQuestionArray.length - 1, 0);
-  function Character(name, image) {
-    this.name = name;
-    this.image = image;
-    this.health = 100;
-    this.grade = 100;
-    this.social = 100;
-  }
+  var character = JSON.parse(localStorage.character);
 //creaing new character from local storage/replacing default values
-  var character = new Character(localStorage.userName, localStorage.image);
   console.log(character);
 //checking to see if stats fall below 0
-  function failureChecker(character){
+  function failureChecker(){
     if(character.health <= 0){
       localStorage.setItem('failure', 'health');
       location.href = './outcome.html';
@@ -41,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 //making sure stats don't go over the max ammount
-  function maxStatChecker(character){
+  function maxStatChecker(){
     if(character.health >= 120){
       character.health = 120;
       console.log('exceeding max health, health reset to: ' + character.health);
