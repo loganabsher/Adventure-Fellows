@@ -57,9 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   renderPage();
   function randomNum(max, min){
-    return Math.round(Math.random() * (max - min) + min);
+    return Math.round(Math.random() * max + min);
   }
   function renderPage() {
+    questionNum = randomNum(bossQuestionArray.length - 1, 0);
     renderImage(bossImageArray[questionNum]);
     displayQuestionPrompt(questionNum);
     createDialogue(bossImageArray[questionNum], bossChoiceArray[questionNum], bossResponseArray[questionNum]);
@@ -161,11 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function clearElements() {
-    questionNum++;              //after rendering response, move to next question
-
-    console.log('incrementing...now on question at index: ', questionNum);
-
+  function clearElements() {              //after rendering response, move to next question
     var response = document.getElementById('response-paragraph');
     console.log(response);
     var image = document.getElementById('background-image');
