@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
+    renderAvatarAndStats();
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
@@ -54,6 +55,23 @@ document.addEventListener('DOMContentLoaded', function () {
     imageEl.setAttribute('src', image);
     pageEl.appendChild(imageEl);
   }
+
+
+  function renderAvatarAndStats() {
+    //sets image and background-color from localStorage
+    var avatarImage = document.getElementById('avatar-image');
+    avatarImage.style['background-color'] = localStorage['background-color'];
+    avatarImage.src = localStorage.imgUrl;
+
+    //stats
+    var statsGrade = document.getElementById('stats-grade');
+    statsGrade.textContent = character.grade;
+    var statsHealth = document.getElementById('stats-health');
+    statsHealth.textContent = character.health;
+    var statsSocial = document.getElementById('stats-social');
+    statsSocial.textContent = character.social;
+  }
+
 
   function displayQuestionPrompt(questionNum) {
     var questionContainer = document.getElementById('prompt');
@@ -129,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
+        renderAvatarAndStats();
         renderResponse(this.id, questionNum);
       });
     });
@@ -230,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
       character.social = character.social - 10;
     }
     console.log('update happened?');
+    renderAvatarAndStats();
     console.log(character);
   }
 });

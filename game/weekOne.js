@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var character = new Character();
   renderPage();
 
-  console.log(character);
   //checking to see if stats fall below 0
   function failureChecker() {
     if (character.health <= 0) {
@@ -76,19 +75,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+
+
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
+    renderAvatarAndStats();
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
 
-  //RENDERING PAGE
+  //RENDERING PAGE SECTION
   function renderImage(image) {
     var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
     pageEl.appendChild(imageEl);
+  }
+
+  function renderAvatarAndStats() {
+    //sets image and background-color from localStorage
+    var avatarImage = document.getElementById('avatar-image');
+    avatarImage.style['background-color'] = localStorage['background-color'];
+    avatarImage.src = localStorage.imgUrl;
+
+    //stats
+    var statsGrade = document.getElementById('stats-health');
+    statsGrade.textContent = character.health;
+    var statsGrade = document.getElementById('stats-grade');
+    statsGrade.textContent = character.grade;
+    var statsGrade = document.getElementById('stats-social');
+    statsGrade.textContent = character.social;
   }
 
   function displayQuestionPrompt(questionNum) {
@@ -113,6 +130,8 @@ document.addEventListener('DOMContentLoaded', function () {
     handleChoiceClick();      //
   }
 
+  //USER INPUT SECTION
+
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
     // var character = JSON.parse(localStorage.character);
@@ -134,13 +153,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
+        renderAvatarAndStats();
         renderResponse(this.id, questionNum);
       });
     });
-  }
-
-  function renderAvatarAndStats() {
-    // console.log(Storage.img);
   }
 
   function removePrompt() {
