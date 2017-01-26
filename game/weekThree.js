@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // console.log(local);
   //character constructor
   var character = JSON.parse(localStorage.character);
-
   renderPage();
 
   function renderPage() {
@@ -74,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var choicesList = document.getElementById('choices-list');
       choicesList.appendChild(choiceEl);
     }
-    handleChoiceClick();      //
+    handleChoiceClick();
 
   }
 
