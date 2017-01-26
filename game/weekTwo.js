@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  
+
   var character = JSON.parse(localStorage.character);
   console.log(character);
   renderPage();
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
-
 
   //RENDERING PAGE
   function renderImage(image) {
@@ -90,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // console.log('character grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
     // console.log('character social ' + character.social);
+    failureChecker();
+    maxStatChecker();
   }
   //pair programmed with EVERYONE
 

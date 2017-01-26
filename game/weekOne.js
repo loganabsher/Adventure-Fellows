@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     this.health = parseInt(localStorage.health);
     this.grade = parseInt(localStorage.grade);
     this.social = parseInt(localStorage.social);
-    this.character = JSON.stringify(this);  
+    this.character = JSON.stringify(this);
   }
 
   var character = new Character();
@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // console.log('this.grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
     // console.log('this.social ' + character.social);
+    failureChecker();
+    maxStatChecker();
   }
   //pair programmed with EVERYONE
 
@@ -195,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {           //reveals a hidden link to transition to week2
-    var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through  
+    var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
     setTimeout(function () {
       location.href = '../game/weekTwo.html';

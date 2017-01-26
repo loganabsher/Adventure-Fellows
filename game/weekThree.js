@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // console.log('this.grade ' + character.grade);
     character.social = character.social + affectScore[questionNum][responseIndex][2];
     // console.log('this.social ' + character.social);
+    failureChecker();
+    maxStatChecker();
   }
   //pair programmed with EVERYONE
 
