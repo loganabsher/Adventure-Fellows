@@ -50,7 +50,7 @@ var allie = function (event) {
 allieEl.addEventListener('click', allie, false);
 //Logan's data
 var loganEl = document.getElementById('choice-two');
-//var loganChar = document.getElementById('logan-character');
+var loganChar = document.getElementById('logan-character');
 console.log(loganChar);
 var logan = function(event){
   var check = confirm('Are you sure?');
