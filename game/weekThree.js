@@ -39,7 +39,36 @@ document.addEventListener('DOMContentLoaded', function () {
   //character constructor
   var character = JSON.parse(localStorage.character);
   renderPage();
-
+//checking to see if stats fall below 0
+  function failureChecker(){
+    if(character.health <= 0){
+      localStorage.setItem('failure', 'health');
+      location.href = './outcome.html';
+    }
+    if(character.grade <= 0){
+      localStorage.setItem('failure', 'grade');
+      location.href = './outcome.html';
+    }
+    if(character.social <= 0){
+      localStorage.setItem('failure', 'social');
+      location.href = './outcome.html';
+    }
+  }
+//making sure stats don't go over the max ammount
+  function maxStatChecker(){
+    if(character.health >= 120){
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if(character.grade >= 120){
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if(character.social >= 120){
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     displayQuestionPrompt(questionNum);
@@ -135,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
         clearElements();
         renderPage();
-        console.log('on question number#' + questionNum + 'updating stats...')
+        console.log('on question number#' + questionNum + 'updating stats...');
         updateStats(id);
         updateWithRandom(id);
         console.log(character);
