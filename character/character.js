@@ -13,6 +13,11 @@
 //
 //   });
 // });
+
+var characterSelectMusic = document.getElementById('character-select-music');
+var characterHoverSound = document.getElementById('character-hover-sound');
+var gameStartSound = document.getElementById('game-start-sound');
+characterSelectMusic.play();
 function displayText() {
   var bodyEl = document.getElementById('body');
   var user = localStorage.userName;
@@ -40,11 +45,15 @@ var images = {
 }
 
 displayText();
+handleCharacterHover();
 //Logan contribution
 //Allie's Data
 var allieEl = document.getElementById('choice-one');
 var allie = function (event) {
+
   console.log('click');
+  gameStartSound.play();
+  gameStartSound.currentTime = 0;
 
   var check = confirm('Are you sure?');
   if (check === true) {
@@ -112,3 +121,15 @@ var david = function (event) {
   }
 };
 davidEl.addEventListener('click', david, false);
+
+function handleCharacterHover() {
+  var avatarsCollection = document.getElementsByClassName('avatar');
+  var avatars = Array.prototype.slice.call(avatarsCollection);
+  avatars.forEach(function (avatar) {
+    avatar.addEventListener('mouseover', function () {
+      characterHoverSound.play();
+      characterHoverSound.currentTime = 0;
+
+    })
+  })
+}
