@@ -1,8 +1,10 @@
 'use strict';
+//creating sound for each click event
 var characterSelectMusic = document.getElementById('character-select-music');
 var characterHoverSound = document.getElementById('character-hover-sound');
 var gameStartSound = document.getElementById('game-start-sound');
 characterSelectMusic.play();
+//getting username from local storage, printing it with some greeting text
 function displayText() {
   var bodyEl = document.getElementById('body');
   var user = localStorage.userName;
@@ -10,17 +12,14 @@ function displayText() {
   createHeader.textContent = ('Hello ' + user + ', please choose a character:'); //please do NOT call JSON.parse on user
   bodyEl.appendChild(createHeader);
 }
-
-//gets background colors
+//gets background colors and applies them to out avatars
 var avatarsCollection = document.getElementsByClassName('avatar');
 var avatars = Array.prototype.slice.call(avatarsCollection);
 var colors = {};
 avatars.forEach(function (avatar) {
-  console.log(avatar);
   colors[avatar.id] = window.getComputedStyle(avatar).backgroundColor;
 });
-console.log(colors);
-
+//referencing cartoon avatars
 var images = {
   allie: '../images/allieAvatar.png',
   luis: '../images/avatar_luis.png',
@@ -29,7 +28,6 @@ var images = {
 };
 displayText();
 handleCharacterHover();
-//Logan contribution
 //Allie's Data
 var allieEl = document.getElementById('choice-one');
 var allie = function (event) {
@@ -46,6 +44,7 @@ var allie = function (event) {
     location.href = '../game/intro.html';
   }
 };
+//Allie's click event
 allieEl.addEventListener('click', allie, false);
 //Logan's data
 var loganEl = document.getElementById('choice-two');
@@ -62,6 +61,7 @@ var logan = function(event){
     location.href = '../game/intro.html';
   }
 };
+//Logan's click event
 loganEl.addEventListener('click', logan, false);
 //Luis' data
 var luisEl = document.getElementById('choice-three');
@@ -70,15 +70,15 @@ var luis = function(event){
   if (check === true) {
     localStorage.setItem('imgUrl', images.luis);
     localStorage.setItem('background-color', colors['luis-character']);
-
     localStorage.setItem('health', 110);
     localStorage.setItem('grade', 110);
     localStorage.setItem('social', 80);
     location.href = '../game/intro.html';
   }
 };
+//Luis's click event
 luisEl.addEventListener('click', luis, false);
-//david's data
+//David's data
 var davidEl = document.getElementById('choice-four');
 var david = function(event){
   var check = confirm('Are you sure?');
@@ -92,8 +92,9 @@ var david = function(event){
     location.href = '../game/intro.html';
   }
 };
+//David's click event
 davidEl.addEventListener('click', david, false);
-
+//creates glow and sound when hover over character images
 function handleCharacterHover() {
   var avatarsCollection = document.getElementsByClassName('avatar');
   var avatars = Array.prototype.slice.call(avatarsCollection);
