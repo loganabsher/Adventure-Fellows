@@ -90,6 +90,37 @@ document.addEventListener('DOMContentLoaded', function () {
     failureChecker();
     maxStatChecker();
   }
+
+  function failureChecker() {
+    if (character.health <= 0) {
+      localStorage.setItem('failure', 'health');
+      location.href = './outcome.html';
+    }
+    if (character.grade <= 0) {
+      localStorage.setItem('failure', 'grade');
+      location.href = './outcome.html';
+    }
+    if (character.social <= 0) {
+      localStorage.setItem('failure', 'social');
+      location.href = './outcome.html';
+    }
+  }
+
+  function maxStatChecker() {
+    if (character.health >= 120) {
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if (character.grade >= 120) {
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if (character.social >= 120) {
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
+
   //pair programmed with EVERYONE
 
   function handleChoiceClick() {    //renders the response
@@ -160,8 +191,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {
-    var hiddenButton = document.getElementById('link-to-boss');
-    hiddenButton.removeAttribute('class', 'hidden');
+    var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
+    localStorage.character = jCharacter;
+    setTimeout(function () {
+      location.href = '../game/boss.html';
+    }, 3000);
   }
   var randomNumberArray = Math.floor(Math.random() * 6);
   var randomNumberPrompt = Math.floor(Math.random() * 5);

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var staticResponseArray = [['Click here to proceed'], ['You should really start asking for some help', 'The TA helps you tweak your code and it\'s working, but not how you wanted it to work', 'The classmate helps you get un-stuck! They are also stuck, and you help them figure out what the problem was. You high five each other and finish your assignments while eating popcorn on the sofa', 'You\'re never gonna make it through this course if you give up that easily!'], ['Oh man, that sucks! You should really keep better track of your < and > operators in your for loops!', 'Easy fix, just go ahead and append that child', 'Easy fix, go back to Atom, save, and try again', 'If your code is so perfect, what are you doing here? And hey, help your classmates once in a while!'], ['Sorry to break it to you, it\'s not going to get any better on Monday', 'What are you doing with your life, anyway?', 'It\'s not the worst idea...', 'It might be a little better, right?']];
   var uniqueClassPerResponse = [['proceed', 'proceed', 'proceed', 'proceed'], ['keepWorking', 'askTA', 'askClassmate', 'giveUp'], ['infinite', 'append', 'save', 'perfect'], ['cry', 'questioning', 'dropOut', 'sevenEleven']];
   // increments score  pairpgrammed with Teddy
-  var affectScore = [[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],[[0, -25, 0], [0, +25, 0], [0, +25, +25], [-25, -25, -25]], [[0, -25, 0], [0, +25, 0], [0, 0, 0], [0, -25, -25]], [[-25, 0, -25], [-25, 0, -25], [-25, 0, -25], [-25, 0, -25]]];
+  var affectScore = [[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]], [[0, -25, 0], [0, +25, 0], [0, +25, +25], [-25, -25, -25]], [[0, -25, 0], [0, +25, 0], [0, 0, 0], [0, -25, -25]], [[-25, 0, -25], [-25, 0, -25], [-25, 0, -25], [-25, 0, -25]]];
   var increaseHealth = ['You go to the pharmacy and get a flu shot! Health increases', 'You get a good night’s sleep! Health increases', 'You decide to take a break! Health increases', 'You finish your project and leave early! Health increases', 'You have time to go to the gym! Health increases'];
 
   var decreaseHealth = ['You don\'t wash your hands and end up with the flu! Health decreases', 'Who has time to cook? Eat fast food instead! Health decreases', 'Stressed? Here\'s a case of insomnia! Health decreases', 'Work nonstop for 8 hours, who needs sleep anyway!? Health decreases', 'Walking home from school, pull a muscle! Health decreases'];
@@ -93,6 +93,36 @@ document.addEventListener('DOMContentLoaded', function () {
     maxStatChecker();
   }
   //pair programmed with EVERYONE
+
+  function failureChecker() {
+    if (character.health <= 0) {
+      localStorage.setItem('failure', 'health');
+      location.href = './outcome.html';
+    }
+    if (character.grade <= 0) {
+      localStorage.setItem('failure', 'grade');
+      location.href = './outcome.html';
+    }
+    if (character.social <= 0) {
+      localStorage.setItem('failure', 'social');
+      location.href = './outcome.html';
+    }
+  }
+
+  function maxStatChecker() {
+    if (character.health >= 120) {
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if (character.grade >= 120) {
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if (character.social >= 120) {
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
 
   function handleChoiceClick() {    //renders the response
     var choicesCollection = document.getElementById('choices-list').children;
