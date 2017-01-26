@@ -85,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
     pageEl.appendChild(imageEl);
   }
 
-
   function renderAvatarAndStats() {
     //sets image and background-color from localStorage
     var avatarImage = document.getElementById('avatar-image');
@@ -100,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var statsSocial = document.getElementById('stats-social');
     statsSocial.textContent = character.social;
   }
-
 
   function displayQuestionPrompt(questionNum) {
     var questionContainer = document.getElementById('prompt');

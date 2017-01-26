@@ -3,7 +3,6 @@
   color: white;
   font-family: 'VT323', monospace;
 }
-
 #background-image, #game-text{
   width: 80%;
   height: 600px;
@@ -27,12 +26,13 @@ p{
 }
 
 .linkToOne {
+  font-size: 3em;
   margin: 0px auto;
   padding-left: 360px;
 }
 
 a {
-  font-size: 40px;
+  font-size: 3em;
   padding: 1em;
   padding-top: 1%;
   margin: 0px auto;
@@ -40,7 +40,7 @@ a {
 }
 
 .footer {
-  font-size: 26px;
+  font-size: 1em;
   text-align: center;
   margin-top: 35px;
 }
@@ -90,7 +90,7 @@ a {
 }
 
 .whichWeek {
-  font-size: 60px;
+  font-size: 4em;
   text-align: center;
   margin-top: 15px;
 }
