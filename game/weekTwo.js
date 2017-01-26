@@ -30,7 +30,55 @@ document.addEventListener('DOMContentLoaded', function () {
   var randomArrays = [increaseHealth, decreaseHealth, increaseGrade, decreaseGrade, increaseSocial, decreaseSocial];
   //collecting local storage from last page
   var character = JSON.parse(localStorage.character);
+  //creating character chart
   console.log(character);
+  var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: ['Health', 'Grade', 'Social'],
+      datasets: [{
+        data: [health, grade, social],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(255, 206, 86, 0.7)',
+          // 'rgba(75, 192, 192, 0.2)',
+          // 'rgba(153, 102, 255, 0.2)',
+          // 'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          // 'rgba(75, 192, 192, 1)',
+          // 'rgba(153, 102, 255, 1)',
+          // 'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      responsive: false,
+      scales: {
+        xAxes: [{
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            max: 120
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            display: false,
+          }
+        }]
+      }
+    }
+  });
+};
   //checking to see if stats fall below 0
   function failureChecker(){
     if(character.health <= 0){
