@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
+    renderAvatarAndStats();
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
@@ -83,6 +84,23 @@ document.addEventListener('DOMContentLoaded', function () {
     imageEl.setAttribute('src', image);
     pageEl.appendChild(imageEl);
   }
+
+
+  function renderAvatarAndStats() {
+    //sets image and background-color from localStorage
+    var avatarImage = document.getElementById('avatar-image');
+    avatarImage.style['background-color'] = localStorage['background-color'];
+    avatarImage.src = localStorage.imgUrl;
+
+    //stats
+    var statsGrade = document.getElementById('stats-grade');
+    statsGrade.textContent = character.grade;
+    var statsHealth = document.getElementById('stats-health');
+    statsHealth.textContent = character.health;
+    var statsSocial = document.getElementById('stats-social');
+    statsSocial.textContent = character.social;
+  }
+
 
   function displayQuestionPrompt(questionNum) {
     var questionContainer = document.getElementById('prompt');
@@ -119,6 +137,37 @@ document.addEventListener('DOMContentLoaded', function () {
     failureChecker();
     maxStatChecker();
   }
+
+  function failureChecker() {
+    if (character.health <= 0) {
+      localStorage.setItem('failure', 'health');
+      location.href = './outcome.html';
+    }
+    if (character.grade <= 0) {
+      localStorage.setItem('failure', 'grade');
+      location.href = './outcome.html';
+    }
+    if (character.social <= 0) {
+      localStorage.setItem('failure', 'social');
+      location.href = './outcome.html';
+    }
+  }
+
+  function maxStatChecker() {
+    if (character.health >= 120) {
+      character.health = 120;
+      console.log('exceeding max health, health reset to: ' + character.health);
+    }
+    if (character.grade >= 120) {
+      character.grade = 120;
+      console.log('exceeding max grade, grade reset to: ' + character.grade);
+    }
+    if (character.social >= 120) {
+      character.social = 120;
+      console.log('exceeding max social, social reset to: ' + character.social);
+    }
+  }
+
   //pair programmed with EVERYONE
 
   function handleChoiceClick() {    //renders the response
@@ -127,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     choicesArray.forEach(function (choice) {
       choice.addEventListener('click', function () {
+        renderAvatarAndStats();
         renderResponse(this.id, questionNum);
       });
     });
@@ -189,8 +239,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderTransition() {
-    var hiddenButton = document.getElementById('link-to-boss');
-    hiddenButton.removeAttribute('class', 'hidden');
+    var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
+    localStorage.character = jCharacter;
+    setTimeout(function () {
+      location.href = '../game/boss.html';
+    }, 3000);
   }
   var randomNumberArray = Math.floor(Math.random() * 6);
   var randomNumberPrompt = Math.floor(Math.random() * 5);
@@ -225,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
       character.social = character.social - 10;
     }
     console.log('update happened?');
+    renderAvatarAndStats();
     console.log(character);
   }
 });

@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="character.css" />
-    <title>Welcome to Adventure Fellows!</title>
-  </head>
-  <body>
-    <div>
-      <header id="header">
-        <a href="../index.html">Home</a>
-        <a href="character.html">Characters</a>
-        <a href="../credits/credits.html">Credits</a>
-      </header>
-    </div>
-    <div>
-      <h1>Adventure Fellows</h1>
-      <!-- <img src="../images/3904529.png" alt="code fellows logo"> -->
-      <div id="body"></div>
-      <div id="choice-one" class="traits">
-        <img src="../images/allieAvatar.png" class="avatar", id="allie-character">
-        <section class="text">
-          <h3>Allie Grampa:</h3>
-          <p>Strengths: Loves to cook, talks about science</p>
-          <p>Weaknesses: Crabby when tired, irrational fear of the pizza delivery guy</p>
-        </section>
-      </div>
-      <div id="choice-two" class="traits">
-        <img src="../images/logan_avatar.png" class="avatar", id="logan-character">
-        <section class="text">
-          <h3>Logan Absher:</h3>
-          <p>Strengths: Emotionally dead, speaks in code</p>
-          <p>Weaknesses: Socially awkward, Cant speel</p>
-        </section>
-      </div>
-      <div id="choice-three" class="traits">
-        <img src="../images/avatar_luis.png" class="avatar", id="luis-character">
-        <section class="text">
-          <h3>Luis Manzo:</h3>
-          <p>Strengths: Voracious eater, night owl, undefeated in table tennis</p>
-          <p>Weaknesses: Frequently forgets lyrics to songs that are “his jam"</p>
-        </section>
-      </div>
-      <div id="choice-four" class="traits">
-        <img src="../images/avatar_david.png" class="avatar", id="david-character">
-        <section class="text">
-          <h3>David Teddy:</h3>
-          <p>Strengths: Very goofy speed walker, very good friend</p>
-          <p>Weaknesses: Terrified of flapping fish and spiders</p>
-        </section>
-      </div>
-    </div>
-    <div class="footer">
-      <p>@ Adventure Fellows 2017</p>
-    </div>
-    <script src="character.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="character.css" />
+  <title>Welcome to Adventure Fellows!</title>
+</head>
+
+<body>
+  <audio id="character-select-music" src="../sounds/swage.mp3" style="display: none;"></audio>
+  <audio id="character-hover-sound" src="../sounds/character_hover.mp3" style="display: none"></audio>
+  <audio id="game-start-sound" src="../sounds/game-start.mp3" style="display: none"></audio>
+<div>
+
+  <header id="header">
+    <a href="../index.html">Home</a>
+    <a href="character.html">Characters</a>
+    <a href="../credits/credits.html">Credits</a>
+  </header>
+</div>
+<div>
+  <h1>Adventure Fellows</h1>
+  <!-- <img src="../images/3904529.png" alt="code fellows logo"> -->
+  <div id="body"></div>
+  <div id="choice-one" class="traits">
+    <img src="../images/allieAvatar.png" class="avatar" , id="allie-character">
+    <section class="text">
+      <h3>Allie Grampa:</h3>
+      <p>Strengths: Loves to cook, talks about science</p>
+      <p>Weaknesses: Crabby when tired, irrational fear of the pizza delivery guy</p>
+    </section>
+  </div>
+  <div id="choice-two" class="traits">
+    <img src="../images/logan_avatar.png" class="avatar" , id="logan-character">
+    <section class="text">
+      <h3>Logan Absher:</h3>
+      <p>Strengths: Emotionally dead, speaks in code</p>
+      <p>Weaknesses: Socially awkward, Cant speel</p>
+    </section>
+  </div>
+  <div id="choice-three" class="traits">
+    <img src="../images/avatar_luis.png" class="avatar" , id="luis-character">
+    <section class="text">
+      <h3>Luis Manzo:</h3>
+      <p>Strengths: Voracious eater, night owl, undefeated in table tennis</p>
+      <p>Weaknesses: Frequently forgets lyrics to songs that are “his jam"</p>
+    </section>
+  </div>
+  <div id="choice-four" class="traits">
+    <img src="../images/avatar_david.png" class="avatar" , id="david-character">
+    <section class="text">
+      <h3>David Teddy:</h3>
+      <p>Strengths: Very goofy speed walker, very good friend</p>
+      <p>Weaknesses: Terrified of flapping fish and spiders</p>
+    </section>
+  </div>
+</div>
+<div class="footer">
+  <p>@ Adventure Fellows 2017</p>
+</div>
+<script src="character.js"></script>
+</body>
+
 </html>
