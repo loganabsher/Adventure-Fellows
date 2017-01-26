@@ -6,6 +6,7 @@
   <title>Welcome to Adventure Fellows!</title>
   <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="game.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <script src="weekTwo.js"></script>
 </head>
 
@@ -19,19 +20,20 @@
   </div>
   <p class="whichWeek">Week Two</p>
   <div id="place-image">
-    <div id="avatar-stats-group">
-      <div id="character-avatar-pane">
-        <img id="avatar-image" src="" alt="">
 
-      </div>
+  </div>
+
+  <div id="character-avatar-pane">
+    <div id="avatar-container">
+      <img id="avatar-image" src="" alt="">
+      <canvas id="my-chart" width="200px" height="100px"></canvas>
       <div id="character-stats-pane">
-        <div id="stats-health"></div>
-        <div id="stats-grade"></div>
-        <div id="stats-social"></div>
+        <div id="stats-health" class="hide-stat"></div>
+        <div id="stats-grade" class="hide-stat"></div>
+        <div id="stats-social" class="hide-stat"></div>
       </div>
     </div>
-    <section id="title-text"></section>
-    <section id="user-box"></section>
+
   </div>
 
   <div id="prompt"></div>
