@@ -21,7 +21,7 @@
       <form id="userNameInput">
         <label for="userName">Enter Your Name:</label>
         <input name="userName" id="userName" type="text"/>
-        <button id="userNameSubmit" type="submit">Let's Play!</button>
+        <button id="userNameSubmit" type="submit" onclick="PlaySound()">Let's Play!</button>
       </form>
     </div>
     <div class="footer">
@@ -29,5 +29,13 @@
     </div>
     <script src="home/home.js"></script>
     </script>
+    <audio id="audio" src="sounds/choice_hover_1.mp3" autostart="false" ></audio>
+   <!-- <a onclick="PlaySound()"> Play</a> -->
+   <script>
+   function PlaySound() {
+         var sound = document.getElementById("audio");
+         sound.play()
+     }
+   </script>
   </body>
 </html>

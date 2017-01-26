@@ -280,3 +280,12 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(character);
   }
 });
+function PlaySound(mySound) {
+  var thissound = document.getElementById(mySound);
+  thissound.play();
+}
+function StopSound(mySound) {
+  var thissound = document.getElementById(mySound);
+
+  thissound.currentTime = 0;
+}
