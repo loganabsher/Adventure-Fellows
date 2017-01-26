@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //renders page
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
-    renderAvatarAndStats();
+    //renderAvatarAndStats();
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
