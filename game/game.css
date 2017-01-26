@@ -116,3 +116,52 @@ a {
   width: 60%;
   margin: 0px auto;
 }
+
+#character-stats-group {
+  display: inline;
+}
+
+#character-avatar-pane {
+  display: inline-block;
+  position: relative;
+}
+
+/*#avatar-image {
+  position: relative;
+}*/
+
+#my-chart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+canvas {
+  background-color: transparent;
+}
+
+#character-stats-pane {
+  display: none;
+}
+
+
+#avatar-stats-group {
+  display: inline-block;
+}
+
+#background-image{
+  position: relative;
+  margin: 0 auto;
+}
+
+#avatar-pane {
+  position: absolute;
+}
+
+#place-image {
+  position: relative;
+}
+
+#avatar-image {
+  
+}
