@@ -74,9 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('exceeding max social, social reset to: ' + character.social);
     }
   }
-
-
-
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     renderAvatarAndStats();
