@@ -1,5 +1,8 @@
 'use strict';
 
+localStorage.clear(); //makes sure character is cleared out of localStorage
+console.log('Stored character has been cleared: ', localStorage);
+
 var userNameEl = document.getElementById('userNameInput');
 
 userNameEl.addEventListener('submit', function(event) {

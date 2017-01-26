@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var count = 0;
   //array of boss images
-  var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg','../images/happierAdam.jpg'];
+  var bossImageArray = ['../images/angrierAdam.jpg', '../images/angryAdam.jpg', '../images/normalAdam.jpg', '../images/happyAdam.jpg', '../images/happierAdam.jpg'];
   //array of boss questions
   var bossQuestionArray = ['Adam uses Busmall, what is your response?', 'Adam uses Salmon Cookies, what is your response?', 'Adam uses Chocolate Pizza, what is your response?', 'Adam uses About Me, what is your response?', 'Adam uses DISAPPOINTMENT, what is your response?'];
   //corresponding choices to questions
@@ -16,45 +16,46 @@ document.addEventListener('DOMContentLoaded', function () {
   //character constructor
   var questionNum = randomNum(bossQuestionArray.length - 1, 0);
   var character = JSON.parse(localStorage.character);
-//creaing new character from local storage/replacing default values
+  //creaing new character from local storage/replacing default values
   console.log(character);
-//checking to see if stats fall below 0
-  function failureChecker(){
-    if(character.health <= 0){
+  //checking to see if stats fall below 0
+  function failureChecker() {
+    if (character.health <= 0) {
       localStorage.setItem('failure', 'health');
       location.href = './outcome.html';
     }
-    if(character.grade <= 0){
+    if (character.grade <= 0) {
       localStorage.setItem('failure', 'grade');
       location.href = './outcome.html';
     }
-    if(character.social <= 0){
+    if (character.social <= 0) {
       localStorage.setItem('failure', 'social');
       location.href = './outcome.html';
     }
   }
-//making sure stats don't go over the max ammount
-  function maxStatChecker(){
-    if(character.health >= 120){
+  //making sure stats don't go over the max ammount
+  function maxStatChecker() {
+    if (character.health >= 120) {
       character.health = 120;
       console.log('exceeding max health, health reset to: ' + character.health);
     }
-    if(character.grade >= 120){
+    if (character.grade >= 120) {
       character.grade = 120;
       console.log('exceeding max grade, grade reset to: ' + character.grade);
     }
-    if(character.social >= 120){
+    if (character.social >= 120) {
       character.social = 120;
       console.log('exceeding max social, social reset to: ' + character.social);
     }
   }
   renderPage();
-  function randomNum(max, min){
+  function randomNum(max, min) {
     return Math.round(Math.random() * max + min);
   }
   function renderPage() {
     questionNum = randomNum(bossQuestionArray.length - 1, 0);
     renderImage(bossImageArray[questionNum]);
+    renderAvatarAndStats();
     displayQuestionPrompt(questionNum);
     createDialogue(bossImageArray[questionNum], bossChoiceArray[questionNum], bossResponseArray[questionNum]);
   }
@@ -66,6 +67,21 @@ document.addEventListener('DOMContentLoaded', function () {
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
     pageEl.appendChild(imageEl);
+  }
+
+  function renderAvatarAndStats() {
+    //sets image and background-color from localStorage
+    var avatarImage = document.getElementById('avatar-image');
+    avatarImage.style['background-color'] = localStorage['background-color'];
+    avatarImage.src = localStorage.imgUrl;
+
+    //stats
+    var statsGrade = document.getElementById('stats-grade');
+    statsGrade.textContent = character.grade;
+    var statsHealth = document.getElementById('stats-health');
+    statsHealth.textContent = character.health;
+    var statsSocial = document.getElementById('stats-social');
+    statsSocial.textContent = character.social;
   }
 
   function displayQuestionPrompt(questionNum) {
@@ -91,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
+    // var character = JSON.parse(localStorage.character);  //character is already a global variable
     console.log(responseIndex);
     character.health = character.health + affectScore[questionNum][responseIndex][0];
     console.log('this.health ' + character.health);
@@ -112,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
       choice.addEventListener('click', function () {
         renderResponse(this.id, questionNum);
         updateStats(this.id);
+        renderAvatarAndStats();
       });
     });
   }
@@ -142,11 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // console.log(responseId);
     responsePar.textContent = bossResponseArray[questionNum][id];
     gameText.appendChild(responsePar);
-    if(character.grade > 90 && count > 5){
+    if (character.grade > 90 && count > 5) {
       console.log('win');
       renderTransition();
     }
-    else{
+    else {
       responsePar.addEventListener('click', function () {   //when click, clear DOM elements and render new
         clearElements();
         renderPage();
@@ -163,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
     image.remove();
     response.remove();
   }
-//adding change
+  //adding change
   function renderTransition() {           //reveals a hidden link to transition to week2
     var jCharacter = JSON.stringify(character); //wraps up character in JSON to send through
     localStorage.character = jCharacter;
