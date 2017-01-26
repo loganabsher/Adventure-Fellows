@@ -1,19 +1,4 @@
 'use strict';
-
-// var divCollection = document.getElementsByClassName('traits');
-// var characters = Array.prototype.slice.call(divCollection);
-// console.log(characters);
-// characters.forEach(function (character) {
-//   character.addEventListener('click', function () {
-//     var charName = character.id;
-//     var imgUrl = character.firstChild.src;
-//     localStorage.imgUrl = character.firstChild.src;
-//
-//     console.log(character);
-//
-//   });
-// });
-
 var characterSelectMusic = document.getElementById('character-select-music');
 var characterHoverSound = document.getElementById('character-hover-sound');
 var gameStartSound = document.getElementById('game-start-sound');
@@ -42,22 +27,18 @@ var images = {
   luis: '../images/avatar_luis.png',
   david: '../images/avatar_david.png',
   logan: '../images/logan_avatar.png'
-}
-
+};
 displayText();
 handleCharacterHover();
 //Logan contribution
 //Allie's Data
 var allieEl = document.getElementById('choice-one');
 var allie = function (event) {
-
   console.log('click');
   gameStartSound.play();
   gameStartSound.currentTime = 0;
-
   var check = confirm('Are you sure?');
-  if (check === true) {
-
+  if(check === true){
     localStorage.setItem('imgUrl', images.allie);
     localStorage.setItem('background-color', colors["allie-character"])
     localStorage.setItem('health', 100);
@@ -69,17 +50,13 @@ var allie = function (event) {
 allieEl.addEventListener('click', allie, false);
 //Logan's data
 var loganEl = document.getElementById('choice-two');
-var loganChar = document.getElementById('logan-character');
+//var loganChar = document.getElementById('logan-character');
 console.log(loganChar);
-var logan = function (event) {
-  event.stopPropagation();
-  event.preventDefault();
+var logan = function(event){
   var check = confirm('Are you sure?');
-  if (check === true) {
-
+  if(check === true){
     localStorage.setItem('imgUrl', images.logan);
     localStorage.setItem('background-color', colors["logan-character"])
-
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
     localStorage.setItem('social', 80);
@@ -89,9 +66,7 @@ var logan = function (event) {
 loganEl.addEventListener('click', logan, false);
 //Luis' data
 var luisEl = document.getElementById('choice-three');
-var luis = function (event) {
-  event.stopPropagation();
-  event.preventDefault();
+var luis = function(event){
   var check = confirm('Are you sure?');
   if (check === true) {
     localStorage.setItem('imgUrl', images.luis);
@@ -106,9 +81,7 @@ var luis = function (event) {
 luisEl.addEventListener('click', luis, false);
 //david's data
 var davidEl = document.getElementById('choice-four');
-var david = function (event) {
-  event.stopPropagation();
-  event.preventDefault();
+var david = function(event){
   var check = confirm('Are you sure?');
   if (check === true) {
     localStorage.setItem('imgUrl', images.david);
