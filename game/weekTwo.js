@@ -164,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
       location.href = '../game/weekThree.html';
     }, 3000);
 
-    // var hiddenButton = document.getElementById('link-to-week3');
-    // hiddenButton.removeAttribute('class', 'hidden');
   }
   var randomNumberArray = Math.floor(Math.random() * 6);
   var randomNumberPrompt = Math.floor(Math.random() * 5);

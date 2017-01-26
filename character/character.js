@@ -26,7 +26,7 @@ var images = {
   luis: '../images/avatar_luis.png',
   david: '../images/avatar_david.png',
   logan: '../images/logan_avatar.png'
-}
+};
 displayText();
 //Logan contribution
 //Allie's Data
@@ -35,7 +35,6 @@ var allie = function(event){
   console.log('click');
   var check = confirm('Are you sure?');
   if(check === true){
-
     localStorage.setItem('imgUrl', images.allie);
     localStorage.setItem('health', 100);
     localStorage.setItem('grade', 110);
@@ -47,11 +46,8 @@ allieEl.addEventListener('click', allie, false);
 //Logan's data
 var loganEl = document.getElementById('choice-two');
 var logan = function(event){
-  event.stopPropagation();
-  event.preventDefault();
   var check = confirm('Are you sure?');
   if(check === true){
-
     localStorage.setItem('imgUrl', images.logan);
     localStorage.setItem('health', 120);
     localStorage.setItem('grade', 100);
@@ -63,8 +59,6 @@ loganEl.addEventListener('click', logan, false);
 //Luis' data
 var luisEl = document.getElementById('choice-three');
 var luis = function(event){
-  event.stopPropagation();
-  event.preventDefault();
   var check = confirm('Are you sure?');
   if(check === true){
     localStorage.setItem('imgUrl', images.luis);
@@ -78,8 +72,6 @@ luisEl.addEventListener('click', luis, false);
 //david's data
 var davidEl = document.getElementById('choice-four');
 var david = function(event){
-  event.stopPropagation();
-  event.preventDefault();
   var check = confirm('Are you sure?');
   if(check === true){
     localStorage.setItem('imgUrl', images.david);
