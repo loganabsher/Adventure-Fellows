@@ -38,9 +38,66 @@ document.addEventListener('DOMContentLoaded', function () {
   // var local = JASN.parse(localStorage);
   // console.log(local);
   //character constructor
-  var character = JSON.parse(localStorage.character);
-  renderPage();
+  
+
 //checking to see if stats fall below 0
+  function renderStatsChart(){
+    var ctx = document.getElementById('my-chart').getContext('2d');
+    var health = document.getElementById('stats-health').textContent;
+    var grade = document.getElementById('stats-grade').textContent;
+    var social = document.getElementById('stats-social').textContent;
+    var myChart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+        labels: ['Health', 'Grade', 'Social'],
+        datasets: [{
+          data: [health, grade, social],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            // 'rgba(75, 192, 192, 0.2)',
+            // 'rgba(153, 102, 255, 0.2)',
+            // 'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            // 'rgba(75, 192, 192, 1)',
+            // 'rgba(153, 102, 255, 1)',
+            // 'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        responsive: false,
+        scales: {
+          xAxes: [{
+            ticks: {
+              display: false,
+              beginAtZero: true,
+              max: 120
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              display: false,
+            }
+          }]
+        }
+      }
+    });
+  }
+  var character = JSON.parse(localStorage.character);
+  console.log(character);
+  renderStatsChart();
+  renderPage();
+
   function failureChecker(){
     if(character.health <= 0){
       localStorage.setItem('failure', 'health');
@@ -79,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //RENDERING PAGE
   function renderImage(image) {
-    var pageEl = document.getElementById('character-avatar-pane');
+    var pageEl = document.getElementById('place-image');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
@@ -91,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var avatarImage = document.getElementById('avatar-image');
     avatarImage.style['background-color'] = localStorage['background-color'];
     avatarImage.src = localStorage.imgUrl;
-
+    renderStatsChart();
     //stats
     var statsGrade = document.getElementById('stats-grade');
     statsGrade.textContent = character.grade;
@@ -125,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateStats(responseIndex) {
     var responseIndex = parseInt(responseIndex);
-    var character = JSON.parse(localStorage.character);
+    // var character = JSON.parse(localStorage.character);
     // console.log(responseIndex);
     character.health = character.health + affectScore[questionNum][responseIndex][0];
     console.log('this.health ' + character.health);

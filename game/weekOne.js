@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //global counter
   var questionNum = 0;
   //array of place images
-  var staticImageArray = ['../images/cartoon_console_question.jpeg', '../images/cartoon_space_needle.jpeg', '../images/cartoon_space_needle.jpeg'];
+  var staticImageArray = ['../images/cartoon_console_question.jpeg', '../images/cartoon_space_needle.jpeg', '../images/cartoon_space_needle.jpeg', '../images/cartoon_space_needle.jpeg'];
   //array of questions/events
   var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line to access the class directory?', 'How do you spend the weekend?'];
   //array of choices for the questions
