@@ -38,6 +38,60 @@ document.addEventListener('DOMContentLoaded', function () {
     this.social = parseInt(localStorage.social);
     this.character = JSON.stringify(this);
   }
+  function renderStatsChart() {
+    var ctx = document.getElementById('my-chart').getContext('2d');
+    var health = document.getElementById('stats-health').textContent;
+    var grade = document.getElementById('stats-grade').textContent;
+    var social = document.getElementById('stats-social').textContent;
+
+    console.log(health);
+    var myChart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+        labels: ['Health', 'Grade', 'Social'],
+        datasets: [{
+          data: [health, grade, social],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            // 'rgba(75, 192, 192, 0.2)',
+            // 'rgba(153, 102, 255, 0.2)',
+            // 'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            // 'rgba(75, 192, 192, 1)',
+            // 'rgba(153, 102, 255, 1)',
+            // 'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        responsive: false,
+        scales: {
+          xAxes: [{
+            ticks: {
+              display: false,
+              beginAtZero: true,
+              max: 120
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              display: false,
+            }
+          }]
+        }
+      }
+    });
+  }
   //creaing a new character with character data
   var character = new Character();
   function renderStatsChart() {
@@ -297,6 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
+  renderStatsChart();
   renderPage();
   renderStatsChart();
 });
