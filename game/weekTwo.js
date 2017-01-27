@@ -1,7 +1,7 @@
 'use strict';
 document.addEventListener('DOMContentLoaded', function () {
+  //global counter
   var questionNum = 0;
-  //array of phases/titles
   //array of place images
   var staticImageArray = ['../images/cartoon_cf_building.jpg', '../images/cartoon_lab_area.jpeg', '../images/cartoon_table_question.jpeg'];
   //array of questions/events
@@ -10,21 +10,23 @@ document.addEventListener('DOMContentLoaded', function () {
   var staticChoiceArray = [['Let\'s Keep Going!'], ['Keep working', 'Ask a TA ', 'As a classmate', 'Give up and go home'], ['You set up an infinite loop', 'Forgot to append table', 'Forgot to save before opening in browser', 'Nothing, my code is perfect and it\'s the code\'s fault'], ['Crying', 'Questioning your life choices', 'Considering dropping out', 'Applying for a job at 7-Eleven']];
   //array of responses to the choices
   var staticResponseArray = [['Click here to proceed'], ['You should really start asking for some help', 'The TA helps you tweak your code and it\'s working, but not how you wanted it to work', 'The classmate helps you get un-stuck! They are also stuck, and you help them figure out what the problem was. You high five each other and finish your assignments while eating popcorn on the sofa', 'You\'re never gonna make it through this course if you give up that easily!'], ['Oh man, that sucks! You should really keep better track of your < and > operators in your for loops!', 'Easy fix, just go ahead and append that child', 'Easy fix, go back to Atom, save, and try again', 'If your code is so perfect, what are you doing here? And hey, help your classmates once in a while!'], ['Sorry to break it to you, it\'s not going to get any better on Monday', 'What are you doing with your life, anyway?', 'It\'s not the worst idea...', 'It might be a little better, right?']];
+  //unique classes, referenced for text glow
   var uniqueClassPerResponse = [['proceed', 'proceed', 'proceed', 'proceed'], ['keepWorking', 'askTA', 'askClassmate', 'giveUp'], ['infinite', 'append', 'save', 'perfect'], ['cry', 'questioning', 'dropOut', 'sevenEleven']];
-  // increments score  pairpgrammed with Teddy
+  //score changes
   var affectScore = [[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]], [[0, -25, 0], [0, +25, 0], [0, +25, +25], [-25, -25, -25]], [[0, -25, 0], [0, +25, 0], [0, 0, 0], [0, -25, -25]], [[-25, 0, -25], [-25, 0, -25], [-25, 0, -25], [-25, 0, -25]]];
+  //random increase health events
   var increaseHealth = ['You go to the pharmacy and get a flu shot! Health increases', 'You get a good night’s sleep! Health increases', 'You decide to take a break! Health increases', 'You finish your project and leave early! Health increases', 'You have time to go to the gym! Health increases'];
-
+  //random decrease health events
   var decreaseHealth = ['You don\'t wash your hands and end up with the flu! Health decreases', 'Who has time to cook? Eat fast food instead! Health decreases', 'Stressed? Here\'s a case of insomnia! Health decreases', 'Work nonstop for 8 hours, who needs sleep anyway!? Health decreases', 'Walking home from school, pull a muscle! Health decreases'];
-
+  //random increase grade events
   var increaseGrade = ['Whoa! You aced your project! Grade increases', 'Your functions work on the first try! Grade increases', 'Your table renders properly on the first try! Grade increases', 'Chart.js renders a perfect chart. Look at those bars! Grade increases', 'Caffeination is perfect all day! Grade increases'];
-
+  //random decrease grade events
   var decreaseGrade = ['You forget to ACP and lose all your code! Grade decreases', 'Oh no! You oversleep and miss code review and lecture! Grade decreases', 'Whoops! You forget to appendChild and your table looks like garbage! Grade decreases', 'You just broke your code and can’t figure out how to fix it! Grade decreases', 'Console.log returns NaN! What!? Grade decreases'];
-
+  //random increase social events
   var increaseSocial = ['You sit with your classmates at lunch, make a new friend! Social increases', 'You help a classmate who is stuck, you\'re so nice! Social increases', 'A classmate is new to Seattle, you refer them to a great restaurant! Social increases', 'Go grab coffee with a classmate! Social increases', 'Share a snack with a classmate who is hangry, what a good friend! Social increases'];
-
+  //random decrease social events
   var decreaseSocial = ['You sit alone at lunch, man that sucks! Social decreases', 'A classmates asks for help, you say no. What a jerk! Social decreases', 'You\'re too tired to shower, develop B.O., no one wants to sit near you! Social decreases', 'You laugh when a classmate’s code doesn’t work. You\'re a terrible person! Social decreases', 'A classmate is new to Seattle, refer them to a bad restaurant. That\'s so mean! Social decreases'];
-
+  //an array of all random events
   var randomArrays = [increaseHealth, decreaseHealth, increaseGrade, decreaseGrade, increaseSocial, decreaseSocial];
   //array of boss images
   var bossImageArray = ['../images/cartoon_table_question.jpg'];
@@ -43,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var health = document.getElementById('stats-health').textContent;
   var grade = document.getElementById('stats-grade').textContent;
   var social = document.getElementById('stats-social').textContent;
-
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
@@ -308,7 +309,6 @@ document.addEventListener('DOMContentLoaded', function () {
       displayRandomEvent();
     }
   }
-
   function updateWithRandom(responseIndex) {
     var responseIndex = parseInt(responseIndex);
     console.log(character);
@@ -330,3 +330,13 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(character);
   }
 });
+
+function PlaySound(mySound) {
+  var thissound = document.getElementById(mySound);
+  thissound.play();
+}
+function StopSound(mySound) {
+  var thissound = document.getElementById(mySound);
+  thissound.pause();
+  thissound.currentTime = 0;
+}
