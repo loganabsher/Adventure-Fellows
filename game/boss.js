@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log(character);
   renderStatsChart();
   // renderPage();
-  
+
   function failureChecker() {
     if (character.health <= 0) {
       localStorage.setItem('failure', 'health');
@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     questionNum = randomNum(bossQuestionArray.length - 1, 0);
     renderImage(bossImageArray[questionNum]);
     renderAvatarAndStats();
+    renderStatsChart();
     displayQuestionPrompt(questionNum);
     createDialogue(bossImageArray[questionNum], bossChoiceArray[questionNum], bossResponseArray[questionNum]);
   }

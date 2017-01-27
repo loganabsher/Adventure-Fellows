@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
     renderAvatarAndStats();
+    renderStatsChart();
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
