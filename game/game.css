@@ -101,14 +101,6 @@ a {
   margin-bottom: 30px;
 }
 
-#background-image {
-  border-radius: 10px;
-  height: 500px;
-  width: auto;
-  margin: 0 25%;
-  box-shadow: 1px 0 150px red;
-}
-
 #response-paragraph {
   text-align: center;
   padding-top: 70px;
@@ -122,8 +114,9 @@ a {
 }
 
 #character-avatar-pane {
-  display: inline-block;
+  display: inline;
   position: relative;
+  width: 100%;
 }
 
 /*#avatar-image {
@@ -146,12 +139,22 @@ canvas {
 
 
 #avatar-stats-group {
-  display: inline-block;
+  display: inline;
+  width: 100%;
 }
 
-#background-image{
+#background-image {
+  border-radius: 10px;
+  height: 500px;
+  width: auto;
+  box-shadow: 1px 0 150px red;
+  /*display: inline;
   position: relative;
-  margin: 0 auto;
+  margin-left: 0px;
+  margin-right: 0px;*/
+  position: relative;
+  right: 10%;
+  clear: both;
 }
 
 #avatar-pane {
@@ -163,5 +166,6 @@ canvas {
 }
 
 #avatar-image {
-  
+  border-radius: 10px;
+  margin-right: 60px;
 }

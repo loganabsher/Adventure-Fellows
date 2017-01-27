@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //global counter
   var questionNum = 0;
   //array of place images
-  var staticImageArray = ['../images/cartoon_cf_building.jpg', '../images/cartoon_lab_area.jpeg', '../images/cartoon_table_question.jpeg'];
+  var staticImageArray = ['../images/cartoon_cf_building.jpg', '../images/cartoon_lab_area.jpeg', '../images/cartoon_table_question.jpeg', '../images/cartoon_table_question.jpeg'];
   //array of questions/events
   var staticQuestionArray = ['Yay! You survived the first week of Code Fellows 201!', 'You get stuck when creating your salmon cookies form, what do you do?', 'Your table isn’t rendering correctly, what did you forget to do?', 'How do you spend your weekend?'];
   //array of choices for the questions
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   //creates an image in the middle of the screen
   function renderImage(image) {
-    var pageEl = document.getElementById('place-image');
+    var pageEl = document.getElementById('character-avatar-pane');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //renders page
   function renderPage() {
     renderImage(staticImageArray[questionNum]);
-    //renderAvatarAndStats();
+    renderAvatarAndStats();
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }

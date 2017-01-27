@@ -12,11 +12,6 @@
   text-align: center;
 }
 
-/*.thanks {
-  /*display: inline;*/
-  /*width: 48%;
-}*/
-
 .thanks p {
   font-size: 35px;
   margin-top: 70px;
@@ -24,16 +19,8 @@
   text-align: center;
 }
 
-.rachel, .rozi {
-  float: left;
-  width: 200px;
-  height: auto;
-  border-radius: 100%;
-  padding: 60px 75px;
-}
-
-.tracey, .jp {
-  float: right;
+.tracey, .jp, .rachel, .rozi {
+  display: inline;
   width: 200px;
   height: auto;
   border-radius: 100%;
@@ -63,6 +50,7 @@ a {
 
 #adam {
   margin: 0px auto;
+  padding-top: 40px;
   display: block;
   border-radius: 100%;
   width: 500px;
@@ -78,7 +66,7 @@ a {
 #adamParagraph {
   font-size: 37px;
   text-align: center;
-  margin: 0px auto;
+  margin: 0px 30px auto;
 }
 
 .footer {
@@ -87,15 +75,12 @@ a {
   margin-top: 200px;
   margin: 0px auto;
 }
-/*.aboutUs {
-  width: 45%;
-  font-size: 30px;
-  display: inline;
-}*/
-
-/*marquee {
-  behavior: scroll;
-  direction: up;
-}*/
 
 /*pair programmed with Teddy*/
+
+.sources {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}

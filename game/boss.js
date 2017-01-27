@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //RENDERING PAGE
   function renderImage(image) {
-    var pageEl = document.getElementById('place-image');
+    var pageEl = document.getElementById('character-avatar-pane');
     var imageEl = document.createElement('img');
     imageEl.setAttribute('id', 'background-image');
     imageEl.setAttribute('src', image);
