@@ -76,6 +76,26 @@ document.addEventListener('DOMContentLoaded', function () {
             display: false,
           }
         }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        responsive: false,
+        scales: {
+          xAxes: [{
+            ticks: {
+              display: false,
+              beginAtZero: true,
+              max: 120
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              display: false,
+            }
+          }]
+        }
       }
     }
   });
@@ -103,11 +123,11 @@ document.addEventListener('DOMContentLoaded', function () {
       character.health = 120;
       console.log('exceeding max health, health reset to: ' + character.health);
     }
-    if (character.grade >= 120) {
+    if(character.grade >= 120){
       character.grade = 120;
       console.log('exceeding max grade, grade reset to: ' + character.grade);
     }
-    if (character.social >= 120) {
+    if(character.social >= 120){
       character.social = 120;
       console.log('exceeding max social, social reset to: ' + character.social);
     }

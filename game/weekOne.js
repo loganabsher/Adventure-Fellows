@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   //creaing a new character with character data
   var character = new Character();
- 
   function renderStatsChart() {
     var ctx = document.getElementById('my-chart').getContext('2d');
     var health = document.getElementById('stats-health').textContent;
