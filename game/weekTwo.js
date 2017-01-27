@@ -1,5 +1,5 @@
-'use strict';
-document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function () {
   //global counter
   var questionNum = 0;
   //array of place images
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
-});
+  });
   //checking to see if stats fall below 0
-function failureChecker(){
+  function failureChecker(){
   if(character.health <= 0){
     localStorage.setItem('failure', 'health');
     location.href = './outcome.html';
@@ -93,9 +93,9 @@ function failureChecker(){
     localStorage.setItem('failure', 'social');
     location.href = './outcome.html';
   }
-}
-//making sure stats don't go over the max ammount
-function maxStatChecker(){
+  }
+  //making sure stats don't go over the max ammount
+  function maxStatChecker(){
   if(character.health >= 120){
     character.health = 120;
     console.log('exceeding max health, health reset to: ' + character.health);
@@ -108,17 +108,17 @@ function maxStatChecker(){
     character.social = 120;
     console.log('exceeding max social, social reset to: ' + character.social);
   }
-}
-//creates an image in the middle of the screen
-function renderImage(image) {
+  }
+  //creates an image in the middle of the screen
+  function renderImage(image) {
   var pageEl = document.getElementById('place-image');
   var imageEl = document.createElement('img');
   imageEl.setAttribute('id', 'background-image');
   imageEl.setAttribute('src', image);
   pageEl.appendChild(imageEl);
-}
-//sets image and background-color from localStorage
-function renderAvatarAndStats() {
+  }
+  //sets image and background-color from localStorage
+  function renderAvatarAndStats() {
   var avatarImage = document.getElementById('avatar-image');
   avatarImage.style['background-color'] = localStorage['background-color'];
   avatarImage.src = localStorage.imgUrl;
@@ -129,17 +129,17 @@ function renderAvatarAndStats() {
   statsHealth.textContent = character.health;
   var statsSocial = document.getElementById('stats-social');
   statsSocial.textContent = character.social;
-}
-//chooses a question from the question array using questionNum
-function displayQuestionPrompt(questionNum) {
+  }
+  //chooses a question from the question array using questionNum
+  function displayQuestionPrompt(questionNum) {
   var questionContainer = document.getElementById('prompt');
   var displayQuestionEl = document.createElement('p');
   displayQuestionEl.setAttribute('id', 'questionNum');
   displayQuestionEl.textContent = staticQuestionArray[questionNum];
   questionContainer.appendChild(displayQuestionEl);
-}
-//pulls an array of four options from questionNum index
-function createDialogue(image, choices, responses) {
+  }
+  //pulls an array of four options from questionNum index
+  function createDialogue(image, choices, responses) {
   var gameText = document.getElementById('game-text');
   for (var i = 0; i < choices.length; i++) {
     var choiceEl = document.createElement('li');
@@ -151,9 +151,9 @@ function createDialogue(image, choices, responses) {
   }
     //adds event listeners to choice's ID
   handleChoiceClick();
-}
+  }
   //gets stats and finds affects from affectScore array, applies affects to stats
-function updateStats(responseIndex) {
+  function updateStats(responseIndex) {
   var responseIndex = parseInt(responseIndex);
   character.health = character.health + affectScore[questionNum][responseIndex][0];
   console.log('character health ' + character.health);
@@ -164,10 +164,10 @@ function updateStats(responseIndex) {
   //checking to see if any stats go to high or low
   failureChecker();
   maxStatChecker();
-}
+  }
   //pair programmed with EVERYONE
   //renders the response
-function handleChoiceClick(){
+  function handleChoiceClick(){
   var choicesCollection = document.getElementById('choices-list').children;
   var choicesArray = Array.prototype.slice.call(choicesCollection);
   choicesArray.forEach(function (choice) {
@@ -176,23 +176,23 @@ function handleChoiceClick(){
       renderResponse(this.id, questionNum);
     });
   });
-}
+  }
   //removes child from diolgue box
-function removePrompt() {
+  function removePrompt() {
   var promptParent = document.getElementById('prompt');
   var promptChild = document.getElementById('questionNum');
   promptParent.removeChild(promptChild);
-}
-//removes the choice elements
-function removeChoiceElements() {
+  }
+  //removes the choice elements
+  function removeChoiceElements() {
   var choicesList = document.getElementById('choices-list').children;
   var choicesArray = Array.prototype.slice.call(choicesList);
   choicesArray.forEach(function (choice) {
     choice.remove();
   });
-}
+  }
   //acesses the response based on the user's choice and removes old elements
-function renderResponse(id, questionNum) {
+  function renderResponse(id, questionNum) {
   removeChoiceElements();
   removePrompt();
   var gameText = document.getElementById('game-text');  //append response to textContent div
@@ -212,9 +212,9 @@ function renderResponse(id, questionNum) {
   } else {
     renderTransition();
   }
-}
-//clears response and incraments questionNum
-function clearElements() {
+  }
+  //clears response and incraments questionNum
+  function clearElements() {
   questionNum++;
   console.log('incrementing...now on question at index: ', questionNum);
   var response = document.getElementById('response-paragraph');
@@ -224,33 +224,33 @@ function clearElements() {
   response.remove();
   //plays a random events
   trulyRandom();
-}
-//if questionNum reaches the number of weeks, links to the next week
-function renderTransition() {
+  }
+  //if questionNum reaches the number of weeks, links to the next week
+  function renderTransition() {
   //wraps up character in JSON to send through
   localStorage.character = JSON.stringify(character);
   //creates a delay before going on to next page
   setTimeout(function () {
     location.href = '../game/weekThree.html';
   }, 3000);
-}
-var randomNumberArray = Math.floor(Math.random() * 6);
-var randomNumberPrompt = Math.floor(Math.random() * 5);
-//gives an alert from a random selector
-function displayRandomEvent() {
+  }
+  var randomNumberArray = Math.floor(Math.random() * 6);
+  var randomNumberPrompt = Math.floor(Math.random() * 5);
+  //gives an alert from a random selector
+  function displayRandomEvent() {
   alert(randomArrays[randomNumberArray][randomNumberPrompt]);
   console.log(randomArrays[randomNumberArray][randomNumberPrompt]);
-}
-//pairprogrammed with Teddy
-var generateRandom = Math.random();
-//creates random number
-function trulyRandom() {
+  }
+  //pairprogrammed with Teddy
+  var generateRandom = Math.random();
+  //creates random number
+  function trulyRandom() {
   if (generateRandom > 0.5) {
     displayRandomEvent();
   }
-}
+  }
   //updates stats for random events
-function updateWithRandom(responseIndex) {
+  function updateWithRandom(responseIndex) {
   var responseIndex = parseInt(responseIndex);
   console.log(character);
   if (increaseHealth.includes(randomArrays[randomNumberArray][randomNumberPrompt])) {
@@ -272,22 +272,22 @@ function updateWithRandom(responseIndex) {
   //checking stats
   failureChecker();
   maxStatChecker();
-}
-//renders page
-function renderPage() {
+  }
+  //renders page
+  function renderPage() {
   renderImage(staticImageArray[questionNum]);
     //renderAvatarAndStats();
   displayQuestionPrompt(questionNum);
   createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
 
-renderPage();
+  renderPage();
 
-function PlaySound(mySound) {
+  function PlaySound(mySound) {
   var thissound = document.getElementById(mySound);
   thissound.play();
-}
-function StopSound(mySound) {
+  }
+  function StopSound(mySound) {
   var thissound = document.getElementById(mySound);
   thissound.pause();
   thissound.currentTime = 0;
-}
+  }
