@@ -100,8 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   //creaing a new character with character data
- 
-{}}
   //checking to see if stats fall below 0, if so it links to outcome with a failure tag in local storage
   function failureChecker() {
     if (character.health <= 0) {
