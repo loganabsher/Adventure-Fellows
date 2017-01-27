@@ -1,7 +1,7 @@
 'use strict';
 //links to index when credits finish
 function timeout() {
-  setTimeout(function(){location.href = '../index.html';}, 100000);
+  setTimeout(function(){location.href = '../index.html';}, 120000);
 }
 timeout();
 //links to index when user clicks

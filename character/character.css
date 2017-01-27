@@ -3,6 +3,7 @@
   background-color: #3a3a3a;
   color: white;
 }
+
 #header {
   background-color: #3a3a3a;
   height: 4em;
@@ -11,37 +12,43 @@
 .page-links:hover{
   text-shadow: 1px 0 20px lightblue;
 }
+
 a {
   color: white;
   font-size: 40px;
   padding: 1em;
   margin: 0px auto;
 }
+
 .footer {
   font-size: 26px;
   text-align: center;
   margin-top: 35px;
 }
+
 .traits {
   border: 2px solid #868686;
   display: inline-block;
 }
-p{
+
+p {
   font-size: 2em;
   margin-left: 10%;
 }
+
 h1 {
     font-size: 75px;
     text-align: center;
     margin: 0px;
 }
+
 h3 {
   font-size: 50px;
   /*text-align: center;*/
   margin: 10px;
 }
 /*pair programmed with Teddy*/
-.avatar{
+.avatar {
   height: 100%;
   width: 20%;
   border: solid black 5px;
@@ -49,15 +56,18 @@ h3 {
   margin: 0px;
   float: left;
 }
-div{
+
+div {
   width: 100%;
 }
-.text{
+
+.text {
   float: left;
   margin-left: 70px;
   width: 60%;
 }
-#allie-character{
+
+#allie-character {
   background-color: lightgreen;
 }
 
@@ -65,7 +75,7 @@ div{
   box-shadow: 1px 0 100px white;
 }
 
-#logan-character{
+#logan-character {
   background-color: cyan;
 }
 
@@ -73,7 +83,7 @@ div{
   box-shadow: 1px 0 100px white;
 }
 
-#luis-character{
+#luis-character {
   background-color: crimson;
 }
 
@@ -81,7 +91,7 @@ div{
   box-shadow: 1px 0 100px white;
 }
 
-#david-character{
+#david-character {
   background-color: lightcoral;
 }
 
@@ -89,18 +99,3 @@ div{
   box-shadow: 1px 0 100px white;
 }
 /*logan aditions*/
-
-/*img:hover {
-  transform: rotateY(360deg);
-  animation: spin 1s linear infinite;
-}*/
-/*
-img {
-  border-radius: 50%;
-  -webkit-transition: -webkit-transform .8s ease-in-out;
-          transition:         transform .8s ease-in-out;
-}
-img:hover {
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-}*/
