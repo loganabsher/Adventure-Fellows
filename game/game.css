@@ -1,13 +1,10 @@
 * {
-  background-color: #3a3a3a;
-  color: white;
-  font-family: 'VT323', monospace;
+    background-color: #3A3A3A;
+    color: white;
+    font-family: "VT323", monospace;
 }
-#background-image, #game-text{
-  width: 80%;
-  height: 600px;
-  margin-left: 10%;
-  margin-right: 10%;
+#game-text {
+    width: 80%;
 }
 ul{
   margin-left: 20%;
@@ -17,158 +14,152 @@ ul{
 p{
   font-size: 3em;
 }
-#game-text{
-  height: 400px;
+#game-text {
+    height: 400px;
 }
 
-#user-box{
-  float: right;
+#user-box {
+    float: right;
 }
 
 .linkToOne {
-  font-size: 3em;
-  margin: 0px auto;
-  padding-left: 360px;
+    font-size: 3em;
+    margin: 0 auto;
+    padding-left: 360px;
 }
 
 a {
-  font-size: 3em;
-  padding: 1em;
-  padding-top: 1%;
-  margin: 0px auto;
-  margin-top: 1em;
+    font-size: 3em;
+    padding: 1em;
+    padding-top: 1%;
+    margin: 0 auto;
+    margin-top: 1em;
 }
 
 .footer {
-  font-size: 1em;
-  text-align: center;
-  margin-top: 35px;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 35px;
 }
 
 #prompt {
-  width: 80%;
-  text-align: center;
-  margin-left: 10%;
+    width: 80%;
+    text-align: center;
+    margin-left: 10%;
 }
 
 #header {
-  background-color: #3a3a3a;
-  height: 4em;
-  text-align: center;
+    background-color: #3A3A3A;
+    height: 4em;
+    text-align: center;
 }
 
 .question:hover {
-  text-shadow: 1px 0 6px goldenrod;
+    text-shadow: 1px 0 6px goldenrod;
 }
 .page-links:hover{
   text-shadow: 1px 0 20px lightblue;
 }
 /*pair programmed with Luis*/
 
-#player-image{
-  width: 20%;
-  height: 20%;
-  float: left;
-  border: black 2px bold;
+#player-image {
+    width: 20%;
+    height: 20%;
+    float: left;
+    border: black 2px bold;
 }
-#interactive-image{
-  width: 20%;
-  height: 20%;
-  float: right;
-  border: black 2px bold;
+#interactive-image {
+    width: 20%;
+    height: 20%;
+    float: right;
+    border: black 2px bold;
 }
-#brook{
-  width: auto;
-  height: auto;
-  margin-left: 28%;
-  margin-right: 10%;
-  box-shadow: 1px 0 100px white;
+#brook {
+    width: auto;
+    height: auto;
+    margin-left: 28%;
+    margin-right: 10%;
+    box-shadow: 1px 0 100px white;
 }
 
 .welcome {
-  width: 75%;
-  margin: 0px auto;
-  padding-top: 40px;
-  padding-bottom: 50px;
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 50px;
 }
 
 .whichWeek {
-  font-size: 4em;
-  text-align: center;
-  margin-top: 15px;
+    font-size: 4em;
+    text-align: center;
+    margin-top: 15px;
 }
 
 .bossPage {
-  color: #ff0101;
-  font-size: 150px;
-  margin-bottom: 30px;
+    color: #FF0101;
+    font-size: 150px;
+    margin-bottom: 30px;
 }
 
 #response-paragraph {
-  text-align: center;
-  padding-top: 70px;
-  font-size: 50px;
-  width: 60%;
-  margin: 0px auto;
+    text-align: center;
+    padding-top: 70px;
+    font-size: 50px;
+    width: 60%;
+    margin: 0 auto;
 }
 
-#character-stats-group {
-  display: inline;
+#avatar-stats-group {
+    display: flex;
+    justify-content: center;
 }
 
 #character-avatar-pane {
-  display: inline;
-  position: relative;
-  width: 100%;
+    display: flex;
+    justify-content: right;
+    width: 60%;
 }
 
-/*#avatar-image {
-  position: relative;
-}*/
-
-#my-chart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
 
 canvas {
-  background-color: transparent;
+    background-color: transparent;
+    height: 100% !important;
 }
 
 #character-stats-pane {
-  display: none;
+    display: none;
 }
 
 
 #avatar-stats-group {
-  display: inline;
-  width: 100%;
+    width: 100%;
 }
 
 #background-image {
-  border-radius: 10px;
-  height: 500px;
-  width: auto;
-  box-shadow: 1px 0 150px red;
-  /*display: inline;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    width: 60%;
+    box-shadow: 1px 0 60px red;
+    /*display: inline;
   position: relative;
   margin-left: 0px;
   margin-right: 0px;*/
-  position: relative;
+    /*position: relative;
   right: 10%;
-  clear: both;
+  clear: both;*/
 }
 
 #avatar-pane {
-  position: absolute;
+    position: absolute;
 }
 
 #place-image {
-  position: relative;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
 #avatar-image {
-  border-radius: 10px;
-  margin-right: 60px;
+    height: 150px;
+    border-radius: 10px;
 }
