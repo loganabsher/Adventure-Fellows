@@ -28,6 +28,57 @@ document.addEventListener('DOMContentLoaded', function () {
   var decreaseSocial = ['You sit alone at lunch, man that sucks! Social decreases', 'A classmates asks for help, you say no. What a jerk! Social decreases', 'You\'re too tired to shower, develop B.O., no one wants to sit near you! Social decreases', 'You laugh when a classmate’s code doesn’t work. You\'re a terrible person! Social decreases', 'A classmate is new to Seattle, refer them to a bad restaurant. That\'s so mean! Social decreases'];
   //an array of all random events
   var randomArrays = [increaseHealth, decreaseHealth, increaseGrade, decreaseGrade, increaseSocial, decreaseSocial];
+  var ctx = document.getElementById('my-chart').getContext('2d');
+  var health = document.getElementById('stats-health').textContent;
+  var grade = document.getElementById('stats-grade').textContent;
+  var social = document.getElementById('stats-social').textContent;
+
+  var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: ['Health', 'Grade', 'Social'],
+      datasets: [{
+        data: [health, grade, social],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(255, 206, 86, 0.7)',
+          // 'rgba(75, 192, 192, 0.2)',
+          // 'rgba(153, 102, 255, 0.2)',
+          // 'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          // 'rgba(75, 192, 192, 1)',
+          // 'rgba(153, 102, 255, 1)',
+          // 'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      responsive: false,
+      scales: {
+        xAxes: [{
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            max: 120
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            display: false,
+          }
+        }]
+      }
+    }
+  });
   //collecting local storage from last page
   var character = JSON.parse(localStorage.character);
   console.log(character);
@@ -37,11 +88,11 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('failure', 'health');
       location.href = './outcome.html';
     }
-    if(character.grade <= 0){
+    if (character.grade <= 0) {
       localStorage.setItem('failure', 'grade');
       location.href = './outcome.html';
     }
-    if(character.social <= 0){
+    if (character.social <= 0) {
       localStorage.setItem('failure', 'social');
       location.href = './outcome.html';
     }
@@ -52,11 +103,11 @@ document.addEventListener('DOMContentLoaded', function () {
       character.health = 120;
       console.log('exceeding max health, health reset to: ' + character.health);
     }
-    if(character.grade >= 120){
+    if (character.grade >= 120) {
       character.grade = 120;
       console.log('exceeding max grade, grade reset to: ' + character.grade);
     }
-    if(character.social >= 120){
+    if (character.social >= 120) {
       character.social = 120;
       console.log('exceeding max social, social reset to: ' + character.social);
     }
