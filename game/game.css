@@ -75,10 +75,10 @@ a {
     border: black 2px bold;
 }
 #brook {
-    width: auto;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
     height: auto;
-    margin-left: 28%;
-    margin-right: 10%;
     box-shadow: 1px 0 100px white;
 }
 
