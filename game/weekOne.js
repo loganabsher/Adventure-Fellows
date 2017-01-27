@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //array of questions/events
   var staticQuestionArray = ['You are on your home directory of the terminal and following along, what do you type in the command line to access the class directory?', 'How do you spend the weekend?'];
   //array of choices for the questions
-  var staticChoiceArray = [['rm –rf', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa', 'Study all weekend', 'Go out for dinner and drinks with friends', 'Sleep your standard eight hours, run, and study']];
+  var staticChoiceArray = [['rm –rf /', 'cd codefellows/201', 'tree', 'cmatrix'], ['Go to the spa', 'Study all weekend', 'Go out for dinner and drinks with friends', 'Sleep your standard eight hours, run, and study']];
   //array of responses to the choices
   var staticResponseArray = [['You deleted all files on your machine, you can no longer continue in the class.', 'You follow along with the class, learing about how to properly operate your computer.', 'You tree from your home directory, the files keep flying past your screen, it amazes you how many "interesting" files are on your computer ;)', 'You cmatrix and stare at the screen mesmorized by the falling matrix, you pay little attention to the lecture.'], ['You go to the spa to rejuvenate and relax, sleeping in and lounging all weekend.', 'You study very hard all weekend, not getting a chance to relax or see any friends.', 'You go out drinking all weekend and have a terrible hangover, but somehow on Monday your code is finished?', 'You get your standard eight hours of sleep, go for a run, study and finish your homework like a productive member of society.']];
   //unique classes, referenced for text glow
