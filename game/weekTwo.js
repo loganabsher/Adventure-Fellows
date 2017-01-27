@@ -28,61 +28,62 @@ document.addEventListener('DOMContentLoaded', function () {
   var decreaseSocial = ['You sit alone at lunch, man that sucks! Social decreases', 'A classmates asks for help, you say no. What a jerk! Social decreases', 'You\'re too tired to shower, develop B.O., no one wants to sit near you! Social decreases', 'You laugh when a classmate’s code doesn’t work. You\'re a terrible person! Social decreases', 'A classmate is new to Seattle, refer them to a bad restaurant. That\'s so mean! Social decreases'];
   //an array of all random events
   var randomArrays = [increaseHealth, decreaseHealth, increaseGrade, decreaseGrade, increaseSocial, decreaseSocial];
-  var ctx = document.getElementById('my-chart').getContext('2d');
-  var health = document.getElementById('stats-health').textContent;
-  var grade = document.getElementById('stats-grade').textContent;
-  var social = document.getElementById('stats-social').textContent;
+  function renderStatsChart() {
+    var ctx = document.getElementById('my-chart').getContext('2d');
+    var health = document.getElementById('stats-health').textContent;
+    var grade = document.getElementById('stats-grade').textContent;
+    var social = document.getElementById('stats-social').textContent;
 
-  var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-      labels: ['Health', 'Grade', 'Social'],
-      datasets: [{
-        data: [health, grade, social],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.7)',
-          'rgba(54, 162, 235, 0.7)',
-          'rgba(255, 206, 86, 0.7)',
-          // 'rgba(75, 192, 192, 0.2)',
-          // 'rgba(153, 102, 255, 0.2)',
-          // 'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          // 'rgba(75, 192, 192, 1)',
-          // 'rgba(153, 102, 255, 1)',
-          // 'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      legend: {
-        display: false
-      },
-      responsive: false,
-      scales: {
-        xAxes: [{
-          ticks: {
-            display: false,
-            beginAtZero: true,
-            max: 120
-          }
-        }],
-        yAxes: [{
-          ticks: {
-            display: false,
-          }
+    console.log(health);
+    var myChart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+        labels: ['Health', 'Grade', 'Social'],
+        datasets: [{
+          data: [health, grade, social],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            // 'rgba(75, 192, 192, 0.2)',
+            // 'rgba(153, 102, 255, 0.2)',
+            // 'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            // 'rgba(75, 192, 192, 1)',
+            // 'rgba(153, 102, 255, 1)',
+            // 'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
         }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        responsive: false,
+        scales: {
+          xAxes: [{
+            ticks: {
+              display: false,
+              beginAtZero: true,
+              max: 120
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              display: false,
+            }
+          }]
+        }
       }
-    }
-  });
-
+    });
+  }
   var character = JSON.parse(localStorage.character);
   console.log(character);
-  renderPage();
   //checking to see if stats fall below 0
   function failureChecker() {
     if (character.health <= 0) {
@@ -285,6 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
   renderPage();
+  renderStatsChart();
 });
 
 function PlaySound(mySound) {
