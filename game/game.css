@@ -3,7 +3,6 @@
   color: white;
   font-family: 'VT323', monospace;
 }
-
 #background-image, #game-text{
   width: 80%;
   height: 600px;
@@ -27,13 +26,13 @@ p{
 }
 
 .linkToOne {
+  font-size: 3em;
   margin: 0px auto;
   padding-left: 360px;
 }
 
 a {
-  color: white;
-  font-size: 40px;
+  font-size: 3em;
   padding: 1em;
   padding-top: 1%;
   margin: 0px auto;
@@ -41,7 +40,7 @@ a {
 }
 
 .footer {
-  font-size: 26px;
+  font-size: 1em;
   text-align: center;
   margin-top: 35px;
 }
@@ -91,7 +90,7 @@ a {
 }
 
 .whichWeek {
-  font-size: 60px;
+  font-size: 4em;
   text-align: center;
   margin-top: 15px;
 }
@@ -116,4 +115,53 @@ a {
   font-size: 50px;
   width: 60%;
   margin: 0px auto;
+}
+
+#character-stats-group {
+  display: inline;
+}
+
+#character-avatar-pane {
+  display: inline-block;
+  position: relative;
+}
+
+/*#avatar-image {
+  position: relative;
+}*/
+
+#my-chart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+canvas {
+  background-color: transparent;
+}
+
+#character-stats-pane {
+  display: none;
+}
+
+
+#avatar-stats-group {
+  display: inline-block;
+}
+
+#background-image{
+  position: relative;
+  margin: 0 auto;
+}
+
+#avatar-pane {
+  position: absolute;
+}
+
+#place-image {
+  position: relative;
+}
+
+#avatar-image {
+  
 }
