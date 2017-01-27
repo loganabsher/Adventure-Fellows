@@ -6,13 +6,13 @@
 #game-text {
     width: 80%;
 }
-ul {
-    margin-left: 20%;
-    margin-right: 20%;
-    font-size: 2em;
+ul{
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: 3.5em;
 }
-p {
-    font-size: 2em;
+p{
+  font-size: 3em;
 }
 #game-text {
     height: 400px;
@@ -56,6 +56,9 @@ a {
 
 .question:hover {
     text-shadow: 1px 0 6px goldenrod;
+}
+.page-links:hover{
+  text-shadow: 1px 0 20px lightblue;
 }
 /*pair programmed with Luis*/
 

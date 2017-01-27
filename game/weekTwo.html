@@ -1,58 +1,44 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Welcome to Adventure Fellows!</title>
-  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="game.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-  <script src="weekTwo.js"></script>
-</head>
-
-<body>
-  <div>
-    <header id="header">
-      <a href="../index.html">Home</a>
-      <a href="../character/character.html">Characters</a>
-      <a href="../credits/credits.html">Credits</a>
-    </header>
-  </div>
-  <p class="whichWeek">Week Two</p>
-  <div id="place-image">
-
-  </div>
-
-  <div id="character-avatar-pane">
-    <div id="avatar-container">
-      <img id="avatar-image" src="" alt="">
-      <canvas id="my-chart" width="200px" height="100px"></canvas>
-      <div id="character-stats-pane">
-        <div id="stats-health" class="hide-stat"></div>
-        <div id="stats-grade" class="hide-stat"></div>
-        <div id="stats-social" class="hide-stat"></div>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Adventure Fellows!</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="game.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="weekTwo.js"></script>
+    <audio src="../sounds/FTL - Faster Than Light (2012) OST - 2 - MilkyWay (Explore)-Sh74tQY5y4w.mp3" type="audio/mp3" autoplay></audio>
+  </head>
+  <body>
+    <audio id='mySound' src='../sounds/choice_hover_1.mp3'></audio>
+    <div>
+      <header id="header">
+        <a class="page-links" href="../index.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Home</a>
+        <a class="page-links" href="../character/character.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Characters</a>
+        <a class="page-links" href="../credits/credits.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Credits</a>
+      </header>
+    </div>
+    <p class="whichWeek">Week Two</p>
+    <div id="place-image"></div>
+    <div id="character-avatar-pane">
+      <div id="avatar-container">
+        <img id="avatar-image" src="" alt="">
+        <canvas id="my-chart" width="200px" height="100px"></canvas>
+        <div id="character-stats-pane">
+          <div id="stats-health" class="hide-stat"></div>
+          <div id="stats-grade" class="hide-stat"></div>
+          <div id="stats-social" class="hide-stat"></div>
+        </div>
       </div>
       <section id="title-text"></section>
       <section id="user-box"></section>
     </div>
     <div id="prompt"></div>
     <section id="game-text">
-      <audio id='mySound' src='../sounds/choice_hover_1.mp3'></audio>
-      <ul id="choices-list"></ul>
+      <ul id="choices-list" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')"></ul>
     </section>
     <div class="footer">
       <p>@ Adventure Fellows 2017</p>
     </div>
-
-  </div>
-
-  <div id="prompt"></div>
-  <section id="game-text">
-    <ul id="choices-list"></ul>
-  </section>
-  <div class="footer">
-    <p>@ Adventure Fellows 2017</p>
-  </div>
-</body>
-
+  </body>
 </html>

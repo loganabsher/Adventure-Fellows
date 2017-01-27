@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
   //an array of all random events
   var randomArrays = [increaseHealth, decreaseHealth, increaseGrade, decreaseGrade, increaseSocial, decreaseSocial];
   //character constructor
-
   function Character() {
     console.log('constructing character');
     this.name = localStorage.userName;
@@ -38,20 +37,14 @@ document.addEventListener('DOMContentLoaded', function () {
     this.grade = parseInt(localStorage.grade);
     this.social = parseInt(localStorage.social);
     this.character = JSON.stringify(this);
-  }
+  };
+  //creaing a new character with character data
   var character = new Character();
-  renderPage();
-  renderStatsChart();
-
-  console.log(character);
-
   function renderStatsChart() {
     var ctx = document.getElementById('my-chart').getContext('2d');
     var health = document.getElementById('stats-health').textContent;
     var grade = document.getElementById('stats-grade').textContent;
     var social = document.getElementById('stats-social').textContent;
-
-    console.log(health);
     var myChart = new Chart(ctx, {
       type: 'horizontalBar',
       data: {
@@ -99,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-  //creaing a new character with character data
   //checking to see if stats fall below 0, if so it links to outcome with a failure tag in local storage
   function failureChecker() {
     if (character.health <= 0) {
@@ -147,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
     avatarImage.src = localStorage.imgUrl;
     renderStatsChart();
     //stats for chart.js
-    console.log(character);
     var statsGrade = document.getElementById('stats-health');
     statsGrade.textContent = character.health;
     var statsGrade = document.getElementById('stats-grade');
@@ -304,6 +295,8 @@ document.addEventListener('DOMContentLoaded', function () {
     displayQuestionPrompt(questionNum);
     createDialogue(staticImageArray[questionNum], staticChoiceArray[questionNum], staticResponseArray[questionNum]);
   }
+  renderPage();
+  renderAvatarAndStats();
 });
 function PlaySound(mySound) {
   var thissound = document.getElementById(mySound);
