@@ -8,6 +8,9 @@
   height: 4em;
   text-align: center;
 }
+.page-links:hover{
+  text-shadow: 1px 0 20px lightblue;
+}
 a {
   color: white;
   font-size: 40px;
