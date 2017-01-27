@@ -10,11 +10,12 @@
     <audio src="../sounds/FTL - Faster Than Light (2012) OST - 2 - MilkyWay (Explore)-Sh74tQY5y4w.mp3" type="audio/mp3" autoplay></audio>
   </head>
   <body>
+    <audio id='mySound' src='../sounds/choice_hover_1.mp3'></audio>
     <div>
       <header id="header">
-        <a href="../index.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Home</a>
-        <a href="../character/character.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Characters</a>
-        <a href="../credits/credits.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Credits</a>
+        <a class="page-links" href="../index.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Home</a>
+        <a class="page-links" href="../character/character.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Characters</a>
+        <a class="page-links" href="../credits/credits.html" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')">Credits</a>
       </header>
     </div>
     <p class="whichWeek">Week Two</p>
@@ -34,7 +35,6 @@
     </div>
     <div id="prompt"></div>
     <section id="game-text">
-      <audio id='mySound' src='../sounds/choice_hover_1.mp3'></audio>
       <ul id="choices-list" onmouseover="PlaySound('mySound')" onmouseout="StopSound('mySound')"></ul>
     </section>
     <div class="footer">
